@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rse-st-Q5L">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--设置-->
+        <scene sceneID="7LB-Qg-MFQ">
+            <objects>
+                <viewController id="agk-T3-ghW" customClass="SettingTabViewController" customModule="SwiftV2Ray" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N8D-ah-OlE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="q2n-KT-fIG">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="q2n-KT-fIG" firstAttribute="trailing" secondItem="XWd-33-1Rg" secondAttribute="trailing" id="Rks-yg-GIa"/>
+                            <constraint firstItem="q2n-KT-fIG" firstAttribute="bottom" secondItem="XWd-33-1Rg" secondAttribute="bottom" id="Z0P-4k-1PG"/>
+                            <constraint firstItem="q2n-KT-fIG" firstAttribute="leading" secondItem="XWd-33-1Rg" secondAttribute="leading" id="rvS-vX-rGk"/>
+                            <constraint firstItem="q2n-KT-fIG" firstAttribute="top" secondItem="XWd-33-1Rg" secondAttribute="top" id="yVq-j0-7qW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XWd-33-1Rg"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="设置" image="gear" catalog="system" id="kcp-43-8bd"/>
+                    <connections>
+                        <outlet property="contentTableView" destination="q2n-KT-fIG" id="Srz-L6-sfk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="azw-4A-DFC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="976.81159420289862" y="-168.08035714285714"/>
+        </scene>
+        <!--首页-->
+        <scene sceneID="H7N-Wo-Sat">
+            <objects>
+                <viewController id="CRD-JN-Rtf" customClass="HomeTabViewController" customModule="SwiftV2Ray" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VVv-wh-e0z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ptD-py-MLW"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="首页" image="house" catalog="system" id="KkP-BE-Pnq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c82-Bl-Gha" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="978.26086956521749" y="-841.07142857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="be1-Q2-Utx">
+            <objects>
+                <navigationController id="rse-st-Q5L" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nwM-Vt-qev">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yid-tu-iPC" kind="relationship" relationship="rootViewController" id="JvL-cb-TVW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="inL-ru-qHB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-951" y="-660"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="vpt-hm-3KE">
+            <objects>
+                <tabBarController id="yid-tu-iPC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="vmd-1n-UHl"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3JD-Xu-Yj3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="CRD-JN-Rtf" kind="relationship" relationship="viewControllers" id="Rod-5i-Bx1"/>
+                        <segue destination="agk-T3-ghW" kind="relationship" relationship="viewControllers" id="C2b-51-MdC"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lfP-Zg-NbR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="103" y="-659"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="gear" catalog="system" width="64" height="58"/>
+        <image name="house" catalog="system" width="64" height="54"/>
+    </resources>
+</document>

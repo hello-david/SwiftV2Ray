@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="C1p-vl-f6B">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C1p-vl-f6B" id="7fn-3G-4MH">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4NL-58-aHM">
+                        <rect key="frame" x="20" y="6.5" width="374" height="32"/>
+                        <segments>
+                            <segment title="自动配置"/>
+                            <segment title="全局代理"/>
+                            <segment title="直接"/>
+                        </segments>
+                    </segmentedControl>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="4NL-58-aHM" firstAttribute="leading" secondItem="7fn-3G-4MH" secondAttribute="leading" constant="20" symbolic="YES" id="Eso-Fj-PZF"/>
+                    <constraint firstItem="4NL-58-aHM" firstAttribute="centerY" secondItem="7fn-3G-4MH" secondAttribute="centerY" id="F4j-yK-zZu"/>
+                    <constraint firstItem="4NL-58-aHM" firstAttribute="centerX" secondItem="7fn-3G-4MH" secondAttribute="centerX" id="HMn-5g-Ae8"/>
+                    <constraint firstAttribute="trailing" secondItem="4NL-58-aHM" secondAttribute="trailing" constant="20" symbolic="YES" id="rpF-0p-EzI"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="-771" y="-94"/>
+        </tableViewCell>
+    </objects>
+</document>
