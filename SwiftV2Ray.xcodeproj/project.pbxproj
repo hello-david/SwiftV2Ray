@@ -15,6 +15,8 @@
 		95270DED2398CF9400D0F21A /* HomeContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95270DEC2398CF9400D0F21A /* HomeContentViewModel.swift */; };
 		95270DF9239F4A6E00D0F21A /* HomeContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95270DF8239F4A6E00D0F21A /* HomeContentViewController.xib */; };
 		9568AB7C23BDD7D800652493 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9568AB7B23BDD7D800652493 /* ExternalAccessory.framework */; };
+		957BB1F523C875AB001EDDE5 /* HomeContentControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957BB1F423C875AB001EDDE5 /* HomeContentControlCell.swift */; };
+		957BB1F723C875D3001EDDE5 /* HomeContentProxyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957BB1F623C875D3001EDDE5 /* HomeContentProxyCell.swift */; };
 		957F21C6239656520025DB45 /* AirportTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F21C5239656520025DB45 /* AirportTool.swift */; };
 		957F21CE239780FA0025DB45 /* VmessEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F21CD239780FA0025DB45 /* VmessEndpoint.swift */; };
 		95859DBA2354475200CF3963 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95859DB92354475200CF3963 /* AppDelegate.swift */; };
@@ -28,8 +30,8 @@
 		958E09D523BF0BC90075D78F /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E09D423BF0BC90075D78F /* PacketTunnelProvider.swift */; };
 		958E09DA23BF0BC90075D78F /* PacketTunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 958E09D223BF0BC90075D78F /* PacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		958E09E023BF18650075D78F /* VPNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E09DF23BF18650075D78F /* VPNHelper.swift */; };
-		958E09E423BF376A0075D78F /* HomeContentCell0.xib in Resources */ = {isa = PBXBuildFile; fileRef = 958E09E323BF376A0075D78F /* HomeContentCell0.xib */; };
-		958E09E623BF37890075D78F /* HomeContentCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 958E09E523BF37890075D78F /* HomeContentCell1.xib */; };
+		958E09E423BF376A0075D78F /* HomeContentControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 958E09E323BF376A0075D78F /* HomeContentControlCell.xib */; };
+		958E09E623BF37890075D78F /* HomeContentProxyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 958E09E523BF37890075D78F /* HomeContentProxyCell.xib */; };
 		9593675E238F7649005879C4 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9593675D238F7649005879C4 /* NetworkExtension.framework */; };
 		9593678523927EC7005879C4 /* testConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 9593678323927EC7005879C4 /* testConfig.json */; };
 		9593678623927EC7005879C4 /* V2RayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9593678423927EC7005879C4 /* V2RayConfig.swift */; };
@@ -74,6 +76,8 @@
 		95270DEC2398CF9400D0F21A /* HomeContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContentViewModel.swift; sourceTree = "<group>"; };
 		95270DF8239F4A6E00D0F21A /* HomeContentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContentViewController.xib; sourceTree = "<group>"; };
 		9568AB7B23BDD7D800652493 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		957BB1F423C875AB001EDDE5 /* HomeContentControlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContentControlCell.swift; sourceTree = "<group>"; };
+		957BB1F623C875D3001EDDE5 /* HomeContentProxyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContentProxyCell.swift; sourceTree = "<group>"; };
 		957F21C5239656520025DB45 /* AirportTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportTool.swift; sourceTree = "<group>"; };
 		957F21CD239780FA0025DB45 /* VmessEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VmessEndpoint.swift; sourceTree = "<group>"; };
 		95859DB62354475200CF3963 /* SwiftV2Ray.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftV2Ray.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,8 +95,8 @@
 		958E09D623BF0BC90075D78F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		958E09D723BF0BC90075D78F /* PacketTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnel.entitlements; sourceTree = "<group>"; };
 		958E09DF23BF18650075D78F /* VPNHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNHelper.swift; sourceTree = "<group>"; };
-		958E09E323BF376A0075D78F /* HomeContentCell0.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContentCell0.xib; sourceTree = "<group>"; };
-		958E09E523BF37890075D78F /* HomeContentCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContentCell1.xib; sourceTree = "<group>"; };
+		958E09E323BF376A0075D78F /* HomeContentControlCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContentControlCell.xib; sourceTree = "<group>"; };
+		958E09E523BF37890075D78F /* HomeContentProxyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContentProxyCell.xib; sourceTree = "<group>"; };
 		9593675D238F7649005879C4 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		95936760238FBAB7005879C4 /* SwiftV2Ray-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftV2Ray-Bridging-Header.h"; sourceTree = "<group>"; };
 		9593678323927EC7005879C4 /* testConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testConfig.json; sourceTree = "<group>"; };
@@ -220,8 +224,10 @@
 				95859E0C2354535E00CF3963 /* SettingTabViewController.swift */,
 				95270DE823989AE100D0F21A /* HomeContentViewContoller.swift */,
 				95270DF8239F4A6E00D0F21A /* HomeContentViewController.xib */,
-				958E09E323BF376A0075D78F /* HomeContentCell0.xib */,
-				958E09E523BF37890075D78F /* HomeContentCell1.xib */,
+				958E09E323BF376A0075D78F /* HomeContentControlCell.xib */,
+				958E09E523BF37890075D78F /* HomeContentProxyCell.xib */,
+				957BB1F423C875AB001EDDE5 /* HomeContentControlCell.swift */,
+				957BB1F623C875D3001EDDE5 /* HomeContentProxyCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -367,9 +373,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				958E09E423BF376A0075D78F /* HomeContentCell0.xib in Resources */,
+				958E09E423BF376A0075D78F /* HomeContentControlCell.xib in Resources */,
 				95859E062354527D00CF3963 /* Preview Assets.xcassets in Resources */,
-				958E09E623BF37890075D78F /* HomeContentCell1.xib in Resources */,
+				958E09E623BF37890075D78F /* HomeContentProxyCell.xib in Resources */,
 				9593678523927EC7005879C4 /* testConfig.json in Resources */,
 				95859E022354524C00CF3963 /* Home.storyboard in Resources */,
 				95270DF9239F4A6E00D0F21A /* HomeContentViewController.xib in Resources */,
@@ -437,10 +443,12 @@
 				95859E0D2354535E00CF3963 /* SettingTabViewController.swift in Sources */,
 				9593678623927EC7005879C4 /* V2RayConfig.swift in Sources */,
 				958E09E023BF18650075D78F /* VPNHelper.swift in Sources */,
+				957BB1F723C875D3001EDDE5 /* HomeContentProxyCell.swift in Sources */,
 				95270DE42397BDD300D0F21A /* HomeContentView.swift in Sources */,
 				957F21C6239656520025DB45 /* AirportTool.swift in Sources */,
 				95270DED2398CF9400D0F21A /* HomeContentViewModel.swift in Sources */,
 				95859DBA2354475200CF3963 /* AppDelegate.swift in Sources */,
+				957BB1F523C875AB001EDDE5 /* HomeContentControlCell.swift in Sources */,
 				95270DE52397BDD300D0F21A /* View+UIkit.swift in Sources */,
 				95270DE923989AE100D0F21A /* HomeContentViewContoller.swift in Sources */,
 				957F21CE239780FA0025DB45 /* VmessEndpoint.swift in Sources */,

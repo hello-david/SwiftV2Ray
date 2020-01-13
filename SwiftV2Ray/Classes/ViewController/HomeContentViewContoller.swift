@@ -23,8 +23,8 @@ class HomeContentViewContoller: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableview.register(UINib.init(nibName: "HomeContentCell0", bundle: nil), forCellReuseIdentifier: "ControlCell")
-        self.tableview.register(UINib.init(nibName: "HomeContentCell1", bundle: nil), forCellReuseIdentifier: "ProxyCell")
+        self.tableview.register(UINib.init(nibName: "HomeContentControlCell", bundle: nil), forCellReuseIdentifier: "ControlCell")
+        self.tableview.register(UINib.init(nibName: "HomeContentProxyCell", bundle: nil), forCellReuseIdentifier: "ProxyCell")
     }
 }
 
@@ -54,11 +54,31 @@ extension HomeContentViewContoller: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && indexPath.row == 0 {
-            return tableview.dequeueReusableCell(withIdentifier: "ControlCell", for: indexPath)
+            let cell = tableview.dequeueReusableCell(withIdentifier: "ControlCell", for: indexPath) as! HomeContentControlCell
+            cell.switchClosure =  { [weak self] switchOn in
+                self?.contentManger.serviceOpen = switchOn
+                if switchOn {
+                    self?.contentManger.openService(completion: { (error) in
+                        if error == nil {
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            cell.switch.isOn = false
+                        }
+                    })
+                } else {
+                    self?.contentManger.closeService()
+                }
+            }
+            return cell
         }
         
         if indexPath.section == 0 && indexPath.row == 1 {
-            return tableview.dequeueReusableCell(withIdentifier: "ProxyCell", for: indexPath)
+            let cell = tableview.dequeueReusableCell(withIdentifier: "ProxyCell", for: indexPath) as! HomeContentProxyCell
+            cell.modeChangeClosure = { [weak self] segmentIndex in
+                
+            }
+            return cell
         }
         
         return UITableViewCell()
@@ -66,6 +86,6 @@ extension HomeContentViewContoller: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableview.deselectRow(at: indexPath, animated: true)
-
+        
     }
 }

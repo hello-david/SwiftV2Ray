@@ -13,10 +13,13 @@ class VPNHelper {
     static let `shared` = VPNHelper()
     var manager: NETunnelProviderManager? = nil
     
-    func open(fromIP: String, completion: () -> Void) {
+    func open(fromIP: String, completion: @escaping(( _ error: Error?) -> Void)) {
         guard manager == nil else {
             manager?.protocolConfiguration?.serverAddress = fromIP
             manager?.isEnabled = true
+            manager?.saveToPreferences(completionHandler: { (error) in
+                completion(error)
+            })
             return
         }
         
@@ -25,13 +28,7 @@ class VPNHelper {
                 return
             }
             
-            // 找到这个项目的VPN通道
             
-            
-            // 创建一个新的VPN通道
-            if self.manager == nil {
-                
-            }
         }
     }
 }

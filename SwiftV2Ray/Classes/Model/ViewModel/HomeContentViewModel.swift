@@ -94,7 +94,7 @@ class SUHomeContentViewModel: ObservableObject, Codable {
 
 // MARK: -
 class HomeContentViewModel: NSObject, Codable {
-    var serviceOpen = false
+    var serviceOpen: Bool = false
     var subscribeUrl: URL? = nil
     var activingEndpoint: VmessEndpoint? = nil
     var serviceEndPoints: [VmessEndpoint] = []
@@ -127,6 +127,14 @@ class HomeContentViewModel: NSObject, Codable {
         activingEndpoint = values.contains(.activingEndpoint) ? try values.decode(VmessEndpoint.self, forKey: .activingEndpoint) : nil
         proxyMode = ProxyMode(rawValue: try values.decode(Int.self, forKey: .proxyMode)) ?? .auto
         serviceEndPoints = try values.decode([VmessEndpoint].self, forKey: .serviceEndPoints)
+    }
+    
+    func openService(completion: ((_ error: Error?)-> Void)?) {
+        
+    }
+    
+    func closeService() {
+        
     }
     
     func requestServices(withUrl requestUrl: URL?, completion: ((_ error: Error?)-> Void)?) {
