@@ -13,22 +13,51 @@ class VPNHelper {
     static let `shared` = VPNHelper()
     var manager: NETunnelProviderManager? = nil
     
-    func open(fromIP: String, completion: @escaping(( _ error: Error?) -> Void)) {
-        guard manager == nil else {
-            manager?.protocolConfiguration?.serverAddress = fromIP
-            manager?.isEnabled = true
-            manager?.saveToPreferences(completionHandler: { (error) in
-                completion(error)
-            })
-            return
+    func open(completion: @escaping(( _ error: Error?) -> Void)) {
+        let closure = { (manager: NETunnelProviderManager?, error: Error?) in
+            var openError = error
+            if manager != nil {
+                manager?.isOnDemandEnabled = true
+                manager?.isEnabled = true
+                do {
+                    try manager?.connection.startVPNTunnel()
+                } catch let starError {
+                    NSLog(starError.localizedDescription)
+                    openError = starError
+                }
+            }
+            
+            completion(openError)
         }
         
         NETunnelProviderManager.loadAllFromPreferences { (managers, error) in
-            guard error != nil else {
+            guard let vpnManagers = managers else {
+                closure(nil, error)
                 return
             }
             
+            for manager in vpnManagers {
+                if (manager.protocolConfiguration as? NETunnelProviderProtocol)?.providerBundleIdentifier == "com.david.SwiftV2Ray" {
+                    closure(manager, nil)
+                    return
+                }
+            }
             
+            let manager = NETunnelProviderManager()
+            manager.protocolConfiguration = NETunnelProviderProtocol()
+            (manager.protocolConfiguration as? NETunnelProviderProtocol)?.providerBundleIdentifier = "com.david.SwiftV2Ray"
+            manager.protocolConfiguration?.serverAddress = "SwiftV2Ray Service"
+            manager.localizedDescription = "SwiftV2Ray VPN"
+            manager.saveToPreferences(completionHandler: { (error) in
+                if error != nil {
+                    closure(nil, error)
+                    return
+                }
+                
+                manager.loadFromPreferences(completionHandler: { (error) in
+                    closure(manager, error)
+                })
+            })
         }
     }
 }

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:SwiftV2Ray.xcodeproj">
+      location = "self:/Users/david.dai/SimpleTunnel-master/SwiftV2Ray.xcodeproj">
    </FileRef>
 </Workspace>

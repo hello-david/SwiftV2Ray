@@ -3,388 +3,415 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		95026FA5238E6EC900E4A90C /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95026FA4238E6EC900E4A90C /* Core.framework */; };
-		95026FBF238E77FD00E4A90C /* V2RayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95026FB8238E77FD00E4A90C /* V2RayCore.swift */; };
-		95270DE42397BDD300D0F21A /* HomeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95270DE12397BDD300D0F21A /* HomeContentView.swift */; };
-		95270DE52397BDD300D0F21A /* View+UIkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95270DE22397BDD300D0F21A /* View+UIkit.swift */; };
-		95270DE923989AE100D0F21A /* HomeContentViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95270DE823989AE100D0F21A /* HomeContentViewContoller.swift */; };
-		95270DED2398CF9400D0F21A /* HomeContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95270DEC2398CF9400D0F21A /* HomeContentViewModel.swift */; };
-		95270DF9239F4A6E00D0F21A /* HomeContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95270DF8239F4A6E00D0F21A /* HomeContentViewController.xib */; };
-		9568AB7C23BDD7D800652493 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9568AB7B23BDD7D800652493 /* ExternalAccessory.framework */; };
-		957BB1F523C875AB001EDDE5 /* HomeContentControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957BB1F423C875AB001EDDE5 /* HomeContentControlCell.swift */; };
-		957BB1F723C875D3001EDDE5 /* HomeContentProxyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957BB1F623C875D3001EDDE5 /* HomeContentProxyCell.swift */; };
-		957F21C6239656520025DB45 /* AirportTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F21C5239656520025DB45 /* AirportTool.swift */; };
-		957F21CE239780FA0025DB45 /* VmessEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F21CD239780FA0025DB45 /* VmessEndpoint.swift */; };
-		95859DBA2354475200CF3963 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95859DB92354475200CF3963 /* AppDelegate.swift */; };
-		95859DBC2354475200CF3963 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95859DBB2354475200CF3963 /* SceneDelegate.swift */; };
-		95859DC02354475300CF3963 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95859DBF2354475300CF3963 /* Assets.xcassets */; };
-		95859DC62354475300CF3963 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95859DC42354475300CF3963 /* LaunchScreen.storyboard */; };
-		95859E022354524C00CF3963 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95859DF72354524C00CF3963 /* Home.storyboard */; };
-		95859E062354527D00CF3963 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95859E052354527D00CF3963 /* Preview Assets.xcassets */; };
-		95859E0B2354530100CF3963 /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95859E0A2354530100CF3963 /* HomeTabViewController.swift */; };
-		95859E0D2354535E00CF3963 /* SettingTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95859E0C2354535E00CF3963 /* SettingTabViewController.swift */; };
-		958E09D523BF0BC90075D78F /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E09D423BF0BC90075D78F /* PacketTunnelProvider.swift */; };
-		958E09DA23BF0BC90075D78F /* PacketTunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 958E09D223BF0BC90075D78F /* PacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		958E09E023BF18650075D78F /* VPNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E09DF23BF18650075D78F /* VPNHelper.swift */; };
-		958E09E423BF376A0075D78F /* HomeContentControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 958E09E323BF376A0075D78F /* HomeContentControlCell.xib */; };
-		958E09E623BF37890075D78F /* HomeContentProxyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 958E09E523BF37890075D78F /* HomeContentProxyCell.xib */; };
-		9593675E238F7649005879C4 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9593675D238F7649005879C4 /* NetworkExtension.framework */; };
-		9593678523927EC7005879C4 /* testConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 9593678323927EC7005879C4 /* testConfig.json */; };
-		9593678623927EC7005879C4 /* V2RayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9593678423927EC7005879C4 /* V2RayConfig.swift */; };
-		D7F03E721583304F7071EC02 /* Pods_SwiftV2Ray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBBF80BC1FDD1CA48127DFC /* Pods_SwiftV2Ray.framework */; };
+		6904B0FB1FFDC8D1000B64F3 /* PacketTunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B07CCB6D1A89414500A4F1E5 /* PacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		69836CE2212400AB00815672 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69836CE1212400AB00815672 /* NetworkExtension.framework */; };
+		7208A593E9059346E1CF9EED /* Pods_SwiftV2Ray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A6121B47CB4BF81CE23659 /* Pods_SwiftV2Ray.framework */; };
+		95B5D79C23D2CBF40051EC3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D79B23D2CBF40051EC3C /* SceneDelegate.swift */; };
+		95B5D7F923D2CC990051EC3C /* VPNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7E223D2CC990051EC3C /* VPNHelper.swift */; };
+		95B5D7FA23D2CC990051EC3C /* testConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 95B5D7E423D2CC990051EC3C /* testConfig.json */; };
+		95B5D7FB23D2CC990051EC3C /* V2RayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7E523D2CC990051EC3C /* V2RayCore.swift */; };
+		95B5D7FC23D2CC990051EC3C /* V2RayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7E623D2CC990051EC3C /* V2RayConfig.swift */; };
+		95B5D7FD23D2CC990051EC3C /* AirportTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7E723D2CC990051EC3C /* AirportTool.swift */; };
+		95B5D7FE23D2CC990051EC3C /* HomeContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7EA23D2CC990051EC3C /* HomeContentViewModel.swift */; };
+		95B5D7FF23D2CC990051EC3C /* VmessEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7EB23D2CC990051EC3C /* VmessEndpoint.swift */; };
+		95B5D80023D2CC990051EC3C /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7ED23D2CC990051EC3C /* HomeTabViewController.swift */; };
+		95B5D80123D2CC990051EC3C /* SettingTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7EE23D2CC990051EC3C /* SettingTabViewController.swift */; };
+		95B5D80223D2CC990051EC3C /* HomeContentControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7EF23D2CC990051EC3C /* HomeContentControlCell.swift */; };
+		95B5D80323D2CC990051EC3C /* HomeContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B5D7F023D2CC990051EC3C /* HomeContentViewController.xib */; };
+		95B5D80423D2CC990051EC3C /* HomeContentProxyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7F123D2CC990051EC3C /* HomeContentProxyCell.swift */; };
+		95B5D80523D2CC990051EC3C /* HomeContentProxyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B5D7F223D2CC990051EC3C /* HomeContentProxyCell.xib */; };
+		95B5D80623D2CC990051EC3C /* HomeContentControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B5D7F323D2CC990051EC3C /* HomeContentControlCell.xib */; };
+		95B5D80723D2CC990051EC3C /* HomeContentViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7F423D2CC990051EC3C /* HomeContentViewContoller.swift */; };
+		95B5D80823D2CC990051EC3C /* HomeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7F723D2CC990051EC3C /* HomeContentView.swift */; };
+		95B5D80923D2CC990051EC3C /* View+UIkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7F823D2CC990051EC3C /* View+UIkit.swift */; };
+		95B5D80B23D2CCB50051EC3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95B5D80A23D2CCB50051EC3C /* LaunchScreen.storyboard */; };
+		95B5D80D23D2CCBD0051EC3C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95B5D80C23D2CCBD0051EC3C /* Home.storyboard */; };
+		95B5D81023D2CD9E0051EC3C /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B5D80F23D2CD9E0051EC3C /* Core.framework */; };
+		95B5D81523D2CE6A0051EC3C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95B5D81423D2CE6A0051EC3C /* Preview Assets.xcassets */; };
+		95B5D81723D2CF060051EC3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95B5D81623D2CF060051EC3C /* Images.xcassets */; };
+		B07CCB3D1A8940E600A4F1E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07CCB3C1A8940E600A4F1E5 /* AppDelegate.swift */; };
+		C49ACF4D1A8AC97B00084324 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D507F51A8943FD005D1195 /* PacketTunnelProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		958E09D823BF0BC90075D78F /* PBXContainerItemProxy */ = {
+		6904B0F91FFDC625000B64F3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 95859DAE2354475200CF3963 /* Project object */;
+			containerPortal = B07CCB2F1A8940E600A4F1E5 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 958E09D123BF0BC90075D78F;
+			remoteGlobalIDString = B07CCB6C1A89414500A4F1E5;
 			remoteInfo = PacketTunnel;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		95D0ECB8238F6651006C2982 /* Embed App Extensions */ = {
+		6904B0FC1FFDC8D2000B64F3 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				958E09DA23BF0BC90075D78F /* PacketTunnel.appex in Embed App Extensions */,
+				6904B0FB1FFDC8D1000B64F3 /* PacketTunnel.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95B5D79A23D2BB2F0051EC3C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		135EEE85AD872DFC3A8C4089 /* Pods-SwiftV2Ray.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftV2Ray.release.xcconfig"; path = "Target Support Files/Pods-SwiftV2Ray/Pods-SwiftV2Ray.release.xcconfig"; sourceTree = "<group>"; };
-		45619E546D502A7357D7A37B /* Pods-SwiftV2Ray.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftV2Ray.debug.xcconfig"; path = "Target Support Files/Pods-SwiftV2Ray/Pods-SwiftV2Ray.debug.xcconfig"; sourceTree = "<group>"; };
-		8EBBF80BC1FDD1CA48127DFC /* Pods_SwiftV2Ray.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftV2Ray.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		95026FA3238E561C00E4A90C /* SwiftV2Ray.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftV2Ray.entitlements; sourceTree = "<group>"; };
-		95026FA4238E6EC900E4A90C /* Core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Core.framework; sourceTree = "<group>"; };
-		95026FB4238E77FD00E4A90C /* V2rayServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2rayServer.swift; sourceTree = "<group>"; };
-		95026FB8238E77FD00E4A90C /* V2RayCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2RayCore.swift; sourceTree = "<group>"; };
-		95270DE12397BDD300D0F21A /* HomeContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeContentView.swift; sourceTree = "<group>"; };
-		95270DE22397BDD300D0F21A /* View+UIkit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+UIkit.swift"; sourceTree = "<group>"; };
-		95270DE823989AE100D0F21A /* HomeContentViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContentViewContoller.swift; sourceTree = "<group>"; };
-		95270DEC2398CF9400D0F21A /* HomeContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContentViewModel.swift; sourceTree = "<group>"; };
-		95270DF8239F4A6E00D0F21A /* HomeContentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContentViewController.xib; sourceTree = "<group>"; };
-		9568AB7B23BDD7D800652493 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
-		957BB1F423C875AB001EDDE5 /* HomeContentControlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContentControlCell.swift; sourceTree = "<group>"; };
-		957BB1F623C875D3001EDDE5 /* HomeContentProxyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContentProxyCell.swift; sourceTree = "<group>"; };
-		957F21C5239656520025DB45 /* AirportTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportTool.swift; sourceTree = "<group>"; };
-		957F21CD239780FA0025DB45 /* VmessEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VmessEndpoint.swift; sourceTree = "<group>"; };
-		95859DB62354475200CF3963 /* SwiftV2Ray.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftV2Ray.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		95859DB92354475200CF3963 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		95859DBB2354475200CF3963 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		95859DBF2354475300CF3963 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		95859DC52354475300CF3963 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		95859DC72354475300CF3963 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		95859DF72354524C00CF3963 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
-		95859E052354527D00CF3963 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		95859E0A2354530100CF3963 /* HomeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
-		95859E0C2354535E00CF3963 /* SettingTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTabViewController.swift; sourceTree = "<group>"; };
-		958E09D223BF0BC90075D78F /* PacketTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		958E09D423BF0BC90075D78F /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
-		958E09D623BF0BC90075D78F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		958E09D723BF0BC90075D78F /* PacketTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnel.entitlements; sourceTree = "<group>"; };
-		958E09DF23BF18650075D78F /* VPNHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNHelper.swift; sourceTree = "<group>"; };
-		958E09E323BF376A0075D78F /* HomeContentControlCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContentControlCell.xib; sourceTree = "<group>"; };
-		958E09E523BF37890075D78F /* HomeContentProxyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContentProxyCell.xib; sourceTree = "<group>"; };
-		9593675D238F7649005879C4 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
-		95936760238FBAB7005879C4 /* SwiftV2Ray-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftV2Ray-Bridging-Header.h"; sourceTree = "<group>"; };
-		9593678323927EC7005879C4 /* testConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testConfig.json; sourceTree = "<group>"; };
-		9593678423927EC7005879C4 /* V2RayConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2RayConfig.swift; sourceTree = "<group>"; };
+		0FE6BBCC7F2BB5707C8B6B78 /* Pods-SwiftV2Ray.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftV2Ray.release.xcconfig"; path = "Target Support Files/Pods-SwiftV2Ray/Pods-SwiftV2Ray.release.xcconfig"; sourceTree = "<group>"; };
+		69836CE1212400AB00815672 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		95B5D79B23D2CBF40051EC3C /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		95B5D7E223D2CC990051EC3C /* VPNHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNHelper.swift; sourceTree = "<group>"; };
+		95B5D7E423D2CC990051EC3C /* testConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testConfig.json; sourceTree = "<group>"; };
+		95B5D7E523D2CC990051EC3C /* V2RayCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2RayCore.swift; sourceTree = "<group>"; };
+		95B5D7E623D2CC990051EC3C /* V2RayConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2RayConfig.swift; sourceTree = "<group>"; };
+		95B5D7E723D2CC990051EC3C /* AirportTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportTool.swift; sourceTree = "<group>"; };
+		95B5D7EA23D2CC990051EC3C /* HomeContentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeContentViewModel.swift; sourceTree = "<group>"; };
+		95B5D7EB23D2CC990051EC3C /* VmessEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VmessEndpoint.swift; sourceTree = "<group>"; };
+		95B5D7ED23D2CC990051EC3C /* HomeTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
+		95B5D7EE23D2CC990051EC3C /* SettingTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTabViewController.swift; sourceTree = "<group>"; };
+		95B5D7EF23D2CC990051EC3C /* HomeContentControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeContentControlCell.swift; sourceTree = "<group>"; };
+		95B5D7F023D2CC990051EC3C /* HomeContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeContentViewController.xib; sourceTree = "<group>"; };
+		95B5D7F123D2CC990051EC3C /* HomeContentProxyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeContentProxyCell.swift; sourceTree = "<group>"; };
+		95B5D7F223D2CC990051EC3C /* HomeContentProxyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeContentProxyCell.xib; sourceTree = "<group>"; };
+		95B5D7F323D2CC990051EC3C /* HomeContentControlCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeContentControlCell.xib; sourceTree = "<group>"; };
+		95B5D7F423D2CC990051EC3C /* HomeContentViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeContentViewContoller.swift; sourceTree = "<group>"; };
+		95B5D7F723D2CC990051EC3C /* HomeContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeContentView.swift; sourceTree = "<group>"; };
+		95B5D7F823D2CC990051EC3C /* View+UIkit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+UIkit.swift"; sourceTree = "<group>"; };
+		95B5D80A23D2CCB50051EC3C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		95B5D80C23D2CCBD0051EC3C /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		95B5D80E23D2CD7F0051EC3C /* SwiftV2Ray.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftV2Ray.entitlements; sourceTree = "<group>"; };
+		95B5D80F23D2CD9E0051EC3C /* Core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Core.framework; sourceTree = "<group>"; };
+		95B5D81423D2CE6A0051EC3C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		95B5D81623D2CF060051EC3C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9EB527B618ED1C66404ECA1C /* Pods-SwiftV2Ray.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftV2Ray.debug.xcconfig"; path = "Target Support Files/Pods-SwiftV2Ray/Pods-SwiftV2Ray.debug.xcconfig"; sourceTree = "<group>"; };
+		B01F23AB1A8A8C5E0078C66D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PacketTunnel/Info.plist; sourceTree = SOURCE_ROOT; };
+		B07CCB371A8940E600A4F1E5 /* SwiftV2Ray.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftV2Ray.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B07CCB3B1A8940E600A4F1E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B07CCB3C1A8940E600A4F1E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B07CCB6D1A89414500A4F1E5 /* PacketTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B07CCB711A89414500A4F1E5 /* PacketTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PacketTunnel.entitlements; path = ../PacketTunnel/PacketTunnel.entitlements; sourceTree = "<group>"; };
+		B0D507F51A8943FD005D1195 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PacketTunnelProvider.swift; path = PacketTunnel/PacketTunnelProvider.swift; sourceTree = SOURCE_ROOT; };
+		D3A6121B47CB4BF81CE23659 /* Pods_SwiftV2Ray.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftV2Ray.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		95859DB32354475200CF3963 /* Frameworks */ = {
+		B07CCB341A8940E600A4F1E5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7F03E721583304F7071EC02 /* Pods_SwiftV2Ray.framework in Frameworks */,
-				9593675E238F7649005879C4 /* NetworkExtension.framework in Frameworks */,
-				9568AB7C23BDD7D800652493 /* ExternalAccessory.framework in Frameworks */,
-				95026FA5238E6EC900E4A90C /* Core.framework in Frameworks */,
+				7208A593E9059346E1CF9EED /* Pods_SwiftV2Ray.framework in Frameworks */,
+				95B5D81023D2CD9E0051EC3C /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		958E09CF23BF0BC90075D78F /* Frameworks */ = {
+		B07CCB6A1A89414500A4F1E5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69836CE2212400AB00815672 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		95270DDE2397BDD300D0F21A /* Views */ = {
+		690F9EC41FE5F38600F85684 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				95270DDF2397BDD300D0F21A /* SwiftUI */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		95270DDF2397BDD300D0F21A /* SwiftUI */ = {
-			isa = PBXGroup;
-			children = (
-				95270DE12397BDD300D0F21A /* HomeContentView.swift */,
-				95270DE22397BDD300D0F21A /* View+UIkit.swift */,
-			);
-			path = SwiftUI;
-			sourceTree = "<group>";
-		};
-		957F21CB239780FA0025DB45 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				957F21CC239780FA0025DB45 /* ViewModel */,
-				957F21CD239780FA0025DB45 /* VmessEndpoint.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		957F21CC239780FA0025DB45 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				95270DEC2398CF9400D0F21A /* HomeContentViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		95859DAD2354475200CF3963 = {
-			isa = PBXGroup;
-			children = (
-				95859DB82354475200CF3963 /* SwiftV2Ray */,
-				958E09D323BF0BC90075D78F /* PacketTunnel */,
-				95859DB72354475200CF3963 /* Products */,
-				F56DAF7D670BE4D1658657C9 /* Pods */,
-				B519074B0E4BD133E119053D /* Frameworks */,
-				95D0EC9E238E7815006C2982 /* Recovered References */,
-			);
-			sourceTree = "<group>";
-		};
-		95859DB72354475200CF3963 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				95859DB62354475200CF3963 /* SwiftV2Ray.app */,
-				958E09D223BF0BC90075D78F /* PacketTunnel.appex */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		95859DB82354475200CF3963 /* SwiftV2Ray */ = {
-			isa = PBXGroup;
-			children = (
-				95026FA3238E561C00E4A90C /* SwiftV2Ray.entitlements */,
-				95859E042354527D00CF3963 /* Preview Content */,
-				95859DEC2354524C00CF3963 /* Classes */,
-				95859DB92354475200CF3963 /* AppDelegate.swift */,
-				95859DBB2354475200CF3963 /* SceneDelegate.swift */,
-				95859DBF2354475300CF3963 /* Assets.xcassets */,
-				95859DF72354524C00CF3963 /* Home.storyboard */,
-				95859DC42354475300CF3963 /* LaunchScreen.storyboard */,
-				95859DC72354475300CF3963 /* Info.plist */,
-				95936760238FBAB7005879C4 /* SwiftV2Ray-Bridging-Header.h */,
-			);
-			path = SwiftV2Ray;
-			sourceTree = "<group>";
-		};
-		95859DEC2354524C00CF3963 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				958E09DE23BF185F0075D78F /* Transport */,
-				95270DDE2397BDD300D0F21A /* Views */,
-				957F21CB239780FA0025DB45 /* Model */,
-				95859E10235458EB00CF3963 /* V2Ray */,
-				95859E07235452B100CF3963 /* ViewController */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		95859E042354527D00CF3963 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				95859E052354527D00CF3963 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		95859E07235452B100CF3963 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				95859E0A2354530100CF3963 /* HomeTabViewController.swift */,
-				95859E0C2354535E00CF3963 /* SettingTabViewController.swift */,
-				95270DE823989AE100D0F21A /* HomeContentViewContoller.swift */,
-				95270DF8239F4A6E00D0F21A /* HomeContentViewController.xib */,
-				958E09E323BF376A0075D78F /* HomeContentControlCell.xib */,
-				958E09E523BF37890075D78F /* HomeContentProxyCell.xib */,
-				957BB1F423C875AB001EDDE5 /* HomeContentControlCell.swift */,
-				957BB1F623C875D3001EDDE5 /* HomeContentProxyCell.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		95859E10235458EB00CF3963 /* V2Ray */ = {
-			isa = PBXGroup;
-			children = (
-				9593678323927EC7005879C4 /* testConfig.json */,
-				9593678423927EC7005879C4 /* V2RayConfig.swift */,
-				95026FB8238E77FD00E4A90C /* V2RayCore.swift */,
-				957F21C5239656520025DB45 /* AirportTool.swift */,
-			);
-			path = V2Ray;
-			sourceTree = "<group>";
-		};
-		958E09D323BF0BC90075D78F /* PacketTunnel */ = {
-			isa = PBXGroup;
-			children = (
-				958E09D423BF0BC90075D78F /* PacketTunnelProvider.swift */,
-				958E09D623BF0BC90075D78F /* Info.plist */,
-				958E09D723BF0BC90075D78F /* PacketTunnel.entitlements */,
-			);
-			path = PacketTunnel;
-			sourceTree = "<group>";
-		};
-		958E09DE23BF185F0075D78F /* Transport */ = {
-			isa = PBXGroup;
-			children = (
-				958E09DF23BF18650075D78F /* VPNHelper.swift */,
-			);
-			path = Transport;
-			sourceTree = "<group>";
-		};
-		95D0EC9E238E7815006C2982 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				95026FB4238E77FD00E4A90C /* V2rayServer.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		B519074B0E4BD133E119053D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9568AB7B23BDD7D800652493 /* ExternalAccessory.framework */,
-				9593675D238F7649005879C4 /* NetworkExtension.framework */,
-				95026FA4238E6EC900E4A90C /* Core.framework */,
-				8EBBF80BC1FDD1CA48127DFC /* Pods_SwiftV2Ray.framework */,
+				95B5D80F23D2CD9E0051EC3C /* Core.framework */,
+				69836CE1212400AB00815672 /* NetworkExtension.framework */,
+				D3A6121B47CB4BF81CE23659 /* Pods_SwiftV2Ray.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F56DAF7D670BE4D1658657C9 /* Pods */ = {
+		95B5D7E023D2CC990051EC3C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				45619E546D502A7357D7A37B /* Pods-SwiftV2Ray.debug.xcconfig */,
-				135EEE85AD872DFC3A8C4089 /* Pods-SwiftV2Ray.release.xcconfig */,
+				95B5D7E123D2CC990051EC3C /* Transport */,
+				95B5D7E323D2CC990051EC3C /* V2Ray */,
+				95B5D7E823D2CC990051EC3C /* Model */,
+				95B5D7EC23D2CC990051EC3C /* ViewController */,
+				95B5D7F523D2CC990051EC3C /* Views */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		95B5D7E123D2CC990051EC3C /* Transport */ = {
+			isa = PBXGroup;
+			children = (
+				95B5D7E223D2CC990051EC3C /* VPNHelper.swift */,
+			);
+			path = Transport;
+			sourceTree = "<group>";
+		};
+		95B5D7E323D2CC990051EC3C /* V2Ray */ = {
+			isa = PBXGroup;
+			children = (
+				95B5D7E423D2CC990051EC3C /* testConfig.json */,
+				95B5D7E523D2CC990051EC3C /* V2RayCore.swift */,
+				95B5D7E623D2CC990051EC3C /* V2RayConfig.swift */,
+				95B5D7E723D2CC990051EC3C /* AirportTool.swift */,
+			);
+			path = V2Ray;
+			sourceTree = "<group>";
+		};
+		95B5D7E823D2CC990051EC3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				95B5D7E923D2CC990051EC3C /* ViewModel */,
+				95B5D7EB23D2CC990051EC3C /* VmessEndpoint.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		95B5D7E923D2CC990051EC3C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				95B5D7EA23D2CC990051EC3C /* HomeContentViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		95B5D7EC23D2CC990051EC3C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				95B5D7ED23D2CC990051EC3C /* HomeTabViewController.swift */,
+				95B5D7EE23D2CC990051EC3C /* SettingTabViewController.swift */,
+				95B5D7EF23D2CC990051EC3C /* HomeContentControlCell.swift */,
+				95B5D7F023D2CC990051EC3C /* HomeContentViewController.xib */,
+				95B5D7F123D2CC990051EC3C /* HomeContentProxyCell.swift */,
+				95B5D7F223D2CC990051EC3C /* HomeContentProxyCell.xib */,
+				95B5D7F323D2CC990051EC3C /* HomeContentControlCell.xib */,
+				95B5D7F423D2CC990051EC3C /* HomeContentViewContoller.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		95B5D7F523D2CC990051EC3C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				95B5D7F623D2CC990051EC3C /* SwiftUI */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		95B5D7F623D2CC990051EC3C /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				95B5D7F723D2CC990051EC3C /* HomeContentView.swift */,
+				95B5D7F823D2CC990051EC3C /* View+UIkit.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		95B5D81323D2CE6A0051EC3C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				95B5D81423D2CE6A0051EC3C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A26DAFAD2D520FFFCED0BD63 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9EB527B618ED1C66404ECA1C /* Pods-SwiftV2Ray.debug.xcconfig */,
+				0FE6BBCC7F2BB5707C8B6B78 /* Pods-SwiftV2Ray.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		B07CCB2E1A8940E600A4F1E5 = {
+			isa = PBXGroup;
+			children = (
+				B07CCB391A8940E600A4F1E5 /* SwiftV2Ray */,
+				B07CCB6E1A89414500A4F1E5 /* PacketTunnel */,
+				B07CCB381A8940E600A4F1E5 /* Products */,
+				690F9EC41FE5F38600F85684 /* Frameworks */,
+				A26DAFAD2D520FFFCED0BD63 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		B07CCB381A8940E600A4F1E5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B07CCB371A8940E600A4F1E5 /* SwiftV2Ray.app */,
+				B07CCB6D1A89414500A4F1E5 /* PacketTunnel.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B07CCB391A8940E600A4F1E5 /* SwiftV2Ray */ = {
+			isa = PBXGroup;
+			children = (
+				95B5D81323D2CE6A0051EC3C /* Preview Content */,
+				B07CCB3C1A8940E600A4F1E5 /* AppDelegate.swift */,
+				95B5D79B23D2CBF40051EC3C /* SceneDelegate.swift */,
+				95B5D7E023D2CC990051EC3C /* Classes */,
+				B07CCB3A1A8940E600A4F1E5 /* Supporting Files */,
+			);
+			path = SwiftV2Ray;
+			sourceTree = "<group>";
+		};
+		B07CCB3A1A8940E600A4F1E5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				95B5D81623D2CF060051EC3C /* Images.xcassets */,
+				95B5D80E23D2CD7F0051EC3C /* SwiftV2Ray.entitlements */,
+				95B5D80C23D2CCBD0051EC3C /* Home.storyboard */,
+				95B5D80A23D2CCB50051EC3C /* LaunchScreen.storyboard */,
+				B07CCB3B1A8940E600A4F1E5 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B07CCB6E1A89414500A4F1E5 /* PacketTunnel */ = {
+			isa = PBXGroup;
+			children = (
+				B0D507F51A8943FD005D1195 /* PacketTunnelProvider.swift */,
+				B07CCB6F1A89414500A4F1E5 /* Supporting Files */,
+			);
+			name = PacketTunnel;
+			path = SimpleTunnel;
+			sourceTree = "<group>";
+		};
+		B07CCB6F1A89414500A4F1E5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B01F23AB1A8A8C5E0078C66D /* Info.plist */,
+				B07CCB711A89414500A4F1E5 /* PacketTunnel.entitlements */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		95859DB52354475200CF3963 /* SwiftV2Ray */ = {
+		B07CCB361A8940E600A4F1E5 /* SwiftV2Ray */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 95859DCA2354475300CF3963 /* Build configuration list for PBXNativeTarget "SwiftV2Ray" */;
+			buildConfigurationList = B07CCB561A8940E600A4F1E5 /* Build configuration list for PBXNativeTarget "SwiftV2Ray" */;
 			buildPhases = (
-				029A5FA72D739459EAF0763E /* [CP] Check Pods Manifest.lock */,
-				95859DB22354475200CF3963 /* Sources */,
-				95859DB32354475200CF3963 /* Frameworks */,
-				95859DB42354475200CF3963 /* Resources */,
-				3A361F1F8A1A1B9BA6D40D5E /* [CP] Embed Pods Frameworks */,
-				95D0ECB8238F6651006C2982 /* Embed App Extensions */,
+				80AF9C65FAED9B20BBF4E418 /* [CP] Check Pods Manifest.lock */,
+				B07CCB331A8940E600A4F1E5 /* Sources */,
+				B07CCB341A8940E600A4F1E5 /* Frameworks */,
+				B07CCB351A8940E600A4F1E5 /* Resources */,
+				6904B0FC1FFDC8D2000B64F3 /* Embed App Extensions */,
+				95B5D79A23D2BB2F0051EC3C /* Embed Frameworks */,
+				EE00FDEDD22C8984F28F184D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				958E09D923BF0BC90075D78F /* PBXTargetDependency */,
+				6904B0FA1FFDC625000B64F3 /* PBXTargetDependency */,
 			);
 			name = SwiftV2Ray;
-			productName = SwiftV2Ray;
-			productReference = 95859DB62354475200CF3963 /* SwiftV2Ray.app */;
+			productName = SimpleTunnel;
+			productReference = B07CCB371A8940E600A4F1E5 /* SwiftV2Ray.app */;
 			productType = "com.apple.product-type.application";
 		};
-		958E09D123BF0BC90075D78F /* PacketTunnel */ = {
+		B07CCB6C1A89414500A4F1E5 /* PacketTunnel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 958E09DD23BF0BC90075D78F /* Build configuration list for PBXNativeTarget "PacketTunnel" */;
+			buildConfigurationList = B07CCB7A1A89414600A4F1E5 /* Build configuration list for PBXNativeTarget "PacketTunnel" */;
 			buildPhases = (
-				958E09CE23BF0BC90075D78F /* Sources */,
-				958E09CF23BF0BC90075D78F /* Frameworks */,
-				958E09D023BF0BC90075D78F /* Resources */,
+				B07CCB691A89414500A4F1E5 /* Sources */,
+				B07CCB6A1A89414500A4F1E5 /* Frameworks */,
+				B07CCB6B1A89414500A4F1E5 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = PacketTunnel;
-			productName = PacketTunnel;
-			productReference = 958E09D223BF0BC90075D78F /* PacketTunnel.appex */;
+			productName = PacketTunnelFileProvider;
+			productReference = B07CCB6D1A89414500A4F1E5 /* PacketTunnel.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		95859DAE2354475200CF3963 /* Project object */ = {
+		B07CCB2F1A8940E600A4F1E5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1110;
-				ORGANIZATIONNAME = david;
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Apple Inc.";
 				TargetAttributes = {
-					95859DB52354475200CF3963 = {
-						CreatedOnToolsVersion = 11.1;
-						LastSwiftMigration = 1120;
+					B07CCB361A8940E600A4F1E5 = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 9FGA344YZ7;
+						LastSwiftMigration = 1020;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
-					958E09D123BF0BC90075D78F = {
-						CreatedOnToolsVersion = 11.3;
+					B07CCB6C1A89414500A4F1E5 = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 9FGA344YZ7;
+						LastSwiftMigration = 1020;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.NetworkExtensions.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
-			buildConfigurationList = 95859DB12354475200CF3963 /* Build configuration list for PBXProject "SwiftV2Ray" */;
-			compatibilityVersion = "Xcode 9.3";
+			buildConfigurationList = B07CCB321A8940E600A4F1E5 /* Build configuration list for PBXProject "SwiftV2Ray" */;
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 95859DAD2354475200CF3963;
-			productRefGroup = 95859DB72354475200CF3963 /* Products */;
+			mainGroup = B07CCB2E1A8940E600A4F1E5;
+			productRefGroup = B07CCB381A8940E600A4F1E5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				95859DB52354475200CF3963 /* SwiftV2Ray */,
-				958E09D123BF0BC90075D78F /* PacketTunnel */,
+				B07CCB361A8940E600A4F1E5 /* SwiftV2Ray */,
+				B07CCB6C1A89414500A4F1E5 /* PacketTunnel */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		95859DB42354475200CF3963 /* Resources */ = {
+		B07CCB351A8940E600A4F1E5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				958E09E423BF376A0075D78F /* HomeContentControlCell.xib in Resources */,
-				95859E062354527D00CF3963 /* Preview Assets.xcassets in Resources */,
-				958E09E623BF37890075D78F /* HomeContentProxyCell.xib in Resources */,
-				9593678523927EC7005879C4 /* testConfig.json in Resources */,
-				95859E022354524C00CF3963 /* Home.storyboard in Resources */,
-				95270DF9239F4A6E00D0F21A /* HomeContentViewController.xib in Resources */,
-				95859DC62354475300CF3963 /* LaunchScreen.storyboard in Resources */,
-				95859DC02354475300CF3963 /* Assets.xcassets in Resources */,
+				95B5D81523D2CE6A0051EC3C /* Preview Assets.xcassets in Resources */,
+				95B5D81723D2CF060051EC3C /* Images.xcassets in Resources */,
+				95B5D80623D2CC990051EC3C /* HomeContentControlCell.xib in Resources */,
+				95B5D7FA23D2CC990051EC3C /* testConfig.json in Resources */,
+				95B5D80323D2CC990051EC3C /* HomeContentViewController.xib in Resources */,
+				95B5D80D23D2CCBD0051EC3C /* Home.storyboard in Resources */,
+				95B5D80B23D2CCB50051EC3C /* LaunchScreen.storyboard in Resources */,
+				95B5D80523D2CC990051EC3C /* HomeContentProxyCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		958E09D023BF0BC90075D78F /* Resources */ = {
+		B07CCB6B1A89414500A4F1E5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -394,7 +421,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		029A5FA72D739459EAF0763E /* [CP] Check Pods Manifest.lock */ = {
+		80AF9C65FAED9B20BBF4E418 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -416,17 +443,22 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3A361F1F8A1A1B9BA6D40D5E /* [CP] Embed Pods Frameworks */ = {
+		EE00FDEDD22C8984F28F184D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SwiftV2Ray/Pods-SwiftV2Ray-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftV2Ray/Pods-SwiftV2Ray-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SwiftV2Ray/Pods-SwiftV2Ray-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -436,76 +468,62 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		95859DB22354475200CF3963 /* Sources */ = {
+		B07CCB331A8940E600A4F1E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95859E0D2354535E00CF3963 /* SettingTabViewController.swift in Sources */,
-				9593678623927EC7005879C4 /* V2RayConfig.swift in Sources */,
-				958E09E023BF18650075D78F /* VPNHelper.swift in Sources */,
-				957BB1F723C875D3001EDDE5 /* HomeContentProxyCell.swift in Sources */,
-				95270DE42397BDD300D0F21A /* HomeContentView.swift in Sources */,
-				957F21C6239656520025DB45 /* AirportTool.swift in Sources */,
-				95270DED2398CF9400D0F21A /* HomeContentViewModel.swift in Sources */,
-				95859DBA2354475200CF3963 /* AppDelegate.swift in Sources */,
-				957BB1F523C875AB001EDDE5 /* HomeContentControlCell.swift in Sources */,
-				95270DE52397BDD300D0F21A /* View+UIkit.swift in Sources */,
-				95270DE923989AE100D0F21A /* HomeContentViewContoller.swift in Sources */,
-				957F21CE239780FA0025DB45 /* VmessEndpoint.swift in Sources */,
-				95859E0B2354530100CF3963 /* HomeTabViewController.swift in Sources */,
-				95859DBC2354475200CF3963 /* SceneDelegate.swift in Sources */,
-				95026FBF238E77FD00E4A90C /* V2RayCore.swift in Sources */,
+				95B5D80223D2CC990051EC3C /* HomeContentControlCell.swift in Sources */,
+				95B5D7F923D2CC990051EC3C /* VPNHelper.swift in Sources */,
+				95B5D80123D2CC990051EC3C /* SettingTabViewController.swift in Sources */,
+				95B5D80823D2CC990051EC3C /* HomeContentView.swift in Sources */,
+				95B5D80423D2CC990051EC3C /* HomeContentProxyCell.swift in Sources */,
+				B07CCB3D1A8940E600A4F1E5 /* AppDelegate.swift in Sources */,
+				95B5D79C23D2CBF40051EC3C /* SceneDelegate.swift in Sources */,
+				95B5D7FD23D2CC990051EC3C /* AirportTool.swift in Sources */,
+				95B5D7FB23D2CC990051EC3C /* V2RayCore.swift in Sources */,
+				95B5D80023D2CC990051EC3C /* HomeTabViewController.swift in Sources */,
+				95B5D7FF23D2CC990051EC3C /* VmessEndpoint.swift in Sources */,
+				95B5D80923D2CC990051EC3C /* View+UIkit.swift in Sources */,
+				95B5D7FC23D2CC990051EC3C /* V2RayConfig.swift in Sources */,
+				95B5D80723D2CC990051EC3C /* HomeContentViewContoller.swift in Sources */,
+				95B5D7FE23D2CC990051EC3C /* HomeContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		958E09CE23BF0BC90075D78F /* Sources */ = {
+		B07CCB691A89414500A4F1E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				958E09D523BF0BC90075D78F /* PacketTunnelProvider.swift in Sources */,
+				C49ACF4D1A8AC97B00084324 /* PacketTunnelProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		958E09D923BF0BC90075D78F /* PBXTargetDependency */ = {
+		6904B0FA1FFDC625000B64F3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 958E09D123BF0BC90075D78F /* PacketTunnel */;
-			targetProxy = 958E09D823BF0BC90075D78F /* PBXContainerItemProxy */;
+			target = B07CCB6C1A89414500A4F1E5 /* PacketTunnel */;
+			targetProxy = 6904B0F91FFDC625000B64F3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		95859DC42354475300CF3963 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				95859DC52354475300CF3963 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		95859DC82354475300CF3963 /* Debug */ = {
+		B07CCB541A8940E600A4F1E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -517,15 +535,12 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Self Signer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -533,40 +548,42 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-weak_framework",
+					SwiftUI,
+				);
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 arme64e armv7s";
 			};
 			name = Debug;
 		};
-		95859DC92354475300CF3963 /* Release */ = {
+		B07CCB551A8940E600A4F1E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -578,15 +595,12 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Self Signer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -594,190 +608,155 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_LDFLAGS = (
+					"-weak_framework",
+					SwiftUI,
+				);
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 arme64e armv7s";
 			};
 			name = Release;
 		};
-		95859DCB2354475300CF3963 /* Debug */ = {
+		B07CCB571A8940E600A4F1E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45619E546D502A7357D7A37B /* Pods-SwiftV2Ray.debug.xcconfig */;
+			baseConfigurationReference = 9EB527B618ED1C66404ECA1C /* Pods-SwiftV2Ray.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SwiftV2Ray/SwiftV2Ray.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: dlm@meitu.com (36ZZ8NP9DM)";
-				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_ASSET_PATHS = "\"SwiftV2Ray/Preview Content\"";
 				DEVELOPMENT_TEAM = 9FGA344YZ7;
-				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
 					"$(inherited)",
-					"COCOAPODS=1",
+					"VPNTYPE=\\\"$(PLUGIN_BUNDLE_ID)\\\"",
 				);
-				INFOPLIST_FILE = SwiftV2Ray/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SwiftV2Ray/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					"\"Alamofire\"",
-					"-framework",
-					"\"SnapKit\"",
-					"-weak_framework",
-					SwiftUI,
-					"-weak_framework",
-					Combine,
-				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.david.SwiftV2Ray;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Jailbreak Provisioning Profile: David Changed";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "SwiftV2Ray/SwiftV2Ray-Bridging-Header.h";
+				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 arm64e arm64 armv7s";
 			};
 			name = Debug;
 		};
-		95859DCC2354475300CF3963 /* Release */ = {
+		B07CCB581A8940E600A4F1E5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 135EEE85AD872DFC3A8C4089 /* Pods-SwiftV2Ray.release.xcconfig */;
+			baseConfigurationReference = 0FE6BBCC7F2BB5707C8B6B78 /* Pods-SwiftV2Ray.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SwiftV2Ray/SwiftV2Ray.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: dlm@meitu.com (36ZZ8NP9DM)";
-				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_ASSET_PATHS = "\"SwiftV2Ray/Preview Content\"";
 				DEVELOPMENT_TEAM = 9FGA344YZ7;
-				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = SwiftV2Ray/Info.plist;
+				GCC_PREPROCESSOR_DEFINITIONS = "VPNTYPE=\\\"$(PLUGIN_BUNDLE_ID)\\\"";
+				INFOPLIST_FILE = "$(SRCROOT)/SwiftV2Ray/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					"\"Alamofire\"",
-					"-framework",
-					"\"SnapKit\"",
-					"-weak_framework",
-					SwiftUI,
-					"-weak_framework",
-					Combine,
-				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.david.SwiftV2Ray;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Jailbreak Provisioning Profile: David Changed";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "SwiftV2Ray/SwiftV2Ray-Bridging-Header.h";
+				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 arm64e arm64 armv7s";
 			};
 			name = Release;
 		};
-		958E09DB23BF0BC90075D78F /* Debug */ = {
+		B07CCB7B1A89414600A4F1E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = PacketTunnel/PacketTunnel.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: dlm@meitu.com (36ZZ8NP9DM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 9FGA344YZ7;
 				INFOPLIST_FILE = PacketTunnel/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PLUGIN_BUNDLE_ID = "com.apple.VPN-Development1.vpnplugin";
 				PRODUCT_BUNDLE_IDENTIFIER = com.david.SwiftV2Ray.PacketTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "Jailbreak Provisioning Profile: David Changed";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
-		958E09DC23BF0BC90075D78F /* Release */ = {
+		B07CCB7C1A89414600A4F1E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = PacketTunnel/PacketTunnel.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: dlm@meitu.com (36ZZ8NP9DM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 9FGA344YZ7;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PacketTunnel/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PLUGIN_BUNDLE_ID = "com.apple.VPN-Development1.vpnplugin";
 				PRODUCT_BUNDLE_IDENTIFIER = com.david.SwiftV2Ray.PacketTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Jailbreak Provisioning Profile: David Changed";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		95859DB12354475200CF3963 /* Build configuration list for PBXProject "SwiftV2Ray" */ = {
+		B07CCB321A8940E600A4F1E5 /* Build configuration list for PBXProject "SwiftV2Ray" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				95859DC82354475300CF3963 /* Debug */,
-				95859DC92354475300CF3963 /* Release */,
+				B07CCB541A8940E600A4F1E5 /* Debug */,
+				B07CCB551A8940E600A4F1E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		95859DCA2354475300CF3963 /* Build configuration list for PBXNativeTarget "SwiftV2Ray" */ = {
+		B07CCB561A8940E600A4F1E5 /* Build configuration list for PBXNativeTarget "SwiftV2Ray" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				95859DCB2354475300CF3963 /* Debug */,
-				95859DCC2354475300CF3963 /* Release */,
+				B07CCB571A8940E600A4F1E5 /* Debug */,
+				B07CCB581A8940E600A4F1E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		958E09DD23BF0BC90075D78F /* Build configuration list for PBXNativeTarget "PacketTunnel" */ = {
+		B07CCB7A1A89414600A4F1E5 /* Build configuration list for PBXNativeTarget "PacketTunnel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				958E09DB23BF0BC90075D78F /* Debug */,
-				958E09DC23BF0BC90075D78F /* Release */,
+				B07CCB7B1A89414600A4F1E5 /* Debug */,
+				B07CCB7C1A89414600A4F1E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 95859DAE2354475200CF3963 /* Project object */;
+	rootObject = B07CCB2F1A8940E600A4F1E5 /* Project object */;
 }

@@ -130,7 +130,7 @@ class HomeContentViewModel: NSObject, Codable {
     }
     
     func openService(completion: ((_ error: Error?)-> Void)?) {
-        
+        VPNHelper.shared.open(completion: completion!)
     }
     
     func closeService() {
