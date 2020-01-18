@@ -174,18 +174,10 @@
 		95B5D7E823D2CC990051EC3C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				95B5D7E923D2CC990051EC3C /* ViewModel */,
+				95B5D7EA23D2CC990051EC3C /* HomeContentViewModel.swift */,
 				95B5D7EB23D2CC990051EC3C /* VmessEndpoint.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		95B5D7E923D2CC990051EC3C /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				95B5D7EA23D2CC990051EC3C /* HomeContentViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		95B5D7EC23D2CC990051EC3C /* ViewController */ = {
@@ -193,11 +185,6 @@
 			children = (
 				95B5D7ED23D2CC990051EC3C /* HomeTabViewController.swift */,
 				95B5D7EE23D2CC990051EC3C /* SettingTabViewController.swift */,
-				95B5D7EF23D2CC990051EC3C /* HomeContentControlCell.swift */,
-				95B5D7F023D2CC990051EC3C /* HomeContentViewController.xib */,
-				95B5D7F123D2CC990051EC3C /* HomeContentProxyCell.swift */,
-				95B5D7F223D2CC990051EC3C /* HomeContentProxyCell.xib */,
-				95B5D7F323D2CC990051EC3C /* HomeContentControlCell.xib */,
 				95B5D7F423D2CC990051EC3C /* HomeContentViewContoller.swift */,
 			);
 			path = ViewController;
@@ -206,6 +193,11 @@
 		95B5D7F523D2CC990051EC3C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				95B5D7EF23D2CC990051EC3C /* HomeContentControlCell.swift */,
+				95B5D7F023D2CC990051EC3C /* HomeContentViewController.xib */,
+				95B5D7F123D2CC990051EC3C /* HomeContentProxyCell.swift */,
+				95B5D7F223D2CC990051EC3C /* HomeContentProxyCell.xib */,
+				95B5D7F323D2CC990051EC3C /* HomeContentControlCell.xib */,
 				95B5D7F623D2CC990051EC3C /* SwiftUI */,
 			);
 			path = Views;
