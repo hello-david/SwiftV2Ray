@@ -21,6 +21,15 @@ struct V2RayConfig: Codable {
     var transport: V2RayTransport?
 }
 
+extension Decodable {
+    static func parse(fromJsonFile: String) -> Self? {
+        guard let url = Bundle.main.url(forResource: fromJsonFile, withExtension: "json"), let data = try? Data(contentsOf: url), let output = try? JSONDecoder().decode(self, from: data) else {
+          return nil
+        }
+        return output
+    }
+}
+
 // MARK: - Log
 struct V2RayLog: Codable {
     var loglevel: logLevel = .info

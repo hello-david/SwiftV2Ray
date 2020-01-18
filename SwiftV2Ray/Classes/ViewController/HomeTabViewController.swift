@@ -22,7 +22,7 @@ class HomeTabViewController: UIViewController {
     
     lazy var contentVC: UIViewController = {
         if #available(iOS 13.0, *) {
-            let view = HomeContentView().environmentObject(self.contentManager as! SUHomeContentViewModel)
+            let view = SUHomeContentView().environmentObject(self.contentManager as! SUHomeContentViewModel)
             return UIHostingController(rootView: view)
         } else {
             return HomeContentViewContoller(contentManager: self.contentManager as! HomeContentViewModel,

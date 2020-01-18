@@ -11,22 +11,30 @@ import Core
 
 class V2RayCore {
     static let `shared` = V2RayCore()
+    var serverPoint: VmessEndpoint? = nil
     private var core: CoreInstance? = nil
     
-    func start(with configData: Data) {
+    func start(serverPoint: VmessEndpoint, completion: ((_ error: Error?) -> Void)?) {
         if core != nil {
             try? core?.close()
             core = nil
         }
-    
+        
+        let config = V2RayConfig.parse(fromJsonFile: "config")!
+        let configData = try? JSONEncoder().encode(config)
+        var startError: Error? = nil
         do{
             let config = CoreConfig.init()
-            try config.xxX_Marshal(configData, deterministic: true) // protobuf marshal
+            try config.xxX_Marshal(configData, deterministic: true)// go里面protobuf编码
             core = CoreNew(config, nil)
             try core?.start()
-        } catch {
-            print(error)
+            self.serverPoint = serverPoint
+        } catch let error {
+            startError = error
+            self.serverPoint = nil
         }
+        
+        completion?(startError)
     }
     
     func close() {
@@ -35,5 +43,6 @@ class V2RayCore {
         }
         
         try? core?.close()
+        self.serverPoint = nil
     }
 }

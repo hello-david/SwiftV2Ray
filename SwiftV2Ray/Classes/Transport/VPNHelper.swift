@@ -13,7 +13,7 @@ class VPNHelper {
     static let `shared` = VPNHelper()
     var manager: NETunnelProviderManager? = nil
     
-    func open(completion: @escaping(( _ error: Error?) -> Void)) {
+    func open(completion: @escaping((_ manager: NETunnelProviderManager?,  _ error: Error?) -> Void)) {
         let closure = { (manager: NETunnelProviderManager?, error: Error?) in
             var openError = error
             if manager != nil {
@@ -27,9 +27,10 @@ class VPNHelper {
                 }
             }
             
-            completion(openError)
+            completion(manager, openError)
         }
         
+        // 获取VPN配置
         NETunnelProviderManager.loadAllFromPreferences { (managers, error) in
             guard let vpnManagers = managers else {
                 closure(nil, error)
@@ -46,7 +47,7 @@ class VPNHelper {
             let manager = NETunnelProviderManager()
             manager.protocolConfiguration = NETunnelProviderProtocol()
             (manager.protocolConfiguration as? NETunnelProviderProtocol)?.providerBundleIdentifier = "com.david.SwiftV2Ray"
-            manager.protocolConfiguration?.serverAddress = "SwiftV2Ray Service"
+            manager.protocolConfiguration?.serverAddress = "SwiftV2Ray Provide"
             manager.localizedDescription = "SwiftV2Ray VPN"
             manager.saveToPreferences(completionHandler: { (error) in
                 if error != nil {
@@ -59,5 +60,9 @@ class VPNHelper {
                 })
             })
         }
+    }
+    
+    func close() {
+        manager?.connection.stopVPNTunnel()
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NetworkExtension
 
 class HomeContentViewContoller: UIViewController {
     var contentManger: HomeContentViewModel
@@ -25,6 +26,22 @@ class HomeContentViewContoller: UIViewController {
         super.viewDidLoad()
         self.tableview.register(UINib.init(nibName: "HomeContentControlCell", bundle: nil), forCellReuseIdentifier: "ControlCell")
         self.tableview.register(UINib.init(nibName: "HomeContentProxyCell", bundle: nil), forCellReuseIdentifier: "ProxyCell")
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.NEVPNStatusDidChange, object: nil, queue: OperationQueue.main, using: { notification in
+            let connection = notification.object as? NEVPNConnection
+            switch connection?.status {
+                case .none: break
+                case .some(.invalid): break
+                case .some(.connecting): break
+                case .some(.connected): break
+                case .some(.reasserting): break
+                case .some(.disconnecting): break
+                case .some(_): break
+            }
+        })
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
     }
 }
 
@@ -53,33 +70,34 @@ extension HomeContentViewContoller: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 开关服务
         if indexPath.section == 0 && indexPath.row == 0 {
             let cell = tableview.dequeueReusableCell(withIdentifier: "ControlCell", for: indexPath) as! HomeContentControlCell
             cell.switchClosure =  { [weak self] switchOn in
                 self?.contentManger.serviceOpen = switchOn
-                if switchOn {
-                    self?.contentManger.openService(completion: { (error) in
-                        if error == nil {
-                            return
-                        }
-                        DispatchQueue.main.async {
-                            cell.switch.isOn = false
-                        }
-                    })
-                } else {
+                if switchOn == false {
                     self?.contentManger.closeService()
+                    return
                 }
+                
+                self?.contentManger.openService(completion: { (error) in
+                    cell.switchOn((error != nil) ? false : true)
+                })
             }
             return cell
         }
         
+        // 选择代理模式
         if indexPath.section == 0 && indexPath.row == 1 {
             let cell = tableview.dequeueReusableCell(withIdentifier: "ProxyCell", for: indexPath) as! HomeContentProxyCell
-            cell.modeChangeClosure = { [weak self] segmentIndex in
+            cell.modeChangeClosure = { segmentIndex in
                 
             }
             return cell
         }
+        
+        // 服务节点
+        
         
         return UITableViewCell()
     }

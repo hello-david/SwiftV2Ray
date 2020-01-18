@@ -12,7 +12,7 @@
 		7208A593E9059346E1CF9EED /* Pods_SwiftV2Ray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A6121B47CB4BF81CE23659 /* Pods_SwiftV2Ray.framework */; };
 		95B5D79C23D2CBF40051EC3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D79B23D2CBF40051EC3C /* SceneDelegate.swift */; };
 		95B5D7F923D2CC990051EC3C /* VPNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7E223D2CC990051EC3C /* VPNHelper.swift */; };
-		95B5D7FA23D2CC990051EC3C /* testConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 95B5D7E423D2CC990051EC3C /* testConfig.json */; };
+		95B5D7FA23D2CC990051EC3C /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 95B5D7E423D2CC990051EC3C /* config.json */; };
 		95B5D7FB23D2CC990051EC3C /* V2RayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7E523D2CC990051EC3C /* V2RayCore.swift */; };
 		95B5D7FC23D2CC990051EC3C /* V2RayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7E623D2CC990051EC3C /* V2RayConfig.swift */; };
 		95B5D7FD23D2CC990051EC3C /* AirportTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7E723D2CC990051EC3C /* AirportTool.swift */; };
@@ -26,7 +26,7 @@
 		95B5D80523D2CC990051EC3C /* HomeContentProxyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B5D7F223D2CC990051EC3C /* HomeContentProxyCell.xib */; };
 		95B5D80623D2CC990051EC3C /* HomeContentControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B5D7F323D2CC990051EC3C /* HomeContentControlCell.xib */; };
 		95B5D80723D2CC990051EC3C /* HomeContentViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7F423D2CC990051EC3C /* HomeContentViewContoller.swift */; };
-		95B5D80823D2CC990051EC3C /* HomeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7F723D2CC990051EC3C /* HomeContentView.swift */; };
+		95B5D80823D2CC990051EC3C /* SUHomeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7F723D2CC990051EC3C /* SUHomeContentView.swift */; };
 		95B5D80923D2CC990051EC3C /* View+UIkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7F823D2CC990051EC3C /* View+UIkit.swift */; };
 		95B5D80B23D2CCB50051EC3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95B5D80A23D2CCB50051EC3C /* LaunchScreen.storyboard */; };
 		95B5D80D23D2CCBD0051EC3C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95B5D80C23D2CCBD0051EC3C /* Home.storyboard */; };
@@ -76,7 +76,7 @@
 		69836CE1212400AB00815672 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		95B5D79B23D2CBF40051EC3C /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		95B5D7E223D2CC990051EC3C /* VPNHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNHelper.swift; sourceTree = "<group>"; };
-		95B5D7E423D2CC990051EC3C /* testConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testConfig.json; sourceTree = "<group>"; };
+		95B5D7E423D2CC990051EC3C /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		95B5D7E523D2CC990051EC3C /* V2RayCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2RayCore.swift; sourceTree = "<group>"; };
 		95B5D7E623D2CC990051EC3C /* V2RayConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2RayConfig.swift; sourceTree = "<group>"; };
 		95B5D7E723D2CC990051EC3C /* AirportTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportTool.swift; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 		95B5D7F223D2CC990051EC3C /* HomeContentProxyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeContentProxyCell.xib; sourceTree = "<group>"; };
 		95B5D7F323D2CC990051EC3C /* HomeContentControlCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeContentControlCell.xib; sourceTree = "<group>"; };
 		95B5D7F423D2CC990051EC3C /* HomeContentViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeContentViewContoller.swift; sourceTree = "<group>"; };
-		95B5D7F723D2CC990051EC3C /* HomeContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeContentView.swift; sourceTree = "<group>"; };
+		95B5D7F723D2CC990051EC3C /* SUHomeContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUHomeContentView.swift; sourceTree = "<group>"; };
 		95B5D7F823D2CC990051EC3C /* View+UIkit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+UIkit.swift"; sourceTree = "<group>"; };
 		95B5D80A23D2CCB50051EC3C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95B5D80C23D2CCBD0051EC3C /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 		95B5D7E323D2CC990051EC3C /* V2Ray */ = {
 			isa = PBXGroup;
 			children = (
-				95B5D7E423D2CC990051EC3C /* testConfig.json */,
+				95B5D7E423D2CC990051EC3C /* config.json */,
 				95B5D7E523D2CC990051EC3C /* V2RayCore.swift */,
 				95B5D7E623D2CC990051EC3C /* V2RayConfig.swift */,
 				95B5D7E723D2CC990051EC3C /* AirportTool.swift */,
@@ -206,7 +206,7 @@
 		95B5D7F623D2CC990051EC3C /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				95B5D7F723D2CC990051EC3C /* HomeContentView.swift */,
+				95B5D7F723D2CC990051EC3C /* SUHomeContentView.swift */,
 				95B5D7F823D2CC990051EC3C /* View+UIkit.swift */,
 			);
 			path = SwiftUI;
@@ -395,7 +395,7 @@
 				95B5D81523D2CE6A0051EC3C /* Preview Assets.xcassets in Resources */,
 				95B5D81723D2CF060051EC3C /* Images.xcassets in Resources */,
 				95B5D80623D2CC990051EC3C /* HomeContentControlCell.xib in Resources */,
-				95B5D7FA23D2CC990051EC3C /* testConfig.json in Resources */,
+				95B5D7FA23D2CC990051EC3C /* config.json in Resources */,
 				95B5D80323D2CC990051EC3C /* HomeContentViewController.xib in Resources */,
 				95B5D80D23D2CCBD0051EC3C /* Home.storyboard in Resources */,
 				95B5D80B23D2CCB50051EC3C /* LaunchScreen.storyboard in Resources */,
@@ -467,7 +467,7 @@
 				95B5D80223D2CC990051EC3C /* HomeContentControlCell.swift in Sources */,
 				95B5D7F923D2CC990051EC3C /* VPNHelper.swift in Sources */,
 				95B5D80123D2CC990051EC3C /* SettingTabViewController.swift in Sources */,
-				95B5D80823D2CC990051EC3C /* HomeContentView.swift in Sources */,
+				95B5D80823D2CC990051EC3C /* SUHomeContentView.swift in Sources */,
 				95B5D80423D2CC990051EC3C /* HomeContentProxyCell.swift in Sources */,
 				B07CCB3D1A8940E600A4F1E5 /* AppDelegate.swift in Sources */,
 				95B5D79C23D2CBF40051EC3C /* SceneDelegate.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  HomeContentView.swift
+//  SUHomeContentView.swift
 //  SwiftV2Ray
 //
 //  Created by David.Dai on 2019/12/14.
@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 @available(iOS 13.0, *)
-struct HomeContentView: View {
+struct SUHomeContentView: View {
     var body: some View {
         NavigationView {
             HomeContentInternalView()
@@ -181,12 +181,12 @@ struct ServiceInfoRowDetail: View {
 
 // MARK:-
 @available(iOS 13.0, *)
-struct HomeContentView_Previews: PreviewProvider {
+struct SUHomeContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HomeContentView().environmentObject(SUHomeContentViewModel())
-            SubscribeRowDetail(actionBack: {}).environmentObject(SUHomeContentViewModel())
-            ServiceInfoRowDetail(actionBack: {}).environmentObject(SUHomeContentViewModel())
+            SUHomeContentView().environmentObject(SUHomeContentViewModel())
+//            SubscribeRowDetail(actionBack: {}).environmentObject(SUHomeContentViewModel())
+//            ServiceInfoRowDetail(actionBack: {}).environmentObject(SUHomeContentViewModel())
         }
     }
 }

@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import Combine
+import NetworkExtension
 
 enum ProxyMode: Int {
     case auto = 0
@@ -92,7 +93,7 @@ class SUHomeContentViewModel: ObservableObject, Codable {
     }
 }
 
-// MARK: -
+// MARK: - iOS13以下
 class HomeContentViewModel: NSObject, Codable {
     var serviceOpen: Bool = false
     var subscribeUrl: URL? = nil
@@ -130,11 +131,36 @@ class HomeContentViewModel: NSObject, Codable {
     }
     
     func openService(completion: ((_ error: Error?)-> Void)?) {
-        VPNHelper.shared.open(completion: completion!)
+        guard let serverPoint = self.activingEndpoint else {
+            completion?(NSError(domain: "ErrorDomain", code: -1, userInfo: ["error" : "没有激活服务节点"]))
+            return
+        }
+        
+        V2RayCore.shared.start(serverPoint: serverPoint) { (error) in
+            guard error != nil else {
+                completion?(error)
+                return
+            }
+            
+            VPNHelper.shared.open { (manager, error) in
+                guard error == nil else {
+                    completion?(error)
+                    return
+                }
+                
+                if manager?.connection.status == .some(.connected) {
+                    completion?(nil)
+                    return
+                }
+                
+                completion?(NSError(domain: "SwiftV2Ray", code: -1, userInfo: ["error" : "连接失败"]))
+            }
+        }
     }
     
     func closeService() {
-        
+        V2RayCore.shared.close()
+        VPNHelper.shared.close()
     }
     
     func requestServices(withUrl requestUrl: URL?, completion: ((_ error: Error?)-> Void)?) {

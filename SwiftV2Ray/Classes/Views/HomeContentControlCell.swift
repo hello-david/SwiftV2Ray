@@ -17,4 +17,11 @@ class HomeContentControlCell: UITableViewCell {
         label.text = sender.isOn ? "已连接" : "未连接"
         switchClosure?(sender.isOn)
     }
+    
+    func switchOn(_ isOn: Bool) {
+        DispatchQueue.main.async {
+            self.label.text = isOn ? "已连接" : "未连接"
+            self.`switch`.isOn = isOn
+        }
+    }
 }
