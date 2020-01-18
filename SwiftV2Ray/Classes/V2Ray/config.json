@@ -53,7 +53,7 @@
                                 "id":"29f1ae2e-e29d-d804-7bcd-e01b5dfcf26a",
                                 "alterId":64,
                                 "level":0,
-                                "security":""
+                                "security":"auto"
                             }
                         ],
                         "port":443

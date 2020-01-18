@@ -23,7 +23,9 @@ struct V2RayConfig: Codable {
 
 extension Decodable {
     static func parse(fromJsonFile: String) -> Self? {
-        guard let url = Bundle.main.url(forResource: fromJsonFile, withExtension: "json"), let data = try? Data(contentsOf: url), let output = try? JSONDecoder().decode(self, from: data) else {
+        guard let url = Bundle.main.url(forResource: fromJsonFile, withExtension: "json"),
+            let data = try? Data(contentsOf: url),
+            let output = try? JSONDecoder().decode(self, from: data) else {
           return nil
         }
         return output
