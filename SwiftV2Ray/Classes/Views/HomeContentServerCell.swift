@@ -14,7 +14,7 @@ class HomeContentServerCell: UITableViewCell {
     @IBOutlet weak var plainTextLabel: UILabel!
     @IBOutlet weak var moreButton: UIButton!
     
-    var editDoneClosure: ((_ text: String?) -> Void)? = nil
+    var editDoneClosure: ((_ text: String) -> Void)? = nil
     
     enum ModeType: UInt {
         case editing
@@ -32,18 +32,21 @@ class HomeContentServerCell: UITableViewCell {
             case .editDone:
                 self.editTextFiled.isHidden = true
                 self.plainTextLabel.isHidden = false
+                self.moreButton.isHidden = false
                 self.iconImageView.image = UIImage.init(named: "paperplane_icon")
                 break
                 
             case .editing:
                 self.editTextFiled.isHidden = false
                 self.plainTextLabel.isHidden = true
+                self.moreButton.isHidden = true
                 self.iconImageView.image = UIImage.init(named: "paperplane_icon")
                 break
                 
             case .plain:
                 self.editTextFiled.isHidden = true
                 self.plainTextLabel.isHidden = false
+                self.moreButton.isHidden = false
                 self.iconImageView.image = self.isSelected ? UIImage.init(named: "star_fill_icon") : UIImage.init(named: "star_icon")
                 break
             }
@@ -69,5 +72,17 @@ class HomeContentServerCell: UITableViewCell {
         
         self.iconImageView.image = self.isSelected ? UIImage.init(named: "star_fill_icon") : UIImage.init(named: "star_icon")
         super.setSelected(selected, animated: animated)
+    }
+}
+
+extension HomeContentServerCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        guard self.editDoneClosure != nil && textField.text != nil else {
+            return true
+        }
+        
+        self.editDoneClosure!(textField.text!)
+        return true
     }
 }

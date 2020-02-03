@@ -105,6 +105,18 @@ extension HomeContentViewContoller: UITableViewDataSource, UITableViewDelegate {
                     cell.showingText = ""
                     cell.mode = .editing
                     cell.isSelected = false
+                    cell.editDoneClosure = { [weak self] urlStr in
+                        let url = URL.init(string: urlStr)
+                        self?.contentManger.requestServices(withUrl: url, completion: { (error) in
+                            guard error == nil else {
+                                self?.tableview.reloadData()
+                                return
+                            }
+                            
+                            self?.contentManger.subscribeUrl = url
+                            self?.tableview.reloadData()
+                        })
+                    }
                     return cell
                 }
                 
@@ -126,6 +138,12 @@ extension HomeContentViewContoller: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableview.deselectRow(at: indexPath, animated: true)
+        if indexPath.section == 1 && indexPath.row == 0 && self.contentManger.subscribeUrl != nil {
+            self.contentManger.requestServices(withUrl: self.contentManger.subscribeUrl) { (error) in
+                tableView.reloadData()
+            }
+        }
+        
         if indexPath.section == 1 && indexPath.row != 0 {
             let model = self.contentManger.serviceEndPoints[indexPath.row - 1]
             self.contentManger.activingEndpoint = model

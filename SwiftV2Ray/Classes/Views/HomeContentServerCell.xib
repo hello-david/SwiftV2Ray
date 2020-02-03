@@ -25,9 +25,12 @@
                         </constraints>
                     </imageView>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入Vmess订阅地址" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cAz-wM-FyQ">
-                        <rect key="frame" x="40" y="13" width="322" height="18.5"/>
-                        <nil key="textColor"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <rect key="frame" x="40" y="0.0" width="322" height="44"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <textInputTraits key="textInputTraits" textContentType="url"/>
+                        <connections>
+                            <outlet property="delegate" destination="0T4-ZO-6YJ" id="pc7-zk-wJr"/>
+                        </connections>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sub.v2cloud.xyz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kh2-C0-y2e">
                         <rect key="frame" x="40" y="11.5" width="322" height="21"/>
@@ -47,6 +50,7 @@
                 <constraints>
                     <constraint firstItem="VcZ-3w-w9u" firstAttribute="leading" secondItem="cAz-wM-FyQ" secondAttribute="trailing" constant="8" symbolic="YES" id="7ND-Or-vjg"/>
                     <constraint firstItem="84i-5A-BIV" firstAttribute="trailing" secondItem="VcZ-3w-w9u" secondAttribute="trailing" id="Ayx-ON-GO2"/>
+                    <constraint firstItem="cAz-wM-FyQ" firstAttribute="top" secondItem="84i-5A-BIV" secondAttribute="top" id="G2k-bi-jjd"/>
                     <constraint firstItem="cAz-wM-FyQ" firstAttribute="centerY" secondItem="EGj-2d-ZIj" secondAttribute="centerY" id="Gjc-bi-Qma"/>
                     <constraint firstItem="55z-wL-ACu" firstAttribute="leading" secondItem="84i-5A-BIV" secondAttribute="leading" constant="8" id="H8i-DV-wdA"/>
                     <constraint firstItem="cAz-wM-FyQ" firstAttribute="leading" secondItem="55z-wL-ACu" secondAttribute="trailing" constant="8" symbolic="YES" id="J57-VZ-RcO"/>
@@ -54,6 +58,7 @@
                     <constraint firstItem="VcZ-3w-w9u" firstAttribute="leading" secondItem="Kh2-C0-y2e" secondAttribute="trailing" constant="8" symbolic="YES" id="Mh0-7u-JCc"/>
                     <constraint firstItem="Kh2-C0-y2e" firstAttribute="centerY" secondItem="EGj-2d-ZIj" secondAttribute="centerY" id="QdO-Yi-VJ0"/>
                     <constraint firstItem="VcZ-3w-w9u" firstAttribute="top" secondItem="84i-5A-BIV" secondAttribute="top" id="Ym8-Cd-iuV"/>
+                    <constraint firstItem="84i-5A-BIV" firstAttribute="bottom" secondItem="cAz-wM-FyQ" secondAttribute="bottom" id="bZ7-cE-joy"/>
                     <constraint firstItem="55z-wL-ACu" firstAttribute="centerY" secondItem="EGj-2d-ZIj" secondAttribute="centerY" id="sLJ-0Z-X1L"/>
                     <constraint firstItem="Kh2-C0-y2e" firstAttribute="leading" secondItem="55z-wL-ACu" secondAttribute="trailing" constant="8" symbolic="YES" id="w1y-Yb-BpM"/>
                 </constraints>

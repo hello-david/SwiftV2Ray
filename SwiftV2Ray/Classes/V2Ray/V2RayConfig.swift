@@ -8,6 +8,7 @@
 
 import Foundation
 
+// 参考[V2rayU实现修改](https://github.com/yanue/V2rayU)
 // doc: https://www.V2Ray.com/chapter_02/01_overview.html
 struct V2RayConfig: Codable {
     var log: V2RayLog = V2RayLog()

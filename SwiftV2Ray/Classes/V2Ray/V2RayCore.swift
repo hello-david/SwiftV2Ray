@@ -23,6 +23,11 @@ class V2RayCore {
         let config = V2RayConfig.parse(fromJsonFile: "config")!
         let configData = try? JSONEncoder().encode(config)
         var startError: Error? = nil
+        
+        // 把路由节点修改为服务地址
+        
+        
+        // 启动这个配置
         do{
             let config = CoreConfig.init()
             try config.xxX_Marshal(configData, deterministic: true)// go里面protobuf编码

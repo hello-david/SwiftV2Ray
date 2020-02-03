@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 class AirportTool {
+    // 从订阅地址获取Vmess节点信息
     static func getSubscribeVmessPoints(_ url: URLConvertible, _ completion: @escaping ((_ serverPoint: [VmessEndpoint]?, _ error: Error?) -> Void)) {
         Alamofire.request(url).responseString { (request) in
             request.result.ifSuccess {
