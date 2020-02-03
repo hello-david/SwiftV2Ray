@@ -26,6 +26,7 @@ class HomeContentViewContoller: UIViewController {
         super.viewDidLoad()
         self.tableview.register(UINib.init(nibName: "HomeContentControlCell", bundle: nil), forCellReuseIdentifier: "ControlCell")
         self.tableview.register(UINib.init(nibName: "HomeContentProxyCell", bundle: nil), forCellReuseIdentifier: "ProxyCell")
+        self.tableview.register(UINib.init(nibName: "HomeContentServerCell", bundle: nil), forCellReuseIdentifier: "ServerCell")
         NotificationCenter.default.addObserver(forName: NSNotification.Name.NEVPNStatusDidChange, object: nil, queue: OperationQueue.main, using: { notification in
             let connection = notification.object as? NEVPNConnection
             switch connection?.status {
@@ -64,7 +65,7 @@ extension HomeContentViewContoller: UITableViewDataSource, UITableViewDelegate {
         }
         
         if section == 1 {
-            return self.contentManger.serviceEndPoints.count
+            return self.contentManger.serviceEndPoints.count + 1
         }
         return 0
     }
@@ -97,13 +98,38 @@ extension HomeContentViewContoller: UITableViewDataSource, UITableViewDelegate {
         }
         
         // 服务节点
-        
+        if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ServerCell", for: indexPath) as! HomeContentServerCell
+            if indexPath.row == 0 {
+                if self.contentManger.subscribeUrl == nil {
+                    cell.showingText = ""
+                    cell.mode = .editing
+                    cell.isSelected = false
+                    return cell
+                }
+                
+                cell.mode = .editDone
+                cell.showingText = self.contentManger.subscribeUrl?.host ?? ""
+                cell.isSelected = false
+                return cell
+            }
+            
+            let model = self.contentManger.serviceEndPoints[indexPath.row - 1]
+            cell.mode = .plain
+            cell.showingText = model.info[VmessEndpoint.InfoKey.ps.stringValue] as! String
+            cell.isSelected = self.contentManger.activingEndpoint == model ? true : false
+            return cell
+        }
         
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableview.deselectRow(at: indexPath, animated: true)
-        
+        if indexPath.section == 1 && indexPath.row != 0 {
+            let model = self.contentManger.serviceEndPoints[indexPath.row - 1]
+            self.contentManger.activingEndpoint = model
+            tableView.reloadData()
+        }
     }
 }

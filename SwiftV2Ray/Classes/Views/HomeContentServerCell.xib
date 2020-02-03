@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="0T4-ZO-6YJ" customClass="HomeContentServerCell" customModule="SwiftV2Ray" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0T4-ZO-6YJ" id="EGj-2d-ZIj">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_icon" translatesAutoresizingMaskIntoConstraints="NO" id="55z-wL-ACu">
+                        <rect key="frame" x="8" y="10" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="2zk-i8-J3t"/>
+                            <constraint firstAttribute="height" constant="24" id="C9U-Kh-vUu"/>
+                        </constraints>
+                    </imageView>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入Vmess订阅地址" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cAz-wM-FyQ">
+                        <rect key="frame" x="40" y="13" width="322" height="18.5"/>
+                        <nil key="textColor"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sub.v2cloud.xyz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kh2-C0-y2e">
+                        <rect key="frame" x="40" y="11.5" width="322" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VcZ-3w-w9u">
+                        <rect key="frame" x="370" y="0.0" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="SMA-Rf-jaz"/>
+                            <constraint firstAttribute="width" constant="44" id="j0K-9R-iLf"/>
+                        </constraints>
+                        <state key="normal" image="ellipsis_icon"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="VcZ-3w-w9u" firstAttribute="leading" secondItem="cAz-wM-FyQ" secondAttribute="trailing" constant="8" symbolic="YES" id="7ND-Or-vjg"/>
+                    <constraint firstItem="84i-5A-BIV" firstAttribute="trailing" secondItem="VcZ-3w-w9u" secondAttribute="trailing" id="Ayx-ON-GO2"/>
+                    <constraint firstItem="cAz-wM-FyQ" firstAttribute="centerY" secondItem="EGj-2d-ZIj" secondAttribute="centerY" id="Gjc-bi-Qma"/>
+                    <constraint firstItem="55z-wL-ACu" firstAttribute="leading" secondItem="84i-5A-BIV" secondAttribute="leading" constant="8" id="H8i-DV-wdA"/>
+                    <constraint firstItem="cAz-wM-FyQ" firstAttribute="leading" secondItem="55z-wL-ACu" secondAttribute="trailing" constant="8" symbolic="YES" id="J57-VZ-RcO"/>
+                    <constraint firstItem="84i-5A-BIV" firstAttribute="bottom" secondItem="VcZ-3w-w9u" secondAttribute="bottom" id="M6g-OJ-Foo"/>
+                    <constraint firstItem="VcZ-3w-w9u" firstAttribute="leading" secondItem="Kh2-C0-y2e" secondAttribute="trailing" constant="8" symbolic="YES" id="Mh0-7u-JCc"/>
+                    <constraint firstItem="Kh2-C0-y2e" firstAttribute="centerY" secondItem="EGj-2d-ZIj" secondAttribute="centerY" id="QdO-Yi-VJ0"/>
+                    <constraint firstItem="VcZ-3w-w9u" firstAttribute="top" secondItem="84i-5A-BIV" secondAttribute="top" id="Ym8-Cd-iuV"/>
+                    <constraint firstItem="55z-wL-ACu" firstAttribute="centerY" secondItem="EGj-2d-ZIj" secondAttribute="centerY" id="sLJ-0Z-X1L"/>
+                    <constraint firstItem="Kh2-C0-y2e" firstAttribute="leading" secondItem="55z-wL-ACu" secondAttribute="trailing" constant="8" symbolic="YES" id="w1y-Yb-BpM"/>
+                </constraints>
+                <viewLayoutGuide key="safeArea" id="84i-5A-BIV"/>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="3cI-fS-CX7"/>
+            <connections>
+                <outlet property="editTextFiled" destination="cAz-wM-FyQ" id="6DI-nK-8aS"/>
+                <outlet property="iconImageView" destination="55z-wL-ACu" id="SaL-EG-sbI"/>
+                <outlet property="moreButton" destination="VcZ-3w-w9u" id="x37-2h-kVY"/>
+                <outlet property="plainTextLabel" destination="Kh2-C0-y2e" id="Q7u-GO-zP6"/>
+            </connections>
+            <point key="canvasLocation" x="-771.01449275362324" y="-179.46428571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ellipsis_icon" width="14.666666984558105" height="14.666666984558105"/>
+        <image name="star_icon" width="170.66667175292969" height="170.66667175292969"/>
+    </resources>
+</document>
