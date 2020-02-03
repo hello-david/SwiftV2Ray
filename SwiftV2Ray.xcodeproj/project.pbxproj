@@ -152,6 +152,7 @@
 				95B5D7E823D2CC990051EC3C /* Model */,
 				95B5D7EC23D2CC990051EC3C /* ViewController */,
 				95B5D7F523D2CC990051EC3C /* Views */,
+				95B5D7F623D2CC990051EC3C /* SwiftUI */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -204,7 +205,6 @@
 				9595ACA723D40EA5005D5949 /* HomeContentServerCell.swift */,
 				9595ACA523D40E5A005D5949 /* HomeContentServerCell.xib */,
 				95B5D7F023D2CC990051EC3C /* HomeContentViewController.xib */,
-				95B5D7F623D2CC990051EC3C /* SwiftUI */,
 			);
 			path = Views;
 			sourceTree = "<group>";
