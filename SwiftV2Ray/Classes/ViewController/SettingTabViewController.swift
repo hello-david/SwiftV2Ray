@@ -37,7 +37,6 @@ extension SettingTabViewController: UITableViewDelegate, UITableViewDataSource {
         return dataSource.count
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableView", for: indexPath)
         return cell

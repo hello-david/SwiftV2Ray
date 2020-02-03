@@ -36,7 +36,10 @@ class HomeTabViewController: UIViewController {
         
         if #available(iOS 13.0, *) {
         } else {
-            self.tabBarItem.image = UIImage.init(named: "house_icon")
+            var image = UIImage.init(named: "house_icon")
+            image = image?.withRenderingMode(.alwaysOriginal)
+            self.tabBarItem.image = image
+            self.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
         }
     }
     
