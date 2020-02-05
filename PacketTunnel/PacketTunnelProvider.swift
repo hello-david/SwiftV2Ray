@@ -8,15 +8,11 @@
 
 import NetworkExtension
 import Core
-import Tun2socks
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
     let serverIp = "127.0.0.1"
     
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
-//        let url = Bundle.main.url(forResource: "config", withExtension: "json")!
-//        let data = try? Data(contentsOf: url)
-//        Tun2socksStartV2Ray(self, data)
         
         let networkSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: serverIp)
         networkSettings.mtu = 1480
@@ -46,7 +42,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     func proxyPackets() {
         self.packetFlow.readPackets {[weak self] (packets: [Data], protocols: [NSNumber]) in
             for packet in packets {
-//                Tun2socksInputPacket(packet)
+                
             }
             self?.proxyPackets()
         }
@@ -70,10 +66,3 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         
     }
 }
-
-extension PacketTunnelProvider: Tun2socksPacketFlowProtocol{
-    func writePacket(_ packet: Data!) {
-        self.packetFlow.writePackets([packet], withProtocols: [AF_INET as NSNumber])
-    }
-}
-

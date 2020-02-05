@@ -10,7 +10,6 @@
 		6904B0FB1FFDC8D1000B64F3 /* PacketTunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B07CCB6D1A89414500A4F1E5 /* PacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		69836CE2212400AB00815672 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69836CE1212400AB00815672 /* NetworkExtension.framework */; };
 		7208A593E9059346E1CF9EED /* Pods_SwiftV2Ray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A6121B47CB4BF81CE23659 /* Pods_SwiftV2Ray.framework */; };
-		9574EF1123EB263400D26361 /* Tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9574EF1023EB263400D26361 /* Tun2socks.framework */; };
 		9574EF1223EB264200D26361 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B5D80F23D2CD9E0051EC3C /* Core.framework */; };
 		9595ACA623D40E5A005D5949 /* HomeContentServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9595ACA523D40E5A005D5949 /* HomeContentServerCell.xib */; };
 		9595ACA823D40EA5005D5949 /* HomeContentServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595ACA723D40EA5005D5949 /* HomeContentServerCell.swift */; };
@@ -69,7 +68,6 @@
 /* Begin PBXFileReference section */
 		0FE6BBCC7F2BB5707C8B6B78 /* Pods-SwiftV2Ray.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftV2Ray.release.xcconfig"; path = "Target Support Files/Pods-SwiftV2Ray/Pods-SwiftV2Ray.release.xcconfig"; sourceTree = "<group>"; };
 		69836CE1212400AB00815672 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
-		9574EF1023EB263400D26361 /* Tun2socks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Tun2socks.framework; sourceTree = "<group>"; };
 		9595ACA523D40E5A005D5949 /* HomeContentServerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContentServerCell.xib; sourceTree = "<group>"; };
 		9595ACA723D40EA5005D5949 /* HomeContentServerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContentServerCell.swift; sourceTree = "<group>"; };
 		9595ACBA23E9C0E7005D5949 /* PacketTunnel.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = PacketTunnel.entitlements; path = PacketTunnel/PacketTunnel.entitlements; sourceTree = SOURCE_ROOT; };
@@ -122,7 +120,6 @@
 			files = (
 				69836CE2212400AB00815672 /* NetworkExtension.framework in Frameworks */,
 				9574EF1223EB264200D26361 /* Core.framework in Frameworks */,
-				9574EF1123EB263400D26361 /* Tun2socks.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,7 +129,6 @@
 		690F9EC41FE5F38600F85684 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9574EF1023EB263400D26361 /* Tun2socks.framework */,
 				95B5D80F23D2CD9E0051EC3C /* Core.framework */,
 				69836CE1212400AB00815672 /* NetworkExtension.framework */,
 				D3A6121B47CB4BF81CE23659 /* Pods_SwiftV2Ray.framework */,
