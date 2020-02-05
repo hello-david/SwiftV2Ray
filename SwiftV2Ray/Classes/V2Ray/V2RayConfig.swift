@@ -11,15 +11,15 @@ import Foundation
 // 参考[V2rayU实现修改](https://github.com/yanue/V2rayU)
 // doc: https://www.V2Ray.com/chapter_02/01_overview.html
 struct V2RayConfig: Codable {
-    var log: V2RayLog = V2RayLog()
-    var api: V2RayApi?
-    var dns: V2RayDns = V2RayDns()
-    var stats: V2RayStats?
-    var routing: V2RayRouting? = V2RayRouting()
-    var policy: V2RayPolicy?
-    var inbounds: [V2RayInbound]?
-    var outbounds: [V2RayOutbound]?
-    var transport: V2RayTransport?
+    var log: Log = Log()
+    var api: Api?
+    var dns: Dns = Dns()
+    var stats: Stats?
+    var routing: Routing? = Routing()
+    var policy: Policy?
+    var inbounds: [Inbound]?
+    var outbounds: [Outbound]?
+    var transport: Transport?
 }
 
 extension Decodable {
@@ -34,7 +34,7 @@ extension Decodable {
 }
 
 // MARK: - Log
-struct V2RayLog: Codable {
+struct Log: Codable {
     var loglevel: Level = .info
     var error: String = ""
     var access: String = ""
@@ -49,22 +49,22 @@ struct V2RayLog: Codable {
 }
 
 // MARK: - API
-struct V2RayApi: Codable {
+struct Api: Codable {
 
 }
 
 // MARK: - DNS
-struct V2RayDns: Codable {
+struct Dns: Codable {
     var servers: [String] = ["1.1.1.1", "8.8.8.8", "8.8.4.4", "119.29.29.29", "114.114.114.114", "223.5.5.5", "223.6.6.6"]
 }
 
 // MARK: - Stats
-struct V2RayStats: Codable {
+struct Stats: Codable {
 
 }
 
 // MARK: - Routing
-struct V2RayRouting: Codable {
+struct Routing: Codable {
     var strategy: String = "rules"
     var settings: Setting = Setting()
     
@@ -94,17 +94,17 @@ struct V2RayRouting: Codable {
 }
 
 // MARK: - Policy
-struct V2RayPolicy: Codable {
+struct Policy: Codable {
     
 }
 
 // MARK: - Inbound
-struct V2RayInbound: Codable {
+struct Inbound: Codable {
     var port: String = "1080"
     var listen: String = "127.0.0.1"
     var `protocol`: Protocol = .socks
     var tag: String? = nil
-    var streamSettings: V2RayStreamSettings? = nil
+    var streamSettings: StreamSettings? = nil
     var sniffing: Sniffing? = nil
     var allocate: Allocate? = nil
 
@@ -215,7 +215,7 @@ struct V2RayInbound: Codable {
         `protocol` = try container.decode(Protocol.self, forKey: .`protocol`)
         
         tag = container.contains(.tag) ? try container.decode(String.self, forKey: .tag) : nil
-        streamSettings = container.contains(.streamSettings) ? try container.decode(V2RayStreamSettings.self, forKey: CodingKeys.streamSettings) : nil
+        streamSettings = container.contains(.streamSettings) ? try container.decode(StreamSettings.self, forKey: CodingKeys.streamSettings) : nil
         sniffing = container.contains(.sniffing) ? try container.decode(Sniffing.self, forKey: CodingKeys.sniffing) : nil
 
         switch `protocol` {
@@ -254,11 +254,11 @@ struct V2RayInbound: Codable {
 }
 
 // MARK: - Outbound
-struct V2RayOutbound: Codable {
+struct Outbound: Codable {
     var `protocol`: Protocol = .freedom
     var sendThrough: String? = nil
     var tag: String? = nil
-    var streamSettings: V2RayStreamSettings? = nil
+    var streamSettings: StreamSettings? = nil
     var proxySettings: Settings? = nil
     var mux: Mux? = nil
 
@@ -385,7 +385,7 @@ struct V2RayOutbound: Codable {
         tag = container.contains(.tag) ? try container.decode(String.self, forKey: .tag) : nil
         sendThrough = container.contains(.sendThrough) ? try container.decode(String.self, forKey: CodingKeys.sendThrough) : nil
         proxySettings = container.contains(.proxySettings) ?  try container.decode(Settings.self, forKey: CodingKeys.proxySettings) : nil
-        streamSettings = container.contains(.streamSettings) ? try container.decode(V2RayStreamSettings.self, forKey: CodingKeys.streamSettings) : nil
+        streamSettings = container.contains(.streamSettings) ? try container.decode(StreamSettings.self, forKey: CodingKeys.streamSettings) : nil
         mux = container.contains(.mux) ? try container.decode(Mux.self, forKey: CodingKeys.mux) : nil
 
         switch `protocol` {
@@ -432,18 +432,18 @@ struct V2RayOutbound: Codable {
 }
 
 // MARK: - Transport
-struct V2RayTransport: Codable {
-    var tlsSettings: V2RayStreamSettings.TlsSettings?
-    var tcpSettings: V2RayStreamSettings.TcpSettings?
-    var kcpSettings: V2RayStreamSettings.KcpSettings?
-    var wsSettings: V2RayStreamSettings.WsSettings?
-    var httpSettings: V2RayStreamSettings.HttpSettings?
-    var dsSettings: V2RayStreamSettings.DsSettings?
-    var quicSettings: V2RayStreamSettings.QuicSettings?
+struct Transport: Codable {
+    var tlsSettings: StreamSettings.TlsSettings?
+    var tcpSettings: StreamSettings.TcpSettings?
+    var kcpSettings: StreamSettings.KcpSettings?
+    var wsSettings: StreamSettings.WsSettings?
+    var httpSettings: StreamSettings.HttpSettings?
+    var dsSettings: StreamSettings.DsSettings?
+    var quicSettings: StreamSettings.QuicSettings?
 }
 
 // MARK: - StreamSetting
-struct V2RayStreamSettings: Codable {
+struct StreamSettings: Codable {
     var network: network = .tcp
     var security: security = .none
     var sockopt: Sockopt?
