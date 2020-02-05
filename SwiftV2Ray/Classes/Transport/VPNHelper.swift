@@ -70,7 +70,7 @@ class VPNHelper {
             let manager = NETunnelProviderManager()
             manager.protocolConfiguration = NETunnelProviderProtocol()
             (manager.protocolConfiguration as? NETunnelProviderProtocol)?.providerBundleIdentifier = "com.david.SwiftV2Ray.PacketTunnel"
-            manager.protocolConfiguration?.serverAddress = "SwiftV2Ray Provide"
+            manager.protocolConfiguration?.serverAddress = "127.0.0.1"
             manager.localizedDescription = "SwiftV2Ray VPN"
             manager.saveToPreferences(completionHandler: { (error) in
                 if error != nil {

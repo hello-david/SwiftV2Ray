@@ -11,9 +11,10 @@
             "settings":{
                 "udp":true,
                 "auth":"noauth",
-                "timeout":360
+                "timeout":360,
+                "ip": "127.0.0.1"
             },
-            "port":"1080"
+            "port":"1089"
         },
         {
             "listen":"127.0.0.1",
@@ -85,25 +86,5 @@
             "8.8.8.8",
             "114.114.114.114"
         ]
-    },
-    "routing":{
-        "strategy":"rules",
-        "settings":{
-            "domainStrategy":"IPIfNonMatch",
-            "rules":[
-                {
-                    "outboundTag":"direct",
-                    "type":"field",
-                    "ip":[
-                        "geoip:cn",
-                        "geoip:private"
-                    ],
-                    "domain":[
-                        "geosite:cn",
-                        "geosite:speedtest"
-                    ]
-                }
-            ]
-        }
     }
 }

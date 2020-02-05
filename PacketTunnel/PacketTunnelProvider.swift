@@ -7,24 +7,48 @@
 //
 
 import NetworkExtension
+import Core
+import Tun2socks
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
+    let serverIp = "127.0.0.1"
+    
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
-        // 将App的数据转发到本地端口给V2Ray-Core进行转发
-        let networkSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "192.168.3.14")
-        let ipv4Settings = NEIPv4Settings(addresses: ["10.10.10.10"], subnetMasks: ["255.255.255.0"])
-        networkSettings.mtu = 1400
-        networkSettings.ipv4Settings = ipv4Settings
-        networkSettings.ipv4Settings?.includedRoutes = [NEIPv4Route.default()]
+//        let url = Bundle.main.url(forResource: "config", withExtension: "json")!
+//        let data = try? Data(contentsOf: url)
+//        Tun2socksStartV2Ray(self, data)
         
-        // 配置
-        self.setTunnelNetworkSettings(networkSettings) { error in
+        let networkSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: serverIp)
+        networkSettings.mtu = 1480
+        let ipv4Settings = NEIPv4Settings(addresses: [serverIp], subnetMasks: ["255.255.255.0"])
+        networkSettings.ipv4Settings?.includedRoutes = [NEIPv4Route.default()]
+        networkSettings.ipv4Settings = ipv4Settings
+        
+        self.setTunnelNetworkSettings(networkSettings) {[weak self] error in
             guard error == nil else {
                 NSLog(error.debugDescription)
                 completionHandler(error)
                 return
             }
+            
+            self?.proxyPackets()
             completionHandler(nil)
+        }
+    }
+    
+    func proxyPackets(_ completion: (() -> Void)?) {
+        self.packetFlow.readPacketObjects { (inPackets) in
+            self.packetFlow.writePacketObjects(inPackets)
+            completion?()
+        }
+    }
+    
+    func proxyPackets() {
+        self.packetFlow.readPackets {[weak self] (packets: [Data], protocols: [NSNumber]) in
+            for packet in packets {
+//                Tun2socksInputPacket(packet)
+            }
+            self?.proxyPackets()
         }
     }
     
@@ -46,3 +70,10 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         
     }
 }
+
+extension PacketTunnelProvider: Tun2socksPacketFlowProtocol{
+    func writePacket(_ packet: Data!) {
+        self.packetFlow.writePackets([packet], withProtocols: [AF_INET as NSNumber])
+    }
+}
+

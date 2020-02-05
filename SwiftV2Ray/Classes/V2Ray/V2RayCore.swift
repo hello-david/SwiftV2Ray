@@ -16,16 +16,13 @@ class V2RayCore {
     
     func start(serverPoint: VmessEndpoint, completion: ((_ error: Error?) -> Void)?) {
         if core != nil {
-            try? core?.close()
+            self.close()
             core = nil
         }
         
         let config = V2RayConfig.parse(fromJsonFile: "config")!
         let configData = try? JSONEncoder().encode(config)
         var startError: Error? = nil
-        
-        // 把路由节点修改为服务地址
-        
         
         // 启动这个配置
         do{

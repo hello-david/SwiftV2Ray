@@ -131,31 +131,17 @@ class HomeContentViewModel: NSObject, Codable {
     }
     
     func openService(completion: ((_ error: Error?)-> Void)?) {
-        guard let serverPoint = self.activingEndpoint else {
+        guard self.activingEndpoint != nil else {
             completion?(NSError(domain: "ErrorDomain", code: -1, userInfo: ["error" : "没有激活服务节点"]))
             return
         }
         
-        V2RayCore.shared.start(serverPoint: serverPoint) { (error) in
-            guard error == nil else {
-                completion?(error)
-                return
-            }
-            
-            VPNHelper.shared.open { (error) in
-                guard error == nil else {
-                    V2RayCore.shared.close()
-                    completion?(error)
-                    return
-                }
-                
-                completion?(nil)
-            }
+        VPNHelper.shared.open { (error) in
+            completion?(error)
         }
     }
     
     func closeService() {
-        V2RayCore.shared.close()
         VPNHelper.shared.close()
     }
     
