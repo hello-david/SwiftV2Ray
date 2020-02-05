@@ -35,11 +35,11 @@ extension Decodable {
 
 // MARK: - Log
 struct V2RayLog: Codable {
-    var loglevel: logLevel = .info
+    var loglevel: Level = .info
     var error: String = ""
     var access: String = ""
     
-    enum logLevel: String, Codable {
+    enum Level: String, Codable {
         case debug
         case info
         case warning
@@ -66,9 +66,9 @@ struct V2RayStats: Codable {
 // MARK: - Routing
 struct V2RayRouting: Codable {
     var strategy: String = "rules"
-    var settings: V2RayRoutingSetting = V2RayRoutingSetting()
+    var settings: Setting = Setting()
     
-    struct V2RayRoutingSetting: Codable {
+    struct Setting: Codable {
         enum domainStrategy: String, Codable {
             case AsIs
             case IPIfNonMatch
@@ -76,9 +76,9 @@ struct V2RayRouting: Codable {
         }
 
         var domainStrategy: domainStrategy = .IPIfNonMatch
-        var rules: [V2RayRoutingSettingRule] = [V2RayRoutingSettingRule()]
+        var rules: [Rule] = [Rule()]
         
-        struct V2RayRoutingSettingRule: Codable {
+        struct Rule: Codable {
             var type: String? = "field"
             var domain: [String]? = ["geosite:cn", "geosite:speedtest"]
             var ip: [String]? = ["geoip:cn", "geoip:private"]
@@ -102,16 +102,16 @@ struct V2RayPolicy: Codable {
 struct V2RayInbound: Codable {
     var port: String = "1080"
     var listen: String = "127.0.0.1"
-    var `protocol`: V2RayProtocolInbound = .socks
+    var `protocol`: Protocol = .socks
     var tag: String? = nil
     var streamSettings: V2RayStreamSettings? = nil
-    var sniffing: V2RayInboundSniffing? = nil
-    var allocate: V2RayInboundAllocate? = nil
+    var sniffing: Sniffing? = nil
+    var allocate: Allocate? = nil
 
-    var settingHttp: V2RayInboundHttp = V2RayInboundHttp()
-    var settingSocks: V2RayInboundSocks = V2RayInboundSocks()
-    var settingShadowsocks: V2RayInboundShadowsocks? = nil
-    var settingVMess: V2RayInboundVMess? = nil
+    var settingHttp: Http = Http()
+    var settingSocks: Socks = Socks()
+    var settingShadowsocks: Shadowsocks? = nil
+    var settingVMess: VMess? = nil
 
     enum CodingKeys: String, CodingKey {
         case port
@@ -123,14 +123,14 @@ struct V2RayInbound: Codable {
         case settings
     }
     
-    enum V2RayProtocolInbound: String, Codable {
+    enum `Protocol`: String, Codable {
         case http
         case shadowsocks
         case socks
         case vmess
     }
     
-    struct V2RayInboundAllocate: Codable {
+    struct Allocate: Codable {
         var strategy: strategy = .always    // always or random
         var refresh: Int = 2                // val is 2-5 where strategy = random
         var concurrency: Int = 3            // suggest 3, min 1
@@ -141,7 +141,7 @@ struct V2RayInbound: Codable {
         }
     }
 
-    struct V2RayInboundSniffing: Codable {
+    struct Sniffing: Codable {
         var enabled: Bool = false
         var destOverride: [dest] = [.tls, .http]
         
@@ -151,19 +151,19 @@ struct V2RayInbound: Codable {
         }
     }
 
-    struct V2RayInboundHttp: Codable {
+    struct Http: Codable {
         var timeout: Int = 360
         var allowTransparent: Bool?
         var userLevel: Int?
-        var accounts: [V2RayInboundHttpAccount]?
+        var accounts: [Account]?
         
-        struct V2RayInboundHttpAccount: Codable {
+        struct Account: Codable {
             var user: String?
             var pass: String?
         }
     }
 
-    struct V2RayInboundShadowsocks: Codable {
+    struct Shadowsocks: Codable {
         var email, method, password: String?
         var udp: Bool = false
         var level: Int = 0
@@ -171,38 +171,38 @@ struct V2RayInbound: Codable {
         var network: String = "tcp" // "tcp" | "udp" | "tcp,udp"
     }
 
-    struct V2RayInboundSocks: Codable {
+    struct Socks: Codable {
         var auth: String = "noauth" // noauth | password
-        var accounts: [V2RayInboundSockAccount]?
+        var accounts: [Account]?
         var udp: Bool = true
         var ip: String?
         var timeout: Int = 360
         var userLevel: Int?
         
-        struct V2RayInboundSockAccount: Codable {
+        struct Account: Codable {
             var user: String?
             var pass: String?
         }
     }
 
-    struct V2RayInboundVMess: Codable {
-        var clients: [V2RayInboundVMessClient]?
-        var `default`: V2RayInboundVMessDefault? = V2RayInboundVMessDefault()
-        var detour: V2RayInboundVMessDetour?
+    struct VMess: Codable {
+        var clients: [Client]?
+        var `default`: Default? = Default()
+        var detour:Detour?
         var disableInsecureEncryption: Bool = false
         
-        struct V2RayInboundVMessClient: Codable {
+        struct Client: Codable {
             var id: String?
             var level: Int = 0
             var alterId: Int = 64
             var email: String?
         }
 
-        struct V2RayInboundVMessDetour: Codable {
+        struct Detour: Codable {
             var to: String?
         }
 
-        struct V2RayInboundVMessDefault: Codable {
+        struct Default: Codable {
             var level: Int = 0
             var alterId: Int = 64
         }
@@ -212,21 +212,21 @@ struct V2RayInbound: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         port = try container.decode(String.self, forKey: .port)
         listen = try container.decode(String.self, forKey: .listen)
-        `protocol` = try container.decode(V2RayProtocolInbound.self, forKey: .`protocol`)
+        `protocol` = try container.decode(Protocol.self, forKey: .`protocol`)
         
         tag = container.contains(.tag) ? try container.decode(String.self, forKey: .tag) : nil
         streamSettings = container.contains(.streamSettings) ? try container.decode(V2RayStreamSettings.self, forKey: CodingKeys.streamSettings) : nil
-        sniffing = container.contains(.sniffing) ? try container.decode(V2RayInboundSniffing.self, forKey: CodingKeys.sniffing) : nil
+        sniffing = container.contains(.sniffing) ? try container.decode(Sniffing.self, forKey: CodingKeys.sniffing) : nil
 
         switch `protocol` {
         case .http:
-            settingHttp = try container.decode(V2RayInboundHttp.self, forKey: CodingKeys.settings)
+            settingHttp = try container.decode(Http.self, forKey: CodingKeys.settings)
         case .shadowsocks:
-            settingShadowsocks = try container.decode(V2RayInboundShadowsocks.self, forKey: CodingKeys.settings)
+            settingShadowsocks = try container.decode(Shadowsocks.self, forKey: CodingKeys.settings)
         case .socks:
-            settingSocks = try container.decode(V2RayInboundSocks.self, forKey: CodingKeys.settings)
+            settingSocks = try container.decode(Socks.self, forKey: CodingKeys.settings)
         case .vmess:
-            settingVMess = try container.decode(V2RayInboundVMess.self, forKey: CodingKeys.settings)
+            settingVMess = try container.decode(VMess.self, forKey: CodingKeys.settings)
         }
     }
 
@@ -255,19 +255,19 @@ struct V2RayInbound: Codable {
 
 // MARK: - Outbound
 struct V2RayOutbound: Codable {
-    var `protocol`: V2RayProtocolOutbound = .freedom
+    var `protocol`: Protocol = .freedom
     var sendThrough: String? = nil
     var tag: String? = nil
     var streamSettings: V2RayStreamSettings? = nil
-    var proxySettings: ProxySettings? = nil
-    var mux: V2RayOutboundMux? = nil
+    var proxySettings: Settings? = nil
+    var mux: Mux? = nil
 
-    var settingBlackhole: V2RayOutboundBlackhole? = nil
-    var settingFreedom: V2RayOutboundFreedom? = nil
-    var settingShadowsocks: V2RayOutboundShadowsocks? = nil
-    var settingSocks: V2RayOutboundSocks? = nil
-    var settingVMess: V2RayOutboundVMess? = nil
-    var settingDns: V2RayOutboundDns? = nil
+    var settingBlackhole: Blackhole? = nil
+    var settingFreedom: Freedom? = nil
+    var settingShadowsocks: Shadowsocks? = nil
+    var settingSocks: Socks? = nil
+    var settingVMess: VMess? = nil
+    var settingDns: Dns? = nil
 
     enum CodingKeys: String, CodingKey {
         case sendThrough
@@ -279,11 +279,11 @@ struct V2RayOutbound: Codable {
         case settings
     }
     
-    struct ProxySettings: Codable {
+    struct Settings: Codable {
         var Tag: String?
     }
     
-    enum V2RayProtocolOutbound: String, Codable {
+    enum `Protocol`: String, Codable {
         case blackhole
         case freedom
         case shadowsocks
@@ -292,39 +292,39 @@ struct V2RayOutbound: Codable {
         case dns
     }
     
-    struct V2RayOutboundMux: Codable {
+    struct Mux: Codable {
         var enabled: Bool = false
         var concurrency: Int = 8
     }
 
-    struct V2RayOutboundBlackhole: Codable {
-        var response: V2RayOutboundBlackholeResponse = V2RayOutboundBlackholeResponse()
+    struct Blackhole: Codable {
+        var response: Response = Response()
         
-        struct V2RayOutboundBlackholeResponse: Codable {
+        struct Response: Codable {
             var type: String? = "none" // none | http
         }
     }
 
-    struct V2RayOutboundFreedom: Codable {
+    struct Freedom: Codable {
         var domainStrategy: String = "AsIs" // UseIP | AsIs
         var redirect: String?
         var userLevel: Int = 0
     }
 
-    struct V2RayOutboundShadowsocks: Codable {
-        var servers: [V2RayOutboundShadowsockServer] = [V2RayOutboundShadowsockServer()]
+    struct Shadowsocks: Codable {
+        var servers: [Server] = [Server()]
         
-        struct V2RayOutboundShadowsockServer: Codable {
+        struct Server: Codable {
             var email: String = ""
             var address: String = ""
             var port: Int = 0
-            var method: V2RayOutboundShadowsockMethod = .aes256cfb
+            var method: Method = .aes256cfb
             var password: String = ""
             var ota: Bool = false
             var level: Int = 0
         }
 
-        enum V2RayOutboundShadowsockMethod: String, Codable {
+        enum Method: String, Codable {
             case aes256cfb = "aes-256-cfb"
             case aes128cfb = "aes-128-cfb"
             case chacha20 = "chacha20"
@@ -336,33 +336,33 @@ struct V2RayOutbound: Codable {
         }
     }
 
-    struct V2RayOutboundSocks: Codable {
+    struct Socks: Codable {
         var address: String = ""
         var port: String = ""
-        var users: [V2RayOutboundSockUser] = [V2RayOutboundSockUser()]
+        var users: [User] = [User()]
         
-        struct V2RayOutboundSockUser: Codable {
+        struct User: Codable {
             var user: String = ""
             var pass: String = ""
             var level: Int = 0
         }
     }
 
-    struct V2RayOutboundVMess: Codable {
-        var vnext: [V2RayOutboundVMessItem] = [V2RayOutboundVMessItem()]
+    struct VMess: Codable {
+        var vnext: [Item] = [Item()]
         
-        struct V2RayOutboundVMessItem: Codable {
+        struct Item: Codable {
             var address: String = ""
             var port: Int = 443
-            var users: [V2RayOutboundVMessUser] = [V2RayOutboundVMessUser()]
+            var users: [User] = [User()]
             
-            struct V2RayOutboundVMessUser: Codable {
+            struct User: Codable {
                 var id: String = ""
                 var alterId: Int = 64 // 0-65535
                 var level: Int = 0
-                var security: V2RayOutboundVMessSecurity = .auto
+                var security: Security = .auto
                 
-                enum V2RayOutboundVMessSecurity: String, Codable {
+                enum Security: String, Codable {
                     case aes128gcm = "aes-128-gcm"
                     case chacha20poly1305 = "chacha20-poly1305"
                     case auto = "auto"
@@ -372,7 +372,7 @@ struct V2RayOutbound: Codable {
         }
     }
 
-    struct V2RayOutboundDns: Codable {
+    struct Dns: Codable {
         var network: String = "" // "tcp" | "udp" | ""
         var address: String = ""
         var port: Int?
@@ -380,27 +380,27 @@ struct V2RayOutbound: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        `protocol` = try container.decode(V2RayProtocolOutbound.self, forKey: CodingKeys.`protocol`)
+        `protocol` = try container.decode(Protocol.self, forKey: CodingKeys.`protocol`)
 
         tag = container.contains(.tag) ? try container.decode(String.self, forKey: .tag) : nil
         sendThrough = container.contains(.sendThrough) ? try container.decode(String.self, forKey: CodingKeys.sendThrough) : nil
-        proxySettings = container.contains(.proxySettings) ?  try container.decode(ProxySettings.self, forKey: CodingKeys.proxySettings) : nil
+        proxySettings = container.contains(.proxySettings) ?  try container.decode(Settings.self, forKey: CodingKeys.proxySettings) : nil
         streamSettings = container.contains(.streamSettings) ? try container.decode(V2RayStreamSettings.self, forKey: CodingKeys.streamSettings) : nil
-        mux = container.contains(.mux) ? try container.decode(V2RayOutboundMux.self, forKey: CodingKeys.mux) : nil
+        mux = container.contains(.mux) ? try container.decode(Mux.self, forKey: CodingKeys.mux) : nil
 
         switch `protocol` {
         case .blackhole:
-            settingBlackhole = try container.decode(V2RayOutboundBlackhole.self, forKey: CodingKeys.settings)
+            settingBlackhole = try container.decode(Blackhole.self, forKey: CodingKeys.settings)
         case .freedom:
-            settingFreedom = try container.decode(V2RayOutboundFreedom.self, forKey: CodingKeys.settings)
+            settingFreedom = try container.decode(Freedom.self, forKey: CodingKeys.settings)
         case .shadowsocks:
-            settingShadowsocks = try container.decode(V2RayOutboundShadowsocks.self, forKey: CodingKeys.settings)
+            settingShadowsocks = try container.decode(Shadowsocks.self, forKey: CodingKeys.settings)
         case .socks:
-            settingSocks = try container.decode(V2RayOutboundSocks.self, forKey: CodingKeys.settings)
+            settingSocks = try container.decode(Socks.self, forKey: CodingKeys.settings)
         case .vmess:
-            settingVMess = try container.decode(V2RayOutboundVMess.self, forKey: CodingKeys.settings)
+            settingVMess = try container.decode(VMess.self, forKey: CodingKeys.settings)
         case .dns:
-            settingDns = try container.decode(V2RayOutboundDns.self, forKey: CodingKeys.settings)
+            settingDns = try container.decode(Dns.self, forKey: CodingKeys.settings)
         }
     }
 
@@ -493,20 +493,20 @@ struct V2RayStreamSettings: Codable {
     }
 
     struct TcpSettings: Codable {
-        var header: TcpSettingHeader = TcpSettingHeader()
+        var header: Header = Header()
         
-        struct TcpSettingHeader: Codable {
+        struct Header: Codable {
             var type: String = "none"
-            var request: TcpSettingHeaderRequest?
-            var response: TcpSettingHeaderResponse?
+            var request: Request?
+            var response: Response?
             
-            struct TcpSettingHeaderRequest: Codable {
+            struct Request: Codable {
                 var version: String = ""
                 var method: String = ""
                 var path: [String] = []
-                var headers: TcpSettingHeaderRequestHeaders = TcpSettingHeaderRequestHeaders()
+                var headers: Headers = Headers()
                 
-                struct TcpSettingHeaderRequestHeaders: Codable {
+                struct Headers: Codable {
                     var host: [String] = []
                     var userAgent: [String] = []
                     var acceptEncoding: [String] = []
@@ -523,11 +523,11 @@ struct V2RayStreamSettings: Codable {
                 }
             }
             
-            struct TcpSettingHeaderResponse: Codable {
+            struct Response: Codable {
                 var version, status, reason: String?
-                var headers: TcpSettingHeaderResponseHeaders?
+                var headers: Headers?
                 
-                struct TcpSettingHeaderResponseHeaders: Codable {
+                struct Headers: Codable {
                     var contentType, transferEncoding, connection: [String]?
                     var pragma: String?
 
@@ -550,12 +550,12 @@ struct V2RayStreamSettings: Codable {
         var congestion: Bool = false
         var readBufferSize: Int = 1
         var writeBufferSize: Int = 1
-        var header: KcpSettingsHeader = KcpSettingsHeader()
+        var header: Header = Header()
         
-        struct KcpSettingsHeader: Codable {
-            var type: KcpSettingsHeaderType = .none
+        struct Header: Codable {
+            var type: Type = .none
             
-            enum KcpSettingsHeaderType: String, Codable {
+            enum `Type`: String, Codable {
                 case none = "none"
                 case srtp = "srtp"
                 case utp = "utp"
@@ -568,9 +568,9 @@ struct V2RayStreamSettings: Codable {
 
     struct WsSettings: Codable {
         var path: String = ""
-        var headers: WsSettingsHeader = WsSettingsHeader()
+        var headers: Header = Header()
         
-        struct WsSettingsHeader: Codable {
+        struct Header: Codable {
             var host: String = ""
         }
     }
@@ -597,14 +597,14 @@ struct V2RayStreamSettings: Codable {
     }
 
     struct QuicSettings: Codable {
-        var security: QuicSettingsSecurity = .none
+        var security: Security = .none
         var key: String = ""
-        var header: QuicSettingHeader = QuicSettingHeader()
+        var header: Header = Header()
         
-        struct QuicSettingHeader: Codable {
-            var type: QuicSettingsHeaderType = .none
+        struct Header: Codable {
+            var type: Type = .none
             
-            enum QuicSettingsHeaderType: String, Codable {
+            enum `Type`: String, Codable {
                 case none = "none"
                 case srtp = "srtp"
                 case utp = "utp"
@@ -614,7 +614,7 @@ struct V2RayStreamSettings: Codable {
             }
         }
         
-        enum QuicSettingsSecurity: String, Codable {
+        enum Security: String, Codable {
             case none = "none"
             case aes128gcm = "aes-128-gcm"
             case chacha20poly1305 = "chacha20-poly1305"
