@@ -78,6 +78,7 @@
 		69836CE1212400AB00815672 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		9595ACA523D40E5A005D5949 /* HomeContentServerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContentServerCell.xib; sourceTree = "<group>"; };
 		9595ACA723D40EA5005D5949 /* HomeContentServerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContentServerCell.swift; sourceTree = "<group>"; };
+		9595ACBA23E9C0E7005D5949 /* PacketTunnel.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = PacketTunnel.entitlements; path = PacketTunnel/PacketTunnel.entitlements; sourceTree = SOURCE_ROOT; };
 		95B5D79B23D2CBF40051EC3C /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		95B5D7E223D2CC990051EC3C /* VPNHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNHelper.swift; sourceTree = "<group>"; };
 		95B5D7E423D2CC990051EC3C /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
@@ -108,7 +109,6 @@
 		B07CCB3B1A8940E600A4F1E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B07CCB3C1A8940E600A4F1E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B07CCB6D1A89414500A4F1E5 /* PacketTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		B07CCB711A89414500A4F1E5 /* PacketTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PacketTunnel.entitlements; path = ../PacketTunnel/PacketTunnel.entitlements; sourceTree = "<group>"; };
 		B0D507F51A8943FD005D1195 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PacketTunnelProvider.swift; path = PacketTunnel/PacketTunnelProvider.swift; sourceTree = SOURCE_ROOT; };
 		D3A6121B47CB4BF81CE23659 /* Pods_SwiftV2Ray.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftV2Ray.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -293,7 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				B01F23AB1A8A8C5E0078C66D /* Info.plist */,
-				B07CCB711A89414500A4F1E5 /* PacketTunnel.entitlements */,
+				9595ACBA23E9C0E7005D5949 /* PacketTunnel.entitlements */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

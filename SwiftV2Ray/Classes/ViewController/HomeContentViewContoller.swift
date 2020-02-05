@@ -27,18 +27,6 @@ class HomeContentViewContoller: UIViewController {
         self.tableview.register(UINib.init(nibName: "HomeContentControlCell", bundle: nil), forCellReuseIdentifier: "ControlCell")
         self.tableview.register(UINib.init(nibName: "HomeContentProxyCell", bundle: nil), forCellReuseIdentifier: "ProxyCell")
         self.tableview.register(UINib.init(nibName: "HomeContentServerCell", bundle: nil), forCellReuseIdentifier: "ServerCell")
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.NEVPNStatusDidChange, object: nil, queue: OperationQueue.main, using: { notification in
-            let connection = notification.object as? NEVPNConnection
-            switch connection?.status {
-                case .none: break
-                case .some(.invalid): break
-                case .some(.connecting): break
-                case .some(.connected): break
-                case .some(.reasserting): break
-                case .some(.disconnecting): break
-                case .some(_): break
-            }
-        })
     }
     
     deinit {

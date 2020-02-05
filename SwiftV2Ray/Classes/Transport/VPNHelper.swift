@@ -38,7 +38,7 @@ class VPNHelper {
             }
             
             for manager in vpnManagers {
-                if (manager.protocolConfiguration as? NETunnelProviderProtocol)?.providerBundleIdentifier == "com.david.SwiftV2Ray" {
+                if (manager.protocolConfiguration as? NETunnelProviderProtocol)?.providerBundleIdentifier == "com.david.SwiftV2Ray.PacketTunnel" {
                     closure(manager, nil)
                     return
                 }
@@ -46,7 +46,7 @@ class VPNHelper {
             
             let manager = NETunnelProviderManager()
             manager.protocolConfiguration = NETunnelProviderProtocol()
-            (manager.protocolConfiguration as? NETunnelProviderProtocol)?.providerBundleIdentifier = "com.david.SwiftV2Ray"
+            (manager.protocolConfiguration as? NETunnelProviderProtocol)?.providerBundleIdentifier = "com.david.SwiftV2Ray.PacketTunnel"
             manager.protocolConfiguration?.serverAddress = "SwiftV2Ray Provide"
             manager.localizedDescription = "SwiftV2Ray VPN"
             manager.saveToPreferences(completionHandler: { (error) in
