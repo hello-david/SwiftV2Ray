@@ -142,20 +142,14 @@ class HomeContentViewModel: NSObject, Codable {
                 return
             }
             
-            VPNHelper.shared.open { (manager, error) in
+            VPNHelper.shared.open { (error) in
                 guard error == nil else {
                     V2RayCore.shared.close()
                     completion?(error)
                     return
                 }
                 
-                if manager?.connection.status == .some(.connected) {
-                    completion?(nil)
-                    return
-                }
-                
-                V2RayCore.shared.close()
-                completion?(NSError(domain: "SwiftV2Ray", code: -1, userInfo: ["error" : "连接失败"]))
+                completion?(nil)
             }
         }
     }
