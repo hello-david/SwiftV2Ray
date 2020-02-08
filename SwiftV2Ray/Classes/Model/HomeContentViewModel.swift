@@ -131,7 +131,7 @@ class HomeContentViewModel: NSObject, Codable {
     }
     
     func openService(completion: ((_ error: Error?)-> Void)?) {
-        guard self.activingEndpoint != nil else {
+        guard (self.activingEndpoint != nil) else {
             completion?(NSError(domain: "ErrorDomain", code: -1, userInfo: ["error" : "没有激活服务节点"]))
             return
         }

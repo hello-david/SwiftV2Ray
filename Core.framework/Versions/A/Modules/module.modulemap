@@ -1,8 +1,0 @@
-framework module "Core" {
-	header "ref.h"
-    header "Core.objc.h"
-    header "Universe.objc.h"
-    header "Core.h"
-
-    export *
-}
