@@ -100,6 +100,7 @@ class HomeContentViewModel: NSObject, Codable {
     var activingEndpoint: VmessEndpoint? = nil
     var serviceEndPoints: [VmessEndpoint] = []
     var proxyMode: ProxyMode = .auto
+    var v2rayConfig: V2RayConfig = V2RayConfig.parse(fromJsonFile: "config")!
     
     enum CodingKeys: String, CodingKey {
         case subscribeUrl
@@ -111,6 +112,7 @@ class HomeContentViewModel: NSObject, Codable {
     override init() {
         super.init()
         self.loadServices()
+        self.updateConfigFromActivePoint()
     }
     
     func encode(to encoder: Encoder) throws {
@@ -136,13 +138,32 @@ class HomeContentViewModel: NSObject, Codable {
             return
         }
         
-        VPNHelper.shared.open { (error) in
-            completion?(error)
+        let configData = try? JSONEncoder().encode(self.v2rayConfig)
+        guard configData != nil else {
+            completion?(NSError(domain: "ErrorDomain", code: -1, userInfo: ["error" : "配置错误"]))
+            return
         }
+        
+        VPNHelper.shared.open(configData!, completion: { (error) in
+            completion?(error)
+        })
     }
     
     func closeService() {
         VPNHelper.shared.close()
+    }
+    
+    func updateConfigFromActivePoint() {
+        guard self.activingEndpoint != nil else {
+            return
+        }
+        
+        var vnext = Outbound.VMess.Item()
+        vnext.address = self.activingEndpoint?.info[VmessEndpoint.InfoKey.address.stringValue] as! String
+        vnext.users[0].id = self.activingEndpoint?.info[VmessEndpoint.InfoKey.uuid.stringValue] as! String
+        vnext.users[0].alterId = (self.activingEndpoint?.info[VmessEndpoint.InfoKey.aid.stringValue] as! NSString).integerValue
+        vnext.port = (self.activingEndpoint?.info[VmessEndpoint.InfoKey.port.stringValue] as! NSString).integerValue
+        self.v2rayConfig.outbounds?[0].settingVMess?.vnext = [vnext]
     }
     
     func requestServices(withUrl requestUrl: URL?, completion: ((_ error: Error?)-> Void)?) {
@@ -161,6 +182,7 @@ class HomeContentViewModel: NSObject, Codable {
             self?.serviceEndPoints = serverPoints!
             if self?.activingEndpoint == nil {
                 self?.activingEndpoint = self?.serviceEndPoints.first
+                self?.updateConfigFromActivePoint()
             }
             
             if completion != nil {

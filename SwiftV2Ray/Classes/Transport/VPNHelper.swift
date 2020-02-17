@@ -14,7 +14,7 @@ class VPNHelper {
     var manager: NETunnelProviderManager? = nil
     private var openVPNClosure: ((_ error: Error?) -> Void)? = nil
     
-    func open(completion: @escaping((_ error: Error?) -> Void)) {
+    func open(_ configData: Data, completion: @escaping((_ error: Error?) -> Void)) {
         guard openVPNClosure == nil else {
             completion(NSError(domain: "VPNHelper", code: -1, userInfo: ["error" : "正在处理中"]))
             return
@@ -37,20 +37,31 @@ class VPNHelper {
             manager.isOnDemandEnabled = true
             manager.isEnabled = true
             do {
-                try manager.connection.startVPNTunnel()
-            } catch let starError {
-                NSLog(starError.localizedDescription)
-                openError = starError
+                // 先发送配置到PacketTunel上
+                let session = manager.connection as? NETunnelProviderSession
+                try session?.sendProviderMessage(configData, responseHandler: { (data) in
+                    print("发送配置成功")
+                    do {
+                        try manager.connection.startVPNTunnel()
+                    } catch let starError {
+                        NSLog(starError.localizedDescription)
+                        openError = starError
+                    }
+                    
+                    guard openError == nil else {
+                        completion(openError)
+                        self?.stopObservingStatus(manager)
+                        return
+                    }
+                    
+                    self?.observeStatus(manager)
+                    self?.manager = manager
+                })
             }
-            
-            guard openError == nil else {
-                completion(openError)
+            catch let error {
+                completion(error)
                 self?.stopObservingStatus(manager)
-                return
             }
-            
-            self?.observeStatus(manager)
-            self?.manager = manager
         }
         
         // 获取VPN配置

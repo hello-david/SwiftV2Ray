@@ -135,6 +135,7 @@ extension HomeContentViewContoller: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 1 && indexPath.row != 0 {
             let model = self.contentManger.serviceEndPoints[indexPath.row - 1]
             self.contentManger.activingEndpoint = model
+            self.contentManger.updateConfigFromActivePoint()
             self.contentManger.storeServices()
             tableView.reloadData()
         }
