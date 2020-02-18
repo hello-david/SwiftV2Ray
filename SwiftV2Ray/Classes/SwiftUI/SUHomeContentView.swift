@@ -26,7 +26,7 @@ struct HomeContentInternalView: View {
     
     var body: some View {
         List {
-            Section {
+            Section(header: Text("控制")) {
                 HStack {
                     Toggle(viewModel.serviceOpen ? "已连接" : "未连接", isOn: $viewModel.serviceOpen)
                 }
@@ -84,9 +84,10 @@ struct SubscribeRow: View {
                     if subscribeText != nil {
                         HStack {
                             Text(subscribeText!).foregroundColor(Color.black)
-                            NavigationLink(destination: SubscribeRowDetail(actionBack: { self.pushed = false }), isActive: $pushed) {
+                            NavigationLink(destination: SubscribeRowDetail(pushed: $pushed), isActive: $pushed) {
                                 EmptyView()
-                            }.frame(width: 0, height: 0)
+                            }
+                            .frame(width: 0, height: 0)
                             Spacer()
                             Button(action: { self.pushed = true }) {
                                 Image(systemName: "ellipsis").renderingMode(.original)
@@ -113,12 +114,12 @@ struct SubscribeRow: View {
 
 @available(iOS 13.0, *)
 struct SubscribeRowDetail: View {
-    let actionBack: () -> Void
+    @Binding var pushed: Bool
     @EnvironmentObject private var viewModel: SUHomeContentViewModel
     
     var body: some View {
         List {
-            Section {
+            Section(header: Text("订阅服务地址")) {
                 Text(viewModel.subscribeUrl?.absoluteString ?? "")
             }
             Section {
@@ -132,8 +133,11 @@ struct SubscribeRowDetail: View {
             }
         }
         .listStyle(GroupedListStyle())
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
+        .navigationBarItems(leading: Button(action: { self.pushed = false }) {
+            Image(systemName: "chevron.left")
+        })
+        .padding(.top, 44)
+        .edgesIgnoringSafeArea([.top, .bottom])
     }
 }
 
@@ -155,7 +159,7 @@ struct ServiceInfoRow: View {
                     Spacer()
                     Button(action: { self.pushed = true }) {
                         Image(systemName: "ellipsis").renderingMode(.original)
-                        NavigationLink(destination: ServiceInfoRowDetail(actionBack: { self.pushed = false }), isActive: $pushed) {
+                        NavigationLink(destination: ServiceInfoRowDetail(pushed: $pushed), isActive: $pushed) {
                             EmptyView()
                         }.frame(width: 0, height: 0)
                     }
@@ -167,16 +171,17 @@ struct ServiceInfoRow: View {
 
 @available(iOS 13.0, *)
 struct ServiceInfoRowDetail: View {
-    let actionBack: () -> Void
+    @Binding var pushed: Bool
     
     var body: some View {
         HStack {
             Text("Service")
         }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: Button(action: actionBack) {
+        .navigationBarItems(leading: Button(action: { self.pushed = false }) {
             Image(systemName: "chevron.left")
         })
+        .padding(.top, 44)
+        .edgesIgnoringSafeArea([.top, .bottom])
     }
 }
 
@@ -186,8 +191,8 @@ struct SUHomeContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             SUHomeContentView().environmentObject(SUHomeContentViewModel())
-//            SubscribeRowDetail(actionBack: {}).environmentObject(SUHomeContentViewModel())
-//            ServiceInfoRowDetail(actionBack: {}).environmentObject(SUHomeContentViewModel())
+            SubscribeRowDetail(pushed: .constant(false)).environmentObject(SUHomeContentViewModel())
+            ServiceInfoRowDetail(pushed: .constant(false)).environmentObject(SUHomeContentViewModel())
         }
     }
 }

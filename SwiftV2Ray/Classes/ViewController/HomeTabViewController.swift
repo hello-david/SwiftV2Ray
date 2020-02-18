@@ -23,6 +23,9 @@ class HomeTabViewController: UIViewController {
     lazy var contentVC: UIViewController = {
         if #available(iOS 13.0, *) {
             let view = SUHomeContentView().environmentObject(self.contentManager as! SUHomeContentViewModel)
+                .navigationBarTitle("")
+                .navigationBarHidden(true)
+            
             return UIHostingController(rootView: view)
         } else {
             return HomeContentViewContoller(contentManager: self.contentManager as! HomeContentViewModel,
