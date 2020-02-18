@@ -135,8 +135,14 @@ extension HomeContentViewContoller: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 1 && indexPath.row != 0 {
             let model = self.contentManger.serviceEndPoints[indexPath.row - 1]
             self.contentManger.activingEndpoint = model
-            self.contentManger.updateConfigFromActivePoint()
+            self.contentManger.updateConfig()
             self.contentManger.storeServices()
+            if self.contentManger.serviceOpen == true {
+                self.contentManger.openService {[weak self] (error) in
+                    let cell = self?.tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! HomeContentControlCell
+                    cell.switchOn(error != nil ? false : true)
+                }
+            }
             tableView.reloadData()
         }
     }

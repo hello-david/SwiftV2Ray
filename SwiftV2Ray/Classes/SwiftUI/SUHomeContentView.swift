@@ -54,6 +54,7 @@ struct HomeContentInternalView: View {
                 ForEach(viewModel.serviceEndPoints, id: \.self) { endpoint in
                     ServiceInfoRow(info: endpoint, isActive: endpoint == self.viewModel.activingEndpoint ? true : false, actionSelectRow: {
                         self.viewModel.activingEndpoint = endpoint
+                        self.viewModel.updateConfig()
                         self.viewModel.storeServices()
                     })
                 }

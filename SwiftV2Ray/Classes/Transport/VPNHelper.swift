@@ -13,6 +13,7 @@ class VPNHelper {
     static let `shared` = VPNHelper()
     var manager: NETunnelProviderManager? = nil
     private var openVPNClosure: ((_ error: Error?) -> Void)? = nil
+    private var closeVPNClosure: (() -> Void)? = nil
     
     func open(_ configData: Data, completion: @escaping((_ error: Error?) -> Void)) {
         guard openVPNClosure == nil else {
@@ -96,11 +97,18 @@ class VPNHelper {
         }
     }
     
-    func close() {
-        guard let manager = self.manager else {
+    func close(completion: @escaping(() -> Void)) {
+        guard self.closeVPNClosure == nil else {
+            completion()
             return
         }
         
+        guard let manager = self.manager else {
+            completion()
+            return
+        }
+        
+        self.closeVPNClosure = completion
         manager.connection.stopVPNTunnel()
         self.stopObservingStatus(manager)
     }
@@ -118,6 +126,8 @@ class VPNHelper {
                     print("无效")
                     self?.openVPNClosure?(NSError(domain: "VPNHelper", code: (connection?.status)!.rawValue, userInfo: ["error" : "连接无效"]))
                     self?.openVPNClosure = nil
+                    self?.closeVPNClosure?()
+                    self?.closeVPNClosure = nil
                 
                 case .some(.connecting):
                     print("VPN通道连接中")
@@ -131,16 +141,22 @@ class VPNHelper {
                     print("断言")
                     self?.openVPNClosure?(NSError(domain: "VPNHelper", code: (connection?.status)!.rawValue, userInfo: ["error" : "断言"]))
                     self?.openVPNClosure = nil
+                    self?.closeVPNClosure?()
+                    self?.closeVPNClosure = nil
                 
                 case .some(.disconnecting):
                     print("VPN通道断开连接了")
                     self?.openVPNClosure?(NSError(domain: "VPNHelper", code: (connection?.status)!.rawValue, userInfo: ["error" : "断开连接"]))
                     self?.openVPNClosure = nil
+                    self?.closeVPNClosure?()
+                    self?.closeVPNClosure = nil
                 
                 case .some(_):
                     print("其他")
                     self?.openVPNClosure?(NSError(domain: "VPNHelper", code: (connection?.status)!.rawValue, userInfo: ["error" : "其他"]))
                     self?.openVPNClosure = nil
+                    self?.closeVPNClosure?()
+                    self?.closeVPNClosure = nil
             }
         })
     }

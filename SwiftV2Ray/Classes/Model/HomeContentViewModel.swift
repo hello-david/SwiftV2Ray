@@ -24,6 +24,9 @@ class SUHomeContentViewModel: ObservableObject, Codable {
     @Published var activingEndpoint: VmessEndpoint? = nil
     @Published var serviceEndPoints: [VmessEndpoint] = []
     @Published var proxyMode: ProxyMode = .auto
+    var v2rayConfig: V2RayConfig = V2RayConfig.parse(fromJsonFile: "config")!
+    private var serviceOpenEventSink: AnyCancellable? = nil
+    private var activingEndpointEventSink: AnyCancellable? = nil
     
     enum CodingKeys: String, CodingKey {
         case subscribeUrl
@@ -34,6 +37,28 @@ class SUHomeContentViewModel: ObservableObject, Codable {
     
     init() {
         loadServices()
+        self.updateConfig()
+        
+        // 打开服务事件处理
+        self.serviceOpenEventSink = $serviceOpen.sink {[weak self] (isOpen) in
+            guard isOpen == true else {
+                self?.closeService()
+                return
+            }
+            
+            self?.openService { (error) in
+                guard error != nil else { return }
+                DispatchQueue.main.async {
+                    self?.serviceOpen = false
+                }
+            }
+        }
+        
+        // 切换激活节点事件处理
+        self.activingEndpointEventSink = $activingEndpoint.sink(receiveValue: {[weak self] (activeEndpoint) in
+            guard activeEndpoint != nil else { return }
+            self?.updateConfig()
+        })
     }
     
     func encode(to encoder: Encoder) throws {
@@ -91,6 +116,40 @@ class SUHomeContentViewModel: ObservableObject, Codable {
         self.proxyMode = viewModel?.proxyMode ?? .auto
         self.subscribeUrl = viewModel?.subscribeUrl
     }
+    
+    func openService(completion: ((_ error: Error?)-> Void)?) {
+        guard (self.activingEndpoint != nil) else {
+            completion?(NSError(domain: "ErrorDomain", code: -1, userInfo: ["error" : "没有激活服务节点"]))
+            return
+        }
+        
+        let configData = try? JSONEncoder().encode(self.v2rayConfig)
+        guard configData != nil else {
+            completion?(NSError(domain: "ErrorDomain", code: -1, userInfo: ["error" : "配置错误"]))
+            return
+        }
+        
+        VPNHelper.shared.open(configData!, completion: { (error) in
+            completion?(error)
+        })
+    }
+    
+    func closeService() {
+        VPNHelper.shared.close { }
+    }
+    
+    func updateConfig() {
+        guard self.activingEndpoint != nil else {
+            return
+        }
+        
+        var vnext = Outbound.VMess.Item()
+        vnext.address = self.activingEndpoint?.info[VmessEndpoint.InfoKey.address.stringValue] as! String
+        vnext.users[0].id = self.activingEndpoint?.info[VmessEndpoint.InfoKey.uuid.stringValue] as! String
+        vnext.users[0].alterId = (self.activingEndpoint?.info[VmessEndpoint.InfoKey.aid.stringValue] as! NSString).integerValue
+        vnext.port = (self.activingEndpoint?.info[VmessEndpoint.InfoKey.port.stringValue] as! NSString).integerValue
+        self.v2rayConfig.outbounds?[0].settingVMess?.vnext = [vnext]
+    }
 }
 
 // MARK: - iOS13以下
@@ -112,7 +171,7 @@ class HomeContentViewModel: NSObject, Codable {
     override init() {
         super.init()
         self.loadServices()
-        self.updateConfigFromActivePoint()
+        self.updateConfig()
     }
     
     func encode(to encoder: Encoder) throws {
@@ -150,10 +209,10 @@ class HomeContentViewModel: NSObject, Codable {
     }
     
     func closeService() {
-        VPNHelper.shared.close()
+        VPNHelper.shared.close { }
     }
     
-    func updateConfigFromActivePoint() {
+    func updateConfig() {
         guard self.activingEndpoint != nil else {
             return
         }
@@ -182,7 +241,7 @@ class HomeContentViewModel: NSObject, Codable {
             self?.serviceEndPoints = serverPoints!
             if self?.activingEndpoint == nil {
                 self?.activingEndpoint = self?.serviceEndPoints.first
-                self?.updateConfigFromActivePoint()
+                self?.updateConfig()
             }
             
             if completion != nil {
