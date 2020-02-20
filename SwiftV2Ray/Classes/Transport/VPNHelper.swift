@@ -35,13 +35,14 @@ class VPNHelper {
                 return
             }
             
-            manager.isOnDemandEnabled = true
             manager.isEnabled = true
             do {
                 // 先发送配置到PacketTunel上
                 let session = manager.connection as? NETunnelProviderSession
                 try session?.sendProviderMessage(configData, responseHandler: { (data) in
                     print("发送配置成功")
+                    self?.observeStatus(manager)
+                    
                     do {
                         try manager.connection.startVPNTunnel()
                     } catch let starError {
@@ -55,7 +56,6 @@ class VPNHelper {
                         return
                     }
                     
-                    self?.observeStatus(manager)
                     self?.manager = manager
                 })
             }
