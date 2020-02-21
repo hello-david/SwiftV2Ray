@@ -35,7 +35,6 @@ class VPNHelper {
                 return
             }
             
-            manager.isEnabled = true
             PacketTunnelMessage.messageTo(manager.connection as? NETunnelProviderSession,
                                         PacketTunnelMessage(configData: configData)) { (error, response) in
                 guard error == nil else {
@@ -46,7 +45,7 @@ class VPNHelper {
                 
                 self?.observeStatus(manager)
                 do {
-                    try manager.connection.startVPNTunnel()
+                    try manager.connection.startVPNTunnel(options: [:])
                 } catch let starError {
                     NSLog(starError.localizedDescription)
                     openError = starError
@@ -69,18 +68,26 @@ class VPNHelper {
                 return
             }
             
-            for manager in vpnManagers {
-                if (manager.protocolConfiguration as? NETunnelProviderProtocol)?.providerBundleIdentifier == "com.david.SwiftV2Ray.PacketTunnel" {
-                    fetchClosure(manager, nil)
-                    return
-                }
+            if vpnManagers.count > 0 {
+                vpnManagers[0].isEnabled = true
+                vpnManagers[0].saveToPreferences(completionHandler: { (error) in
+                    if error != nil {
+                        fetchClosure(nil, error)
+                        return
+                    }
+                    
+                    vpnManagers[0].loadFromPreferences(completionHandler: { (error) in
+                        fetchClosure(vpnManagers[0], error)
+                    })
+                })
+                return
             }
             
             let manager = NETunnelProviderManager()
             manager.protocolConfiguration = NETunnelProviderProtocol()
-            (manager.protocolConfiguration as? NETunnelProviderProtocol)?.providerBundleIdentifier = "com.david.SwiftV2Ray.PacketTunnel"
             manager.protocolConfiguration?.serverAddress = "127.0.0.1"
             manager.localizedDescription = "SwiftV2Ray VPN"
+            manager.isEnabled = true
             manager.saveToPreferences(completionHandler: { (error) in
                 if error != nil {
                     fetchClosure(nil, error)

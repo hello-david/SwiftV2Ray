@@ -69,8 +69,8 @@ extension PacketTunnelProvider {
         for route in message.ipv4ExcludedRoutes {
             excludeRoutes.append(NEIPv4Route(destinationAddress: route.0, subnetMask: route.1))
         }
-        networkSettings.ipv4Settings?.includedRoutes = includeRoutes.count == 0 ? [NEIPv4Route.default()] : includeRoutes
-        networkSettings.ipv4Settings?.excludedRoutes = excludeRoutes
+        ipv4Settings.includedRoutes = includeRoutes.count == 0 ? [NEIPv4Route.default()] : includeRoutes
+        ipv4Settings.excludedRoutes = excludeRoutes
         networkSettings.ipv4Settings = ipv4Settings
         networkSettings.dnsSettings =  NEDNSSettings(servers: message.dnsServers)
         

@@ -294,7 +294,7 @@ struct Outbound: Codable {
     
     struct Mux: Codable {
         var enabled: Bool = false
-        var concurrency: Int = 8
+        var concurrency: Int? = 8
     }
 
     struct Blackhole: Codable {
@@ -359,7 +359,7 @@ struct Outbound: Codable {
             struct User: Codable {
                 var id: String = ""
                 var alterId: Int = 64 // 0-65535
-                var level: Int = 0
+                var level: Int? = 0
                 var security: Security = .auto
                 
                 enum Security: String, Codable {
