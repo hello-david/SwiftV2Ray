@@ -49,7 +49,7 @@ struct HomeContentInternalView: View {
                         self.viewModel.activingEndpoint = endpoint
                         self.viewModel.updateConfig()
                         self.viewModel.storeServices()
-                    }).environmentObject(self.viewModel)
+                    })
                 }
             }
             .buttonStyle(DefaultButtonStyle())
@@ -140,11 +140,11 @@ struct SubscribeRowDetail: View {
             }
         }
         .listStyle(GroupedListStyle())
+        .padding(.top, 44)
+        .edgesIgnoringSafeArea([.top, .bottom])
         .navigationBarItems(leading: Button(action: { self.pushed = false }) {
             Image(systemName: "chevron.left")
         })
-        .padding(.top, 44)
-        .edgesIgnoringSafeArea([.top, .bottom])
     }
 }
 
@@ -166,7 +166,7 @@ struct ServiceInfoRow: View {
                     Spacer()
                     Button(action: { self.pushed = true }) {
                         Image(systemName: "ellipsis").renderingMode(.original)
-                        NavigationLink(destination: ServiceInfoRowDetail(pushed: $pushed), isActive: $pushed) {
+                        NavigationLink(destination: ServiceInfoRowDetail(info: info, pushed: $pushed), isActive: $pushed) {
                             EmptyView()
                         }.frame(width: 0, height: 0)
                     }
@@ -178,17 +178,24 @@ struct ServiceInfoRow: View {
 
 @available(iOS 13.0, *)
 struct ServiceInfoRowDetail: View {
+    let info: VmessEndpoint
     @Binding var pushed: Bool
     
     var body: some View {
-        HStack {
-            Text("Service")
+        List {
+            Section(header: Text((info.info[VmessEndpoint.InfoKey.ps.stringValue] as! String) + "详情")) {
+                Text("服务地址: " + (info.info[VmessEndpoint.InfoKey.address.stringValue] as! String))
+                Text("端口: " + (info.info[VmessEndpoint.InfoKey.port.stringValue] as! String))
+                Text("id: " + (info.info[VmessEndpoint.InfoKey.uuid.stringValue] as! String))
+                Text("aid: " + (info.info[VmessEndpoint.InfoKey.aid.stringValue] as! String))
+            }
         }
+        .listStyle(GroupedListStyle())
+        .padding(.top, 44)
+        .edgesIgnoringSafeArea([.top, .bottom])
         .navigationBarItems(leading: Button(action: { self.pushed = false }) {
             Image(systemName: "chevron.left")
         })
-        .padding(.top, 44)
-        .edgesIgnoringSafeArea([.top, .bottom])
     }
 }
 
@@ -199,7 +206,7 @@ struct SUHomeContentView_Previews: PreviewProvider {
         Group {
             SUHomeContentView().environmentObject(SUHomeContentViewModel())
             SubscribeRowDetail(pushed: .constant(false), address: .constant("")).environmentObject(SUHomeContentViewModel())
-            ServiceInfoRowDetail(pushed: .constant(false)).environmentObject(SUHomeContentViewModel())
+            ServiceInfoRowDetail(info: VmessEndpoint(nil), pushed: .constant(false)).environmentObject(SUHomeContentViewModel())
         }
     }
 }
