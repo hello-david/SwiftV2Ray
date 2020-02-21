@@ -36,8 +36,8 @@ class VPNHelper {
             }
             
             manager.isEnabled = true
-            PacketTunelMessage.messageTo(manager.connection as? NETunnelProviderSession,
-                                        PacketTunelMessage(configData: configData)) { (error, response) in
+            PacketTunnelMessage.messageTo(manager.connection as? NETunnelProviderSession,
+                                        PacketTunnelMessage(configData: configData)) { (error, response) in
                 guard error == nil else {
                     completion(error)
                     self?.stopObservingStatus(manager)

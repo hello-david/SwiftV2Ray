@@ -18,8 +18,8 @@
 		9595ACA823D40EA5005D5949 /* HomeContentServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595ACA723D40EA5005D5949 /* HomeContentServerCell.swift */; };
 		9595ACF123EB0854005D5949 /* VmessEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7EB23D2CC990051EC3C /* VmessEndpoint.swift */; };
 		959DC32223EE772E00D5FD58 /* Tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959DC32123EE772D00D5FD58 /* Tun2socks.framework */; };
-		95ADD29023FF6A78009DDA35 /* PacketTunelMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADD28F23FF6A78009DDA35 /* PacketTunelMessage.swift */; };
-		95ADD29123FF6A78009DDA35 /* PacketTunelMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADD28F23FF6A78009DDA35 /* PacketTunelMessage.swift */; };
+		95ADD29023FF6A78009DDA35 /* PacketTunnelMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADD28F23FF6A78009DDA35 /* PacketTunnelMessage.swift */; };
+		95ADD29123FF6A78009DDA35 /* PacketTunnelMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADD28F23FF6A78009DDA35 /* PacketTunnelMessage.swift */; };
 		95B5D79C23D2CBF40051EC3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D79B23D2CBF40051EC3C /* SceneDelegate.swift */; };
 		95B5D7F923D2CC990051EC3C /* VPNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7E223D2CC990051EC3C /* VPNHelper.swift */; };
 		95B5D7FD23D2CC990051EC3C /* AirportTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7E723D2CC990051EC3C /* AirportTool.swift */; };
@@ -76,7 +76,7 @@
 		9595ACA723D40EA5005D5949 /* HomeContentServerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContentServerCell.swift; sourceTree = "<group>"; };
 		9595ACBA23E9C0E7005D5949 /* PacketTunnel.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = PacketTunnel.entitlements; path = PacketTunnel/PacketTunnel.entitlements; sourceTree = SOURCE_ROOT; };
 		959DC32123EE772D00D5FD58 /* Tun2socks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Tun2socks.framework; sourceTree = "<group>"; };
-		95ADD28F23FF6A78009DDA35 /* PacketTunelMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunelMessage.swift; sourceTree = "<group>"; };
+		95ADD28F23FF6A78009DDA35 /* PacketTunnelMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelMessage.swift; sourceTree = "<group>"; };
 		95B5D79B23D2CBF40051EC3C /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		95B5D7E223D2CC990051EC3C /* VPNHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNHelper.swift; sourceTree = "<group>"; };
 		95B5D7E723D2CC990051EC3C /* AirportTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportTool.swift; sourceTree = "<group>"; };
@@ -165,7 +165,6 @@
 			children = (
 				95B5D7E223D2CC990051EC3C /* VPNHelper.swift */,
 				95B5D7E723D2CC990051EC3C /* AirportTool.swift */,
-				95ADD28F23FF6A78009DDA35 /* PacketTunelMessage.swift */,
 			);
 			path = Transport;
 			sourceTree = "<group>";
@@ -173,6 +172,7 @@
 		95B5D7E823D2CC990051EC3C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				95ADD28F23FF6A78009DDA35 /* PacketTunnelMessage.swift */,
 				95B5D7EA23D2CC990051EC3C /* HomeContentViewModel.swift */,
 				95B5D7EB23D2CC990051EC3C /* VmessEndpoint.swift */,
 			);
@@ -473,7 +473,7 @@
 				95B5D80823D2CC990051EC3C /* SUHomeContentView.swift in Sources */,
 				95B5D80423D2CC990051EC3C /* HomeContentProxyCell.swift in Sources */,
 				B07CCB3D1A8940E600A4F1E5 /* AppDelegate.swift in Sources */,
-				95ADD29023FF6A78009DDA35 /* PacketTunelMessage.swift in Sources */,
+				95ADD29023FF6A78009DDA35 /* PacketTunnelMessage.swift in Sources */,
 				95B5D79C23D2CBF40051EC3C /* SceneDelegate.swift in Sources */,
 				95B5D7FD23D2CC990051EC3C /* AirportTool.swift in Sources */,
 				95B5D80023D2CC990051EC3C /* HomeTabViewController.swift in Sources */,
@@ -488,7 +488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95ADD29123FF6A78009DDA35 /* PacketTunelMessage.swift in Sources */,
+				95ADD29123FF6A78009DDA35 /* PacketTunnelMessage.swift in Sources */,
 				9595ACF123EB0854005D5949 /* VmessEndpoint.swift in Sources */,
 				957338B823FA941E0040B1A9 /* V2RayConfig.swift in Sources */,
 				C49ACF4D1A8AC97B00084324 /* PacketTunnelProvider.swift in Sources */,

@@ -10,7 +10,7 @@ import NetworkExtension
 import Tun2socks
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
-    var message: PacketTunelMessage? = nil
+    var message: PacketTunnelMessage? = nil
     
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         self.setupTunnel(message: message!) {[weak self] (error) in
@@ -24,7 +24,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     }
     
     override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)?) {
-        message = try? JSONDecoder().decode(PacketTunelMessage.self, from: messageData)
+        message = try? JSONDecoder().decode(PacketTunnelMessage.self, from: messageData)
         if let handler = completionHandler {
             handler(messageData)
         }
@@ -41,7 +41,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
 
 extension PacketTunnelProvider {
     // 设置PacketTunnel
-    func setupTunnel(message: PacketTunelMessage, _ completion: @escaping((_ error: Error?) -> Void)) {
+    func setupTunnel(message: PacketTunnelMessage, _ completion: @escaping((_ error: Error?) -> Void)) {
         var config: V2RayConfig
         if let configData = message.configData {
             do {

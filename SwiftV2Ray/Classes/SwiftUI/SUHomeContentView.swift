@@ -28,10 +28,10 @@ struct HomeContentInternalView: View {
         List {
             Section(header: Text("控制")) {
                 HStack {
-                    Toggle(viewModel.serviceOpen ? "已连接" : "未连接", isOn: $viewModel.serviceOpen)
+                    Toggle(self.viewModel.serviceOpen ? "已连接" : "未连接", isOn: self.$viewModel.serviceOpen)
                 }
                 HStack {
-                    Picker(selection: $viewModel.proxyMode, label: Text("代理方式")) {
+                    Picker(selection: self.$viewModel.proxyMode, label: Text("代理方式")) {
                         Text("自动配置").tag(ProxyMode.auto)
                         Text("全局代理").tag(ProxyMode.global)
                         Text("直连").tag(ProxyMode.direct)
@@ -40,23 +40,16 @@ struct HomeContentInternalView: View {
                 }
             }
             Section(header: Text("服务节点")) {
-                SubscribeRow(subscribeText: viewModel.subscribeUrl?.host, actionSelectRow: {
+                SubscribeRow(actionSelectRow: {
                     self.viewModel.requestServices(withUrl: self.viewModel.subscribeUrl, completion: nil)
-                }, onCommitAddress: {(addr) in
-                    let url = URL.init(string: addr)
-                    self.viewModel.requestServices(withUrl: url, completion: { error in
-                        guard error == nil else { return }
-                        self.viewModel.subscribeUrl = url
-                        self.viewModel.storeServices()
-                    })
-                })
+                }).environmentObject(self.viewModel)
                 
                 ForEach(viewModel.serviceEndPoints, id: \.self) { endpoint in
                     ServiceInfoRow(info: endpoint, isActive: endpoint == self.viewModel.activingEndpoint ? true : false, actionSelectRow: {
                         self.viewModel.activingEndpoint = endpoint
                         self.viewModel.updateConfig()
                         self.viewModel.storeServices()
-                    })
+                    }).environmentObject(self.viewModel)
                 }
             }
             .buttonStyle(DefaultButtonStyle())
@@ -70,10 +63,9 @@ struct HomeContentInternalView: View {
 // MARK:-
 @available(iOS 13.0, *)
 struct SubscribeRow: View {
-    let subscribeText: String?
     var actionSelectRow: (() -> Void)? = nil
-    var onCommitAddress: ((_ addr: String) -> Void)? = nil
-    @State private var address: String = ""
+    @EnvironmentObject private var viewModel: SUHomeContentViewModel
+    @State private var address: String = (SUHomeContentViewModel().subscribeUrl != nil) ? (SUHomeContentViewModel().subscribeUrl?.absoluteString)! : ""
     @State private var pushed = false
     
     var body: some View {
@@ -81,10 +73,11 @@ struct SubscribeRow: View {
             HStack {
                 Image(systemName: "paperplane").renderingMode(.original)
                 VStack {
-                    if subscribeText != nil {
+                    if self.viewModel.subscribeUrl != nil {
                         HStack {
-                            Text(subscribeText!).foregroundColor(Color.black)
-                            NavigationLink(destination: SubscribeRowDetail(pushed: $pushed), isActive: $pushed) {
+                            Text(self.viewModel.subscribeUrl!.host!).foregroundColor(Color.black)
+                            NavigationLink(destination: SubscribeRowDetail(pushed: $pushed, address: $address),
+                                           isActive: $pushed) {
                                 EmptyView()
                             }
                             .frame(width: 0, height: 0)
@@ -96,10 +89,12 @@ struct SubscribeRow: View {
                     }
                     else {
                         TextField("请输入Vmess订阅地址", text: $address, onCommit: {
-                            guard let onCommitAddress = self.onCommitAddress else {
-                                return
-                            }
-                            onCommitAddress(self.address)
+                            let url = URL.init(string: self.address)
+                            self.viewModel.requestServices(withUrl: url, completion: { error in
+                                guard error == nil else { return }
+                                self.viewModel.subscribeUrl = url
+                                self.viewModel.storeServices()
+                            })
                         })
                             .tag("TextFiled")
                             .foregroundColor(Color.black)
@@ -114,19 +109,31 @@ struct SubscribeRow: View {
 
 @available(iOS 13.0, *)
 struct SubscribeRowDetail: View {
-    @Binding var pushed: Bool
     @EnvironmentObject private var viewModel: SUHomeContentViewModel
+    @Binding var pushed: Bool
+    @Binding var address: String
     
     var body: some View {
         List {
             Section(header: Text("订阅服务地址")) {
-                Text(viewModel.subscribeUrl?.absoluteString ?? "")
+                TextField("请输入Vmess订阅地址", text: $address, onCommit: {
+                    let url = URL.init(string: self.address)
+                    self.viewModel.requestServices(withUrl: url, completion: { error in
+                        guard error == nil else { return }
+                        self.viewModel.subscribeUrl = url
+                        self.viewModel.storeServices()
+                    })
+                })
+                    .tag("TextFiled")
+                    .foregroundColor(Color.black)
+                    .textFieldStyle(PlainTextFieldStyle())
+                    .textContentType(UITextContentType.URL)
             }
             Section {
                 Button(action: { self.viewModel.requestServices(withUrl: self.viewModel.subscribeUrl, completion: nil) }) {
                     HStack {
                         Spacer()
-                        Text("更新节点")
+                        Text("更新订阅地址")
                         Spacer()
                     }
                 }
@@ -191,7 +198,7 @@ struct SUHomeContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             SUHomeContentView().environmentObject(SUHomeContentViewModel())
-            SubscribeRowDetail(pushed: .constant(false)).environmentObject(SUHomeContentViewModel())
+            SubscribeRowDetail(pushed: .constant(false), address: .constant("")).environmentObject(SUHomeContentViewModel())
             ServiceInfoRowDetail(pushed: .constant(false)).environmentObject(SUHomeContentViewModel())
         }
     }

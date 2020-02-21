@@ -1,5 +1,5 @@
 //
-//  PacketTunelMessage.swift
+//  PacketTunnelMessage.swift
 //  SwiftV2Ray
 //
 //  Created by David.Dai on 2020/2/21.
@@ -9,14 +9,14 @@
 import Foundation
 import NetworkExtension
 
-struct PacketTunelMessage: Codable {
+struct PacketTunnelMessage: Codable {
     var configData: Data? = nil
     
     static func messageTo(_ prividerSession: NETunnelProviderSession?,
-                          _ message: PacketTunelMessage,
-                          _ completion: @escaping((_ error: Error?,_ response: PacketTunelMessage?)->Void)) {
+                          _ message: PacketTunnelMessage,
+                          _ completion: @escaping((_ error: Error?,_ response: PacketTunnelMessage?)->Void)) {
         guard let prividerSession = prividerSession else {
-            completion(NSError(domain: "PacketTunelMessage", code: -1, userInfo: ["error" : "没有session"]), nil)
+            completion(NSError(domain: "PacketTunnelMessage", code: -1, userInfo: ["error" : "没有session"]), nil)
             return
         }
         
@@ -27,7 +27,7 @@ struct PacketTunelMessage: Codable {
                     return
                 }
                 
-                try? completion(nil, JSONDecoder().decode(PacketTunelMessage.self, from: response))
+                try? completion(nil, JSONDecoder().decode(PacketTunnelMessage.self, from: response))
             })
         } catch let error {
             completion(error, nil)
