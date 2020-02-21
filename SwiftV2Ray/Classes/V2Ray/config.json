@@ -1,24 +1,28 @@
 {
+    "policy":{
+        "levels": {
+            "0": {
+              "handshake": 4,
+              "connIdle": 300,
+              "uplinkOnly": 0,
+              "downlinkOnly": 0,
+              "statsUserUplink": false,
+              "statsUserDownlink": false,
+              "bufferSize": 0
+            }
+        },
+        "system": {
+            "statsInboundUplink": false,
+            "statsInboundDownlink": false
+        }
+    },
     "outbounds":[
         {
             "mux":{
-                "enabled":true,
+                "enabled":false,
                 "concurrency":8
             },
             "protocol":"vmess",
-            "streamSettings":{
-                "tcpSettings":{
-                    "header":{
-                        "type":"none"
-                    }
-                },
-                "tlsSettings":{
-                    "allowInsecure":true
-                },
-                "security":"none",
-                "network":"tcp"
-            },
-            "tag":"direct",
             "settings":{
                 "vnext":[
                     {
