@@ -18,10 +18,6 @@
     },
     "outbounds":[
         {
-            "mux":{
-                "enabled":false,
-                "concurrency":8
-            },
             "protocol":"vmess",
             "settings":{
                 "vnext":[

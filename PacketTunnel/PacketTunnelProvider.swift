@@ -117,7 +117,7 @@ extension PacketTunnelProvider: Tun2socksPacketFlowProtocol {
         }
     }
     
-    func writePacket(_ packet: Data!) {
-        self.packetFlow.writePackets([packet], withProtocols: [AF_INET as NSNumber])
+    func writePacket(_ packet: Data?) {
+        self.packetFlow.writePackets([packet!], withProtocols: [AF_INET as NSNumber])
     }
 }
