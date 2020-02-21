@@ -132,6 +132,7 @@ struct SubscribeRowDetail: View {
         .edgesIgnoringSafeArea([.top, .bottom])
         .navigationBarItems(leading: Button(action: { self.pushed = false }) {
             Image(systemName: "chevron.left")
+                .renderingMode(.original)
         })
     }
 }
@@ -188,6 +189,7 @@ struct ServiceInfoRowDetail: View {
         .edgesIgnoringSafeArea([.top, .bottom])
         .navigationBarItems(leading: Button(action: { self.pushed = false }) {
             Image(systemName: "chevron.left")
+                .renderingMode(.original)
         })
     }
 }
@@ -198,8 +200,6 @@ struct SUHomeContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             SUHomeContentView().environmentObject(SUHomeContentViewModel())
-            SubscribeRowDetail(pushed: .constant(false), address: .constant("")).environmentObject(SUHomeContentViewModel())
-            ServiceInfoRowDetail(info: VmessEndpoint(nil), pushed: .constant(false)).environmentObject(SUHomeContentViewModel())
         }
     }
 }
