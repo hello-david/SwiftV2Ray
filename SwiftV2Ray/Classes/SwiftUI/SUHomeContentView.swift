@@ -11,65 +11,53 @@ import Combine
 
 @available(iOS 13.0, *)
 struct SUHomeContentView: View {
-    var body: some View {
-        NavigationView {
-            HomeContentInternalView()
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
-        }
-    }
-}
-
-@available(iOS 13.0, *)
-struct HomeContentInternalView: View {
     @EnvironmentObject private var viewModel: SUHomeContentViewModel
     
     var body: some View {
-        List {
-            Section(header: Text("控制")) {
-                HStack {
-                    Toggle(self.viewModel.serviceOpen ? "已连接" : "未连接", isOn: self.$viewModel.serviceOpen)
-                }
-                HStack {
-                    Picker(selection: self.$viewModel.proxyMode, label: Text("代理方式")) {
-                        Text("自动配置").tag(ProxyMode.auto)
-                        Text("全局代理").tag(ProxyMode.global)
-                        Text("直连").tag(ProxyMode.direct)
+        NavigationView {
+            List {
+                Section(header: Text("控制")) {
+                    HStack {
+                        Toggle(self.viewModel.serviceOpen ? "已连接" : "未连接", isOn: self.$viewModel.serviceOpen)
                     }
-                    .pickerStyle(SegmentedPickerStyle())
+                    HStack {
+                        Picker(selection: self.$viewModel.proxyMode, label: Text("代理方式")) {
+                            Text("自动配置").tag(ProxyMode.auto)
+                            Text("全局代理").tag(ProxyMode.global)
+                            Text("直连").tag(ProxyMode.direct)
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                    }
                 }
-            }
-            Section(header: Text("服务节点")) {
-                SubscribeRow(actionSelectRow: {
-                    self.viewModel.requestServices(withUrl: self.viewModel.subscribeUrl, completion: nil)
-                }).environmentObject(self.viewModel)
                 
-                ForEach(viewModel.serviceEndPoints, id: \.self) { endpoint in
-                    ServiceInfoRow(info: endpoint, isActive: endpoint == self.viewModel.activingEndpoint ? true : false, actionSelectRow: {
-                        self.viewModel.activingEndpoint = endpoint
-                        self.viewModel.updateConfig()
-                        self.viewModel.storeServices()
-                    })
+                Section(header: Text("服务节点")) {
+                    SubscribeRow()
+                    ForEach(self.viewModel.serviceEndPoints, id: \.self) { endpoint in
+                        ServiceInfoRow(info: endpoint, isActive: endpoint == self.viewModel.activingEndpoint ? true : false)
+                    }
                 }
+                .buttonStyle(DefaultButtonStyle())
             }
-            .buttonStyle(DefaultButtonStyle())
+            .listStyle(GroupedListStyle())
+            .padding(.top, 0)
+            .background(Color.init(UIColor.systemGroupedBackground))
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         }
-        .listStyle(GroupedListStyle())
-        .padding(.top, 0)
-        .background(Color.init(UIColor.systemGroupedBackground))
     }
 }
 
 // MARK:-
 @available(iOS 13.0, *)
 struct SubscribeRow: View {
-    var actionSelectRow: (() -> Void)? = nil
     @EnvironmentObject private var viewModel: SUHomeContentViewModel
     @State private var address: String = (SUHomeContentViewModel().subscribeUrl != nil) ? (SUHomeContentViewModel().subscribeUrl?.absoluteString)! : ""
     @State private var pushed = false
     
     var body: some View {
-        Button(action: actionSelectRow != nil ? actionSelectRow! : {}) {
+        Button(action: {
+            self.viewModel.requestServices(withUrl: self.viewModel.subscribeUrl, completion: nil)
+        }) {
             HStack {
                 Image(systemName: "paperplane").renderingMode(.original)
                 VStack {
@@ -153,11 +141,16 @@ struct SubscribeRowDetail: View {
 struct ServiceInfoRow: View {
     let info: VmessEndpoint
     let isActive: Bool
-    let actionSelectRow: () -> Void
+    
+    @EnvironmentObject private var viewModel: SUHomeContentViewModel
     @State private var pushed = false
     
     var body: some View {
-        Button(action: actionSelectRow) {
+        Button(action: {
+            self.viewModel.activingEndpoint = self.info
+            self.viewModel.updateConfig()
+            self.viewModel.storeServices()
+        }) {
             VStack {
                 HStack {
                     Image(systemName: isActive ? "star.fill" : "star").renderingMode(.original)
