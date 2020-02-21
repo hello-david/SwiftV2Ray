@@ -40,9 +40,9 @@ class SUHomeContentViewModel: ObservableObject, Codable {
         self.updateConfig()
         
         // 打开服务事件处理
-        self.serviceOpenEventSink = $serviceOpen.sink {[weak self] (isOpen) in
-            guard isOpen == true else {
-                self?.closeService()
+        self.serviceOpenEventSink = $serviceOpen.sink {[weak self] (toOpen) in
+            if toOpen == false {
+                self?.closeService(nil)
                 return
             }
             
@@ -58,6 +58,11 @@ class SUHomeContentViewModel: ObservableObject, Codable {
         self.activingEndpointEventSink = $activingEndpoint.sink(receiveValue: {[weak self] (activeEndpoint) in
             guard activeEndpoint != nil else { return }
             self?.updateConfig()
+            
+            guard self?.serviceOpen == true else { return }
+            self?.closeService({
+                self?.serviceOpen = true
+            })
         })
     }
     
@@ -134,8 +139,10 @@ class SUHomeContentViewModel: ObservableObject, Codable {
         })
     }
     
-    func closeService() {
-        VPNHelper.shared.close { }
+    func closeService(_ completion: (() -> Void)?) {
+        VPNHelper.shared.close {
+            completion?()
+        }
     }
     
     func updateConfig() {

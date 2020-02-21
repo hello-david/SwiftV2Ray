@@ -19,15 +19,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         }
     }
     
-    func proxyPackets() {
-        self.packetFlow.readPackets {[weak self] (packets: [Data], protocols: [NSNumber]) in
-            for packet in  packets {
-                Tun2socksInputPacket(packet)
-            }
-            self?.proxyPackets()
-        }
-    }
-    
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
         completionHandler()
     }
@@ -108,6 +99,15 @@ extension PacketTunnelProvider {
 }
 
 extension PacketTunnelProvider: Tun2socksPacketFlowProtocol {
+    func proxyPackets() {
+        self.packetFlow.readPackets {[weak self] (packets: [Data], protocols: [NSNumber]) in
+            for packet in  packets {
+                Tun2socksInputPacket(packet)
+            }
+            self?.proxyPackets()
+        }
+    }
+    
     func writePacket(_ packet: Data!) {
         self.packetFlow.writePackets([packet], withProtocols: [AF_INET as NSNumber])
     }
