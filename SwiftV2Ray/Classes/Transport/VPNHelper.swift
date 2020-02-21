@@ -36,32 +36,29 @@ class VPNHelper {
             }
             
             manager.isEnabled = true
-            do {
-                // 先发送配置到PacketTunel上
-                let session = manager.connection as? NETunnelProviderSession
-                try session?.sendProviderMessage(configData, responseHandler: { (data) in
-                    print("发送配置成功")
-                    self?.observeStatus(manager)
-                    
-                    do {
-                        try manager.connection.startVPNTunnel()
-                    } catch let starError {
-                        NSLog(starError.localizedDescription)
-                        openError = starError
-                    }
-                    
-                    guard openError == nil else {
-                        completion(openError)
-                        self?.stopObservingStatus(manager)
-                        return
-                    }
-                    
-                    self?.manager = manager
-                })
-            }
-            catch let error {
-                completion(error)
-                self?.stopObservingStatus(manager)
+            PacketTunelMessage.messageTo(manager.connection as? NETunnelProviderSession,
+                                        PacketTunelMessage(configData: configData)) { (error, response) in
+                guard error == nil else {
+                    completion(error)
+                    self?.stopObservingStatus(manager)
+                    return
+                }
+                
+                self?.observeStatus(manager)
+                do {
+                    try manager.connection.startVPNTunnel()
+                } catch let starError {
+                    NSLog(starError.localizedDescription)
+                    openError = starError
+                }
+                
+                guard openError == nil else {
+                    completion(openError)
+                    self?.stopObservingStatus(manager)
+                    return
+                }
+                
+                self?.manager = manager
             }
         }
         
@@ -145,18 +142,18 @@ class VPNHelper {
                     self?.closeVPNClosure = nil
                 
                 case .some(.disconnecting):
-                    print("VPN通道断开连接了")
+                    print("VPN通道断开连接中")
                     self?.openVPNClosure?(NSError(domain: "VPNHelper", code: (connection?.status)!.rawValue, userInfo: ["error" : "断开连接"]))
                     self?.openVPNClosure = nil
-                    self?.closeVPNClosure?()
-                    self?.closeVPNClosure = nil
                 
                 case .some(_):
                     print("其他")
                     self?.openVPNClosure?(NSError(domain: "VPNHelper", code: (connection?.status)!.rawValue, userInfo: ["error" : "其他"]))
                     self?.openVPNClosure = nil
-                    self?.closeVPNClosure?()
-                    self?.closeVPNClosure = nil
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                        self?.closeVPNClosure?()
+                        self?.closeVPNClosure = nil
+                    }
             }
         })
     }

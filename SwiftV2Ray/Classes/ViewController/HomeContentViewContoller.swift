@@ -63,9 +63,8 @@ extension HomeContentViewContoller: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 && indexPath.row == 0 {
             let cell = tableview.dequeueReusableCell(withIdentifier: "ControlCell", for: indexPath) as! HomeContentControlCell
             cell.switchClosure =  { [weak self] switchOn in
-                self?.contentManger.serviceOpen = switchOn
                 if switchOn == false {
-                    self?.contentManger.closeService()
+                    self?.contentManger.closeService(nil)
                     return
                 }
                 
@@ -138,9 +137,11 @@ extension HomeContentViewContoller: UITableViewDataSource, UITableViewDelegate {
             self.contentManger.updateConfig()
             self.contentManger.storeServices()
             if self.contentManger.serviceOpen == true {
-                self.contentManger.openService {[weak self] (error) in
-                    let cell = self?.tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! HomeContentControlCell
-                    cell.switchOn(error != nil ? false : true)
+                self.contentManger.closeService {[weak self] in
+                    self?.contentManger.openService {(error) in
+                        let cell = self?.tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! HomeContentControlCell
+                        cell.switchOn(error != nil ? false : true)
+                    }
                 }
             }
             tableView.reloadData()

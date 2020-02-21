@@ -10,20 +10,58 @@ import NetworkExtension
 import Tun2socks
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
-    var configData: Data? = nil
+    var message: PacketTunelMessage? = nil
     
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
-        var config: V2RayConfig
-        if configData != nil{
-            do {
-                config = try JSONDecoder().decode(V2RayConfig.self, from: configData!)
-                Tun2socksStartV2Ray(self, configData)
-            } catch let error {
-                completionHandler(error)
-                return
+        self.setupTunnel(message: message!) {[weak self] (error) in
+            self?.proxyPackets()
+            completionHandler(error)
+        }
+    }
+    
+    func proxyPackets() {
+        self.packetFlow.readPackets {[weak self] (packets: [Data], protocols: [NSNumber]) in
+            for packet in  packets {
+                Tun2socksInputPacket(packet)
             }
+            self?.proxyPackets()
+        }
+    }
+    
+    override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+    
+    override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)?) {
+        message = try? JSONDecoder().decode(PacketTunelMessage.self, from: messageData)
+        if let handler = completionHandler {
+            handler(messageData)
+        }
+    }
+    
+    override func sleep(completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+    
+    override func wake() {
+        
+    }
+}
+
+extension PacketTunnelProvider {
+    // 设置PacketTunnel
+    func setupTunnel(message: PacketTunelMessage, _ completion: @escaping((_ error: Error?) -> Void)) {
+        var config: V2RayConfig
+        if let configData = message.configData {
+            do {
+                 config = try JSONDecoder().decode(V2RayConfig.self, from: configData)
+                 Tun2socksStartV2Ray(self, configData)
+             } catch let error {
+                 completion(error)
+                 return
+             }
         } else {
-            completionHandler(NSError(domain: "PacketTunnel", code: -1, userInfo: ["error" : "读取不到配置"]))
+            completion(NSError(domain: "PacketTunnel", code: -1, userInfo: ["error" : "读取不到配置"]))
             return
         }
         
@@ -44,24 +82,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         proxySettings.autoProxyConfigurationEnabled = true
         networkSettings.proxySettings = proxySettings
         
-        self.setTunnelNetworkSettings(networkSettings) {[weak self] error in
-            guard error == nil else {
-                NSLog(error.debugDescription)
-                completionHandler(error)
-                return
-            }
-            
-            self?.proxyPackets()
-            completionHandler(nil)
-        }
-    }
-    
-    func proxyPackets() {
-        self.packetFlow.readPackets {[weak self] (packets: [Data], protocols: [NSNumber]) in
-            for packet in  packets {
-                Tun2socksInputPacket(packet)
-            }
-            self?.proxyPackets()
+        self.setTunnelNetworkSettings(networkSettings) {error in
+            completion(error)
         }
     }
     
@@ -82,25 +104,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             }
         }
         return result
-    }
-    
-    override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
-        completionHandler()
-    }
-    
-    override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)?) {
-        configData = messageData
-        if let handler = completionHandler {
-            handler(messageData)
-        }
-    }
-    
-    override func sleep(completionHandler: @escaping () -> Void) {
-        completionHandler()
-    }
-    
-    override func wake() {
-        
     }
 }
 

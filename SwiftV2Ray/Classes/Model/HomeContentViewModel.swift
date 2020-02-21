@@ -203,13 +203,21 @@ class HomeContentViewModel: NSObject, Codable {
             return
         }
         
-        VPNHelper.shared.open(configData!, completion: { (error) in
+        VPNHelper.shared.open(configData!, completion: {[weak self] (error) in
+            guard error != nil else {
+                self?.serviceOpen = true
+                return
+            }
+            
             completion?(error)
         })
     }
     
-    func closeService() {
-        VPNHelper.shared.close { }
+    func closeService(_ completion: (() -> Void)?) {
+        VPNHelper.shared.close {[weak self] in
+            self?.serviceOpen = false
+            completion?()
+        }
     }
     
     func updateConfig() {
