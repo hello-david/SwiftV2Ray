@@ -65,8 +65,8 @@ struct VmessEndpoint: Codable, Hashable {
     }
     
     init(_ url: String?) {
-        self.url = url
-        self.path = url?.replacingOccurrences(of: "vmess://", with: "")
+        self.url = url?.replacingOccurrences(of: "\r", with: "")
+        self.path = self.url?.replacingOccurrences(of: "vmess://", with: "")
         
         guard let path = self.path else {
             return

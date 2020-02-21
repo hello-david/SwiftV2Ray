@@ -25,7 +25,7 @@ class AirportTool {
                 }
                 
                 let stringWithDecode = NSString(data:base64Data, encoding:String.Encoding.utf8.rawValue)
-                let vmessUrlArray = stringWithDecode?.components(separatedBy: "\r\n")
+                let vmessUrlArray = stringWithDecode?.components(separatedBy: "\n")
                 guard let array = vmessUrlArray else {
                     completion(nil, NSError.init(domain: "AirportTool", code: -101, userInfo: ["error": "没有获得服务器节点"]) as Error)
                     return
