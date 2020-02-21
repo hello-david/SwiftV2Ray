@@ -61,16 +61,25 @@ extension PacketTunnelProvider {
         networkSettings.mtu = 1400
         
         let ipv4Settings = NEIPv4Settings(addresses: [serverIP], subnetMasks: ["255.255.255.0"])
-        networkSettings.ipv4Settings?.includedRoutes = [NEIPv4Route.default()]
+        var includeRoutes: Array<NEIPv4Route> = []
+        for route in message.ipv4IncludedRoutes {
+            includeRoutes.append(NEIPv4Route(destinationAddress: route.0, subnetMask: route.1))
+        }
+        var excludeRoutes: Array<NEIPv4Route> = []
+        for route in message.ipv4ExcludedRoutes {
+            excludeRoutes.append(NEIPv4Route(destinationAddress: route.0, subnetMask: route.1))
+        }
+        networkSettings.ipv4Settings?.includedRoutes = includeRoutes.count == 0 ? [NEIPv4Route.default()] : includeRoutes
+        networkSettings.ipv4Settings?.excludedRoutes = excludeRoutes
         networkSettings.ipv4Settings = ipv4Settings
-        
-        let dnsSettings = NEDNSSettings(servers: ["8.8.8.8", "8.8.4.8"])
-        networkSettings.dnsSettings = dnsSettings
+        networkSettings.dnsSettings =  NEDNSSettings(servers: message.dnsServers)
         
         let proxySettings = NEProxySettings()
         proxySettings.httpEnabled = true
         proxySettings.httpsEnabled = true
         proxySettings.autoProxyConfigurationEnabled = true
+        proxySettings.exceptionList = message.proxyExeptionList
+        proxySettings.matchDomains = message.proxyMatchDomains
         networkSettings.proxySettings = proxySettings
         
         self.setTunnelNetworkSettings(networkSettings) {error in
