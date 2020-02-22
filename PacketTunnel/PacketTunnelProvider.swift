@@ -111,13 +111,18 @@ extension PacketTunnelProvider: Tun2socksPacketFlowProtocol {
     func proxyPackets() {
         self.packetFlow.readPackets {[weak self] (packets: [Data], protocols: [NSNumber]) in
             for packet in  packets {
-                Tun2socksInputPacket(packet)
+                autoreleasepool{
+                    Tun2socksInputPacket(packet)
+                }
             }
+            
             self?.proxyPackets()
         }
     }
     
     func writePacket(_ packet: Data?) {
-        self.packetFlow.writePackets([packet!], withProtocols: [AF_INET as NSNumber])
+        autoreleasepool {
+            self.packetFlow.writePackets([packet!], withProtocols: [AF_INET as NSNumber])
+        }
     }
 }

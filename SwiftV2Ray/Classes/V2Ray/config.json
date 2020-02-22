@@ -3,7 +3,7 @@
         "levels": {
             "0": {
               "handshake": 4,
-              "connIdle": 300,
+              "connIdle": 3,
               "uplinkOnly": 0,
               "downlinkOnly": 0,
               "statsUserUplink": false,
@@ -18,6 +18,10 @@
     },
     "outbounds":[
         {
+            "mux":{
+                "enabled": true,
+                "concurrency": 1024
+            },
             "protocol":"vmess",
             "settings":{
                 "vnext":[
