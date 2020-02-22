@@ -13,6 +13,15 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     var message: PacketTunnelMessage? = nil
     
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
+        // 启动Tun2scoks
+        if let configData = message?.configData {
+            Tun2socksStartV2Ray(self, configData)
+        } else {
+            completionHandler(NSError(domain: "PacketTunnel", code: -1, userInfo: ["error" : "读取不到配置"]))
+            return
+        }
+        
+        // 配置PacketTunel
         self.setupTunnel(message: message!) {[weak self] (error) in
             self?.proxyPackets()
             completionHandler(error)
@@ -40,25 +49,14 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
 }
 
 extension PacketTunnelProvider {
-    // 设置PacketTunnel
     func setupTunnel(message: PacketTunnelMessage, _ completion: @escaping((_ error: Error?) -> Void)) {
-        var config: V2RayConfig
-        if let configData = message.configData {
-            do {
-                 config = try JSONDecoder().decode(V2RayConfig.self, from: configData)
-                 Tun2socksStartV2Ray(self, configData)
-             } catch let error {
-                 completion(error)
-                 return
-             }
-        } else {
-            completion(NSError(domain: "PacketTunnel", code: -1, userInfo: ["error" : "读取不到配置"]))
+        guard let serverIP = message.serverIP else {
+            completion(NSError(domain: "PacketTunnel", code: -1, userInfo: ["error" : "没有IP地址"]))
             return
         }
         
-        let serverIP = self.getIPAddress(domainName: (config.outbounds?[0].settingVMess?.vnext[0].address)!)
         let networkSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: serverIP)
-        networkSettings.mtu = 1400
+        networkSettings.mtu = 1500
         
         let ipv4Settings = NEIPv4Settings(addresses: [serverIP], subnetMasks: ["255.255.255.0"])
         var includeRoutes: Array<NEIPv4Route> = []
@@ -85,25 +83,6 @@ extension PacketTunnelProvider {
         self.setTunnelNetworkSettings(networkSettings) {error in
             completion(error)
         }
-    }
-    
-    // 域名解析
-    func getIPAddress(domainName: String) -> String {
-        var result = ""
-        let host = CFHostCreateWithName(nil,domainName as CFString).takeRetainedValue()
-        CFHostStartInfoResolution(host, .addresses, nil)
-        var success: DarwinBoolean = false
-        if let addresses = CFHostGetAddressing(host, &success)?.takeUnretainedValue() as NSArray?,
-            let theAddress = addresses.firstObject as? NSData {
-            var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
-            if getnameinfo(theAddress.bytes.assumingMemoryBound(to: sockaddr.self), socklen_t(theAddress.length),
-                           &hostname, socklen_t(hostname.count), nil, 0, NI_NUMERICHOST) == 0 {
-                let numAddress = String(cString: hostname)
-                result = numAddress
-                print(numAddress)
-            }
-        }
-        return result
     }
 }
 

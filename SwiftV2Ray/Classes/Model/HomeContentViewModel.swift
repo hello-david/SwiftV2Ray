@@ -133,8 +133,10 @@ class SUHomeContentViewModel: ObservableObject, Codable {
             completion?(NSError(domain: "ErrorDomain", code: -1, userInfo: ["error" : "配置错误"]))
             return
         }
-        
-        VPNHelper.shared.open(configData!, completion: { (error) in
+
+        let serverIP = PacketTunnelMessage.getIPAddress(domainName: (self.v2rayConfig.outbounds?[0].settingVMess?.vnext[0].address)!)
+        let packetTunnelMessage = PacketTunnelMessage(configData: configData, serverIP: serverIP)
+        VPNHelper.shared.open(with: packetTunnelMessage, completion: { (error) in
             completion?(error)
         })
     }
@@ -210,7 +212,9 @@ class HomeContentViewModel: NSObject, Codable {
             return
         }
         
-        VPNHelper.shared.open(configData!, completion: {[weak self] (error) in
+        let serverIP = PacketTunnelMessage.getIPAddress(domainName: (self.v2rayConfig.outbounds?[0].settingVMess?.vnext[0].address)!)
+        let packetTunnelMessage = PacketTunnelMessage(configData: configData, serverIP: serverIP)
+        VPNHelper.shared.open(with: packetTunnelMessage, completion: {[weak self] (error) in
             guard error != nil else {
                 self?.serviceOpen = true
                 return

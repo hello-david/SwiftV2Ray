@@ -15,7 +15,7 @@ class VPNHelper {
     private var openVPNClosure: ((_ error: Error?) -> Void)? = nil
     private var closeVPNClosure: (() -> Void)? = nil
     
-    func open(_ configData: Data, completion: @escaping((_ error: Error?) -> Void)) {
+    func open(with message: PacketTunnelMessage, completion: @escaping((_ error: Error?) -> Void)) {
         guard openVPNClosure == nil else {
             completion(NSError(domain: "VPNHelper", code: -1, userInfo: ["error" : "正在处理中"]))
             return
@@ -35,8 +35,7 @@ class VPNHelper {
                 return
             }
             
-            PacketTunnelMessage.messageTo(manager.connection as? NETunnelProviderSession,
-                                        PacketTunnelMessage(configData: configData)) { (error, response) in
+            PacketTunnelMessage.messageTo(manager.connection as? NETunnelProviderSession, message) { (error, response) in
                 guard error == nil else {
                     completion(error)
                     self?.stopObservingStatus(manager)
