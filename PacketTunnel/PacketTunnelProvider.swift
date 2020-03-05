@@ -100,8 +100,6 @@ extension PacketTunnelProvider: Tun2socksPacketFlowProtocol {
     }
     
     func writePacket(_ packet: Data?) {
-        autoreleasepool {
-            self.packetFlow.writePackets([packet!], withProtocols: [AF_INET as NSNumber])
-        }
+        self.packetFlow.writePackets([packet!], withProtocols: [AF_INET as NSNumber])
     }
 }
