@@ -119,3 +119,4 @@ Dependencies/
 # End of https://www.gitignore.io/api/swift,objective-c
 Pods
 SwiftV2Ray.xcworkspace
+Tun2socks.framework
