@@ -1,0 +1,6 @@
+framework module libtun2socks {
+  umbrella header "libtun2socks.h"
+
+  export *
+  module * { export * }
+}

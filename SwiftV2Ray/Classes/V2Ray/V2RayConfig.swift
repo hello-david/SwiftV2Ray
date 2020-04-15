@@ -65,8 +65,8 @@ struct Stats: Codable {
 
 // MARK: - Routing
 struct Routing: Codable {
-    var strategy: String = "rules"
-    var settings: Setting = Setting()
+    var strategy: String? = "rules"
+    var settings: Setting? = Setting()
     
     struct Setting: Codable {
         enum domainStrategy: String, Codable {
@@ -75,8 +75,8 @@ struct Routing: Codable {
             case IPOnDemand
         }
 
-        var domainStrategy: domainStrategy = .IPIfNonMatch
-        var rules: [Rule] = [Rule()]
+        var domainStrategy: domainStrategy? = .IPIfNonMatch
+        var rules: [Rule]? = [Rule()]
         
         struct Rule: Codable {
             var type: String? = "field"

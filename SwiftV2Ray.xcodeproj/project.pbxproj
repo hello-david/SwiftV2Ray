@@ -10,11 +10,12 @@
 		6904B0FB1FFDC8D1000B64F3 /* PacketTunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B07CCB6D1A89414500A4F1E5 /* PacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		69836CE2212400AB00815672 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69836CE1212400AB00815672 /* NetworkExtension.framework */; };
 		7208A593E9059346E1CF9EED /* Pods_SwiftV2Ray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A6121B47CB4BF81CE23659 /* Pods_SwiftV2Ray.framework */; };
+		95663AA52432FAED000629B4 /* libtun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95663AA42432FAED000629B4 /* libtun2socks.framework */; };
 		957338B523FA941E0040B1A9 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 957338B323FA941E0040B1A9 /* config.json */; };
 		957338B623FA941E0040B1A9 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 957338B323FA941E0040B1A9 /* config.json */; };
 		957338B723FA941E0040B1A9 /* V2RayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957338B423FA941E0040B1A9 /* V2RayConfig.swift */; };
 		957338B823FA941E0040B1A9 /* V2RayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957338B423FA941E0040B1A9 /* V2RayConfig.swift */; };
-		95847A1824108C440028D05A /* Tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95847A1724108C440028D05A /* Tun2socks.framework */; };
+		95847A40241608100028D05A /* pac.js in Resources */ = {isa = PBXBuildFile; fileRef = 95847A3F241608100028D05A /* pac.js */; };
 		9595ACA623D40E5A005D5949 /* HomeContentServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9595ACA523D40E5A005D5949 /* HomeContentServerCell.xib */; };
 		9595ACA823D40EA5005D5949 /* HomeContentServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595ACA723D40EA5005D5949 /* HomeContentServerCell.swift */; };
 		9595ACF123EB0854005D5949 /* VmessEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B5D7EB23D2CC990051EC3C /* VmessEndpoint.swift */; };
@@ -70,9 +71,10 @@
 /* Begin PBXFileReference section */
 		0FE6BBCC7F2BB5707C8B6B78 /* Pods-SwiftV2Ray.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftV2Ray.release.xcconfig"; path = "Target Support Files/Pods-SwiftV2Ray/Pods-SwiftV2Ray.release.xcconfig"; sourceTree = "<group>"; };
 		69836CE1212400AB00815672 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		95663AA42432FAED000629B4 /* libtun2socks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libtun2socks.framework; sourceTree = "<group>"; };
 		957338B323FA941E0040B1A9 /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		957338B423FA941E0040B1A9 /* V2RayConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2RayConfig.swift; sourceTree = "<group>"; };
-		95847A1724108C440028D05A /* Tun2socks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Tun2socks.framework; sourceTree = "<group>"; };
+		95847A3F241608100028D05A /* pac.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = pac.js; path = PacketTunnel/pac.js; sourceTree = SOURCE_ROOT; };
 		9595ACA523D40E5A005D5949 /* HomeContentServerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContentServerCell.xib; sourceTree = "<group>"; };
 		9595ACA723D40EA5005D5949 /* HomeContentServerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContentServerCell.swift; sourceTree = "<group>"; };
 		9595ACBA23E9C0E7005D5949 /* PacketTunnel.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = PacketTunnel.entitlements; path = PacketTunnel/PacketTunnel.entitlements; sourceTree = SOURCE_ROOT; };
@@ -120,8 +122,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95663AA52432FAED000629B4 /* libtun2socks.framework in Frameworks */,
 				69836CE2212400AB00815672 /* NetworkExtension.framework in Frameworks */,
-				95847A1824108C440028D05A /* Tun2socks.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +133,7 @@
 		690F9EC41FE5F38600F85684 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				95847A1724108C440028D05A /* Tun2socks.framework */,
+				95663AA42432FAED000629B4 /* libtun2socks.framework */,
 				69836CE1212400AB00815672 /* NetworkExtension.framework */,
 				D3A6121B47CB4BF81CE23659 /* Pods_SwiftV2Ray.framework */,
 			);
@@ -276,6 +278,7 @@
 		B07CCB6E1A89414500A4F1E5 /* PacketTunnel */ = {
 			isa = PBXGroup;
 			children = (
+				95847A3F241608100028D05A /* pac.js */,
 				B0D507F51A8943FD005D1195 /* PacketTunnelProvider.swift */,
 				B07CCB6F1A89414500A4F1E5 /* Supporting Files */,
 			);
@@ -408,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				957338B623FA941E0040B1A9 /* config.json in Resources */,
+				95847A40241608100028D05A /* pac.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,6 +634,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 9FGA344YZ7;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -664,6 +669,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 9FGA344YZ7;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -689,7 +695,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 9FGA344YZ7;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -715,7 +721,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 9FGA344YZ7;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

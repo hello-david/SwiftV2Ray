@@ -7,25 +7,24 @@
 //
 
 import NetworkExtension
-import Tun2socks
+import libtun2socks
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
     var message: PacketTunnelMessage? = nil
     
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         // 启动Tun2scoks
-        if let configData = message?.configData {
-            Tun2socksStartV2Ray(self, configData)
-        } else {
-            completionHandler(NSError(domain: "PacketTunnel", code: -1, userInfo: ["error" : "读取不到配置"]))
-            return
-        }
-        
-        // 配置PacketTunel
-        self.setupTunnel(message: message!) {[weak self] (error) in
-            self?.proxyPackets()
-            completionHandler(error)
-        }
+//        if let configData = message?.configData {
+//            
+//        } else {
+//            completionHandler(NSError(domain: "PacketTunnel", code: -1, userInfo: ["error" : "读取不到配置"]))
+//            return
+//        }
+//        
+//        // 配置PacketTunel
+//        self.setupTunnel(message: message!) {[weak self] (error) in
+//            completionHandler(error)
+//        }
     }
     
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
@@ -83,23 +82,5 @@ extension PacketTunnelProvider {
         self.setTunnelNetworkSettings(networkSettings) {error in
             completion(error)
         }
-    }
-}
-
-extension PacketTunnelProvider: Tun2socksPacketFlowProtocol {
-    func proxyPackets() {
-        self.packetFlow.readPackets {[weak self] (packets: [Data], protocols: [NSNumber]) in
-            for packet in  packets {
-                autoreleasepool{
-                    Tun2socksInputPacket(packet)
-                }
-            }
-            
-            self?.proxyPackets()
-        }
-    }
-    
-    func writePacket(_ packet: Data?) {
-        self.packetFlow.writePackets([packet!], withProtocols: [AF_INET as NSNumber])
     }
 }
