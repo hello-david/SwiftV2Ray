@@ -35,9 +35,9 @@ extension Decodable {
 
 // MARK: - Log
 struct Log: Codable {
-    var loglevel: Level = .info
-    var error: String = ""
-    var access: String = ""
+    var loglevel: Level? = .info
+    var error: String? = ""
+    var access: String? = ""
     
     enum Level: String, Codable {
         case debug
@@ -108,8 +108,8 @@ struct Inbound: Codable {
     var sniffing: Sniffing? = nil
     var allocate: Allocate? = nil
 
-    var settingHttp: Http = Http()
-    var settingSocks: Socks = Socks()
+    var settingHttp: Http? = Http()
+    var settingSocks: Socks? = Socks()
     var settingShadowsocks: Shadowsocks? = nil
     var settingVMess: VMess? = nil
 
@@ -152,7 +152,7 @@ struct Inbound: Codable {
     }
 
     struct Http: Codable {
-        var timeout: Int = 360
+        var timeout: Int? = 360
         var allowTransparent: Bool?
         var userLevel: Int?
         var accounts: [Account]?
@@ -174,9 +174,9 @@ struct Inbound: Codable {
     struct Socks: Codable {
         var auth: String = "noauth" // noauth | password
         var accounts: [Account]?
-        var udp: Bool = true
+        var udp: Bool? = true
         var ip: String?
-        var timeout: Int = 360
+        var timeout: Int? = 360
         var userLevel: Int?
         
         struct Account: Codable {

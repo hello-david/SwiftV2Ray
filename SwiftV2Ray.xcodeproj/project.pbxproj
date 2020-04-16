@@ -15,7 +15,6 @@
 		957338B623FA941E0040B1A9 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 957338B323FA941E0040B1A9 /* config.json */; };
 		957338B723FA941E0040B1A9 /* V2RayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957338B423FA941E0040B1A9 /* V2RayConfig.swift */; };
 		957338B823FA941E0040B1A9 /* V2RayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957338B423FA941E0040B1A9 /* V2RayConfig.swift */; };
-		957D49FA24483727000B9598 /* V2rayCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957D49F924483727000B9598 /* V2rayCore.framework */; };
 		957D49FB24483727000B9598 /* V2rayCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957D49F924483727000B9598 /* V2rayCore.framework */; };
 		95847A40241608100028D05A /* pac.js in Resources */ = {isa = PBXBuildFile; fileRef = 95847A3F241608100028D05A /* pac.js */; };
 		9595ACA623D40E5A005D5949 /* HomeContentServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9595ACA523D40E5A005D5949 /* HomeContentServerCell.xib */; };
@@ -117,7 +116,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				957D49FA24483727000B9598 /* V2rayCore.framework in Frameworks */,
 				7208A593E9059346E1CF9EED /* Pods_SwiftV2Ray.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,23 +8,26 @@
 
 import NetworkExtension
 import libtun2socks
+import V2rayCore
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
     var message: PacketTunnelMessage? = nil
     
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
-        // 启动Tun2scoks
-//        if let configData = message?.configData {
-//            
-//        } else {
-//            completionHandler(NSError(domain: "PacketTunnel", code: -1, userInfo: ["error" : "读取不到配置"]))
-//            return
-//        }
-//        
-//        // 配置PacketTunel
-//        self.setupTunnel(message: message!) {[weak self] (error) in
-//            completionHandler(error)
-//        }
+        // 启动Tun2scoks和V2rayCore
+        if let configData = message?.configData {
+            // ...
+            
+            V2rayCoreStartWithJsonData(configData)
+        } else {
+            completionHandler(NSError(domain: "PacketTunnel", code: -1, userInfo: ["error" : "读取不到配置"]))
+            return
+        }
+
+        // 配置PacketTunel
+        self.setupTunnel(message: message!) {(error) in
+            completionHandler(error)
+        }
     }
     
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
