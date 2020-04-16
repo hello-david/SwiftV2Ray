@@ -7,7 +7,6 @@
 //
 
 import NetworkExtension
-import libtun2socks
 import V2rayCore
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
@@ -17,7 +16,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         // 启动Tun2scoks和V2rayCore
         if let configData = message?.configData {
             // ...
-            
             V2rayCoreStartWithJsonData(configData)
         } else {
             completionHandler(NSError(domain: "PacketTunnel", code: -1, userInfo: ["error" : "读取不到配置"]))

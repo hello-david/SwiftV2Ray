@@ -21,7 +21,7 @@
             "http",
             "tls"
         ],
-        "port": "1080",
+        "port": "1086",
         "listen": "127.0.0.1",
         "protocol": "socks",
         "settings": {
