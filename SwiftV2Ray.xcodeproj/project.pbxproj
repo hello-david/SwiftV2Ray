@@ -15,6 +15,8 @@
 		957338B623FA941E0040B1A9 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 957338B323FA941E0040B1A9 /* config.json */; };
 		957338B723FA941E0040B1A9 /* V2RayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957338B423FA941E0040B1A9 /* V2RayConfig.swift */; };
 		957338B823FA941E0040B1A9 /* V2RayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957338B423FA941E0040B1A9 /* V2RayConfig.swift */; };
+		957D49FA24483727000B9598 /* V2rayCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957D49F924483727000B9598 /* V2rayCore.framework */; };
+		957D49FB24483727000B9598 /* V2rayCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957D49F924483727000B9598 /* V2rayCore.framework */; };
 		95847A40241608100028D05A /* pac.js in Resources */ = {isa = PBXBuildFile; fileRef = 95847A3F241608100028D05A /* pac.js */; };
 		9595ACA623D40E5A005D5949 /* HomeContentServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9595ACA523D40E5A005D5949 /* HomeContentServerCell.xib */; };
 		9595ACA823D40EA5005D5949 /* HomeContentServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595ACA723D40EA5005D5949 /* HomeContentServerCell.swift */; };
@@ -74,6 +76,7 @@
 		95663AA42432FAED000629B4 /* libtun2socks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libtun2socks.framework; sourceTree = "<group>"; };
 		957338B323FA941E0040B1A9 /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		957338B423FA941E0040B1A9 /* V2RayConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2RayConfig.swift; sourceTree = "<group>"; };
+		957D49F924483727000B9598 /* V2rayCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = V2rayCore.framework; sourceTree = "<group>"; };
 		95847A3F241608100028D05A /* pac.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = pac.js; path = PacketTunnel/pac.js; sourceTree = SOURCE_ROOT; };
 		9595ACA523D40E5A005D5949 /* HomeContentServerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContentServerCell.xib; sourceTree = "<group>"; };
 		9595ACA723D40EA5005D5949 /* HomeContentServerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContentServerCell.swift; sourceTree = "<group>"; };
@@ -114,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				957D49FA24483727000B9598 /* V2rayCore.framework in Frameworks */,
 				7208A593E9059346E1CF9EED /* Pods_SwiftV2Ray.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95663AA52432FAED000629B4 /* libtun2socks.framework in Frameworks */,
+				957D49FB24483727000B9598 /* V2rayCore.framework in Frameworks */,
 				69836CE2212400AB00815672 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,6 +138,7 @@
 		690F9EC41FE5F38600F85684 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				957D49F924483727000B9598 /* V2rayCore.framework */,
 				95663AA42432FAED000629B4 /* libtun2socks.framework */,
 				69836CE1212400AB00815672 /* NetworkExtension.framework */,
 				D3A6121B47CB4BF81CE23659 /* Pods_SwiftV2Ray.framework */,
